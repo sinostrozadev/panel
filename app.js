@@ -69,6 +69,7 @@ function pintar(d) {
   pintarPodio(conDatos);
   pintarCarrera(conDatos);
   pintarTabla(canales);
+  pintarMejoras(canales);
   pintarTarjetas(canales);
   pintarTrabajos(canales);
   pintarCalendario(d.calendario, canales);
@@ -283,6 +284,8 @@ function tarjeta(c) {
       : `<p class="vacio">${p.estado === 'ok' ? 'Plan sin ranuras.' : 'Sin plan semanal todavía (docs/PLAN-SEMANAL.md).'}</p>`}</div>`);
   }
 
+  bloques.push(bloqueMejoras(c));
+
   if (c.estrategia !== undefined) {
     const e = c.estrategia;
     bloques.push(`<div class="bloque-t ancho"><h4>Estrategia${e?.actualizada ? ` · actualizada ${e.diasDesde === 0 ? 'hoy' : e.diasDesde === 1 ? 'ayer' : `hace ${e.diasDesde} días`}` : ''}</h4>${e ? `
@@ -307,6 +310,41 @@ function tarjeta(c) {
 function pintarTarjetas(canales) {
   $('#saltos').innerHTML = canales.map((c) => `<a href="#canal-${esc(c.slug)}" style="--c:${esc(c.color)}"><span class="punto" aria-hidden="true"></span>${esc(c.nombre)}</a>`).join('');
   $('#tarjetas').innerHTML = canales.map(tarjeta).join('');
+}
+
+// ---------- mejoras ----------
+const LISTAS_MEJ = [['detectado', 'Detectado'], ['mejorado', 'Mejorado'], ['herramientas', 'Herramientas exploradas'], ['agregado', 'Agregado'], ['pendiente', 'Pendiente'], ['notas', 'Notas']];
+function contadoresMej(t) {
+  const x = t || {};
+  return `<div class="contadores-mej">${[['detectado', 'detectadas'], ['mejorado', 'mejoradas'], ['herramientas', 'herramientas'], ['agregado', 'agregadas']].map(([k, l]) =>
+    `<div class="cm"><b>${n(x[k] ?? 0)}</b><span>${l}</span></div>`).join('')}</div>`;
+}
+function diaMej(d, abrirMejorado) {
+  return LISTAS_MEJ.filter(([k]) => d[k]?.length).map(([k, t]) =>
+    `<details${k === 'mejorado' || (k === 'notas' && abrirMejorado) ? ' open' : ''}><summary>${t} · ${d[k].length}</summary><ul class="vinetas">${d[k].map((v) => `<li>${esc(v)}</li>`).join('')}</ul></details>`).join('');
+}
+function bloqueMejoras(c) {
+  const m = c.mejoras;
+  if (!m || !m.dias?.length) return `<div class="bloque-t ancho"><h4>Mejoras</h4><p class="vacio">Sin revisiones todavía (salida/revisiones/AAAA-MM-DD.md).</p></div>`;
+  const [u, ...resto] = m.dias;
+  return `<div class="bloque-t ancho"><h4>Mejoras · última revisión ${esc(fechaCorta(diaISO(u.fecha)))}</h4>
+    ${contadoresMej(m.totales)}
+    <p class="tenue" style="font-size:12.5px;margin:6px 0 8px">Totales de los últimos ${m.dias.length} día(s) con revisión.</p>
+    ${diaMej(u, true)}
+    ${resto.length ? `<details><summary>Días anteriores · ${resto.length}</summary>${resto.map((d) => `<div class="dia-ant"><h5>${esc(fechaCorta(diaISO(d.fecha)))}</h5>${diaMej(d, false) || '<p class="vacio">Vacío.</p>'}</div>`).join('')}</details>` : ''}
+  </div>`;
+}
+function pintarMejoras(canales) {
+  $('#mejoras-filas').innerHTML = canales.map((c) => {
+    const m = c.mejoras;
+    const u = m?.dias?.[0];
+    const top = (u?.mejorado?.length ? u.mejorado : u?.notas || []).slice(0, 3);
+    return `<div class="fila-mej caja" style="--c:${esc(c.color)}">
+      <div class="cab"><span class="nombre">${esc(c.nombre)}</span><span class="tenue">${u ? 'revisión del ' + esc(fechaCorta(diaISO(u.fecha))) : 'sin revisiones'}</span></div>
+      ${u ? contadoresMej(m.totales) : ''}
+      ${top.length ? `<ul class="vinetas">${top.map((v) => `<li>${esc(v)}</li>`).join('')}</ul>` : '<p class="vacio">Sin revisiones todavía (salida/revisiones/AAAA-MM-DD.md).</p>'}
+    </div>`;
+  }).join('');
 }
 
 // ---------- 4. trabajando ahora ----------

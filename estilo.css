@@ -250,3 +250,18 @@ details[open] > summary { margin-bottom: 8px; }
 @media (forced-colors: active) {
   .pista .relleno, .tabla .mini-pct i, .lista .vbar i { background: CanvasText; }
 }
+
+/* Mejoras */
+.mejoras-filas { display: grid; gap: 12px; }
+.fila-mej { padding: 14px 16px; border-left: 4px solid var(--c); }
+.fila-mej .cab { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.fila-mej .nombre { font-weight: 700; color: var(--c); }
+.contadores-mej { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 6px 0 10px; }
+.cm { background: var(--superficie-2); border: 1px solid var(--borde); border-radius: 10px; padding: 6px 4px; text-align: center; min-width: 0; }
+.cm b { display: block; font-size: 20px; font-variant-numeric: tabular-nums; }
+.cm span { font-size: 11.5px; color: var(--tinta-3); overflow-wrap: anywhere; }
+.vinetas { margin: 0 0 8px; padding-left: 20px; color: var(--tinta-2); font-size: 14.5px; }
+.vinetas li { margin: 3px 0; }
+.dia-ant { border-top: 1px solid var(--grilla); padding-top: 6px; margin-top: 6px; }
+.dia-ant h5 { margin: 0 0 4px; font-size: 13px; color: var(--tinta-3); text-transform: uppercase; letter-spacing: .08em; }
+@media (min-width: 720px) { .mejoras-filas { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } }

@@ -51,6 +51,7 @@ Por cada canal, todo opcional (lo que falta se muestra como "sin datos todavía"
 | `salida/metricas/*/1-overview.png`, `2-monetizacion.png` | la última de cada una se copia a `data/capturas/<slug>-overview.png` / `-monetizacion.png` (los `fallo-*` no) |
 | `docs/PLAN-SEMANAL.md` (skill `plan-semanal`) | primer bloque ```` ```json ```` que sea un array o tenga `ranuras[]` |
 | `docs/ESTRATEGIA.md` (skill `estrategia-viva`) | primera cita `>` = objetivo; sección `## 1…` = resumen (≤ 1.200 car.); fecha del último commit que la tocó |
+| `salida/revisiones/AAAA-MM-DD.md` (o la ruta de `revisiones` en `canales.json`, relativa al repo; ej. Entender Chile: `"revisiones": "bitacora/mejoras"`) | sección **Mejoras**: archivos de los últimos 14 días (máx. 5, más reciente primero). H2 fijos `## Detectado`, `## Mejorado`, `## Herramientas exploradas`, `## Agregado` y opcional `## Pendiente`, con viñetas `- …` (se limpia `**negrita**` y enlaces). Sin esos H2, las viñetas de primer nivel van a `notas`. Sale en `canal.mejoras {ultima, dias[], totales}`, también en la versión pública |
 | `salida/bandeja/*.json` | `titulo, estado, publicarEn` (o `programado`), `url`/`videoId`: lo que sale a futuro |
 | `~/.claude/canales/estado/<slug>.json` | "trabajando ahora": `tarea, detalle, desde, agentes[{modelo,tarea}], actualizado`; > 6 h sin actualizar = sin sesión activa |
 | `~/.claude/canales/calendario.json` | `ventanas[{desde,hasta,uso}]`, `cron[{canal,hora,dias,tarea}]`, `turnoNoche{lun…dom}`; si no existe, la sección se oculta |

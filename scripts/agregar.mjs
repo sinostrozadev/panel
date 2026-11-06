@@ -276,6 +276,54 @@ function copiarCapturas(met, slug, destino) {
   return out;
 }
 
+// ---------- mejoras (revisiones en markdown) ----------
+const SECCIONES_MEJORAS = { detectado: 'detectado', mejorado: 'mejorado', 'herramientas exploradas': 'herramientas', herramientas: 'herramientas', agregado: 'agregado', pendiente: 'pendiente' };
+function parsearRevision(texto) {
+  const dia = { detectado: [], mejorado: [], herramientas: [], agregado: [], pendiente: [], notas: [] };
+  let clave = null, hayEncabezados = false, ultima = null;
+  const libres = [];
+  for (const l of texto.split('\n')) {
+    const h = /^##\s+(.+?)\s*$/.exec(l);
+    if (h) {
+      const k = SECCIONES_MEJORAS[sinTilde(limpiarMd(h[1]))];
+      clave = k ?? null; ultima = null;
+      if (k) hayEncabezados = true;
+      continue;
+    }
+    if (/^#{1,6}\s/.test(l)) { if (!/^#{3,}/.test(l)) { clave = null; } ultima = null; continue; }
+    const b = /^[-*]\s+(.*\S)\s*$/.exec(l);
+    if (b) {
+      const v = limpiarMd(b[1]);
+      ultima = v ? { lista: clave ? dia[clave] : libres, i: (clave ? dia[clave] : libres).push(v) - 1 } : null;
+    } else if (ultima && /^\s+\S/.test(l) && !/^\s+[-*]\s/.test(l)) {
+      ultima.lista[ultima.i] += ' ' + limpiarMd(l);   // continuación de una viñeta
+    } else if (!/^\s+[-*]\s/.test(l)) ultima = null;
+  }
+  const hayAlgo = ['detectado', 'mejorado', 'herramientas', 'agregado', 'pendiente'].some((k) => dia[k].length);
+  if (!hayEncabezados || !hayAlgo) dia.notas = libres.length ? libres : [];
+  return dia;
+}
+function leerMejoras(repo, rutaRel, ahora) {
+  const vacio = { ultima: null, dias: [], totales: { detectado: 0, mejorado: 0, herramientas: 0, agregado: 0 } };
+  try {
+    const dir = path.join(repo, rutaRel || 'salida/revisiones');
+    if (!fs.existsSync(dir)) return vacio;
+    const limite = ahora - 14 * DIA;
+    const archivos = fs.readdirSync(dir).map((f) => /^(\d{4}-\d{2}-\d{2})\.md$/.exec(f)).filter(Boolean)
+      .filter((m) => Date.parse(m[1] + 'T12:00:00-03:00') >= limite).sort((a, b) => b[1].localeCompare(a[1])).slice(0, 5);
+    const dias = [];
+    for (const m of archivos) {
+      const t = leerTexto(path.join(dir, m[0]));
+      if (t == null) continue;
+      dias.push({ fecha: m[1], ...parsearRevision(t) });
+    }
+    const totales = { detectado: 0, mejorado: 0, herramientas: 0, agregado: 0 };
+    for (const d of dias) for (const k of Object.keys(totales)) totales[k] += d[k].length;
+    return { ultima: dias[0]?.fecha ?? null, dias, totales };
+  } catch { return vacio; }
+}
+const sinTilde = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
 // ---------- canal ----------
 function armarCanal(c, dirCanales, destino, ahora) {
   const repoOk = c.repo && fs.existsSync(c.repo);
@@ -321,6 +369,7 @@ function armarCanal(c, dirCanales, destino, ahora) {
   canal.bandeja = repoOk ? leerBandeja(c.repo, ahora) : { proximos: [], totalProximos: 0, enCola: 0 };
   canal.plan = repoOk ? leerPlan(c.repo) : { estado: 'sin plan', ranuras: [] };
   canal.estrategia = repoOk ? leerEstrategia(c.repo, ahora) : null;
+  canal.mejoras = repoOk ? leerMejoras(c.repo, c.revisiones, ahora) : leerMejoras('/nonexistent', null, ahora);
   canal.trabajando = leerEstado(dirCanales, c.slug, ahora);
   return canal;
 }
