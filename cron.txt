@@ -11,3 +11,6 @@
 
 # Publicar el panel en GitHub Pages (https://sinostrozadev.github.io/panel/) dos veces al día, con plan y estrategia (Santiago: repos públicos, 2026-11-06).
 50 8,20 * * * cd /home/santiago/projects/yt/panel && node scripts/agregar.mjs >> /tmp/panel-cron.log 2>&1 && PANEL_PUBLICO=1 bash scripts/publicar.sh >> /tmp/panel-cron.log 2>&1
+
+# Avisos/autorizaciones: leer respuestas de Santiago (issues "AUTORIZO <id>" / "RECHAZO <id>") cada 5 min (la pega Santiago).
+# */5 * * * * cd /home/santiago/projects/yt/panel && node scripts/avisos.mjs revisar >> /tmp/panel-avisos.log 2>&1

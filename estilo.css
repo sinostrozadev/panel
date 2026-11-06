@@ -265,3 +265,20 @@ details[open] > summary { margin-bottom: 8px; }
 .dia-ant { border-top: 1px solid var(--grilla); padding-top: 6px; margin-top: 6px; }
 .dia-ant h5 { margin: 0 0 4px; font-size: 13px; color: var(--tinta-3); text-transform: uppercase; letter-spacing: .08em; }
 @media (min-width: 720px) { .mejoras-filas { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } }
+
+/* Avisos y autorizaciones (banner superior) */
+.avisos { display: grid; gap: 10px; margin: 16px 0 0; }
+.aviso { border-left: 6px solid var(--c, #898781); padding: 12px 14px; }
+.aviso.respondido { opacity: .6; }
+.aviso-meta { margin: 0 0 2px; font-size: 12px; color: var(--tinta-3); text-transform: uppercase; letter-spacing: .06em; }
+.aviso-canal { color: var(--c, var(--tinta-2)); font-weight: 700; }
+.aviso h3 { font-size: 18px; font-weight: 700; line-height: 1.25; }
+.aviso-texto { margin: 4px 0 0; color: var(--tinta-2); font-size: 15px; }
+.aviso-botones { display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-top: 12px; }
+.aviso-botones a { display: flex; align-items: center; justify-content: center; min-height: 52px; border-radius: 12px;
+  font-size: 18px; font-weight: 700; text-decoration: none; color: #fff; }
+.btn-si { background: #1b7f3b; } .btn-si:hover { background: #22994a; color: #fff; }
+.btn-no { background: #4a4a46; } .btn-no:hover { background: #5a5a55; color: #fff; }
+.aviso-nota { margin: 8px 0 0; font-size: 12px; color: var(--tinta-3); }
+.aviso-res { margin: 8px 0 0; font-weight: 700; }
+.aviso-res.ok { color: #4cc26d; } .aviso-res.no { color: var(--baja); }

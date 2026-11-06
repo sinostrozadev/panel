@@ -66,6 +66,7 @@ function pintar(d) {
   $('#bajada').innerHTML = lider
     ? `${canales.length} canales en carrera. Va ganando <b>${esc(lider.nombre)}</b> con ${pct(lider.progreso.total)} del camino.`
     : `${canales.length} canales registrados; todavía sin métricas.`;
+  pintarAvisos(d.avisos || [], canales);
   pintarPodio(conDatos);
   pintarCarrera(conDatos);
   pintarTabla(canales);
@@ -75,6 +76,41 @@ function pintar(d) {
   pintarCalendario(d.calendario, canales);
   $('#pie-fecha').textContent = `Datos generados el ${fechaHora(d.generadoEn)} (${hace(d.generadoEn)})${d.publico ? ' · versión pública' : ''}.`;
   animar();
+}
+
+// ---------- 0. avisos y autorizaciones ----------
+const REPO_ISSUES = 'https://github.com/sinostrozadev/panel/issues/new';
+function enlaceRespuesta(prefijo, id) {
+  const cuerpo = 'Autorizado desde el panel. Solo pulsa "Submit new issue".';
+  return `${REPO_ISSUES}?title=${encodeURIComponent(prefijo + ' ' + id)}&body=${encodeURIComponent(cuerpo)}`;
+}
+function pintarAvisos(avisos, canales) {
+  const el = $('#avisos');
+  if (!avisos.length) { el.hidden = true; el.innerHTML = ''; return; }
+  const porSlug = Object.fromEntries(canales.map((c) => [c.slug, c]));
+  el.hidden = false;
+  el.innerHTML = avisos.map((a) => {
+    const c = porSlug[a.canal];
+    const color = c?.color || '#898781';
+    const quien = c?.nombre || a.canal || '';
+    const aut = a.tipo === 'autorizacion';
+    const resp = aut && (a.estado === 'autorizado' || a.estado === 'rechazado');
+    let pie = '';
+    if (aut && a.estado === 'pendiente') {
+      pie = `<div class="aviso-botones">
+        <a class="btn-si" href="${esc(enlaceRespuesta('AUTORIZO', a.id))}" target="_blank" rel="noopener">Autorizar</a>
+        <a class="btn-no" href="${esc(enlaceRespuesta('RECHAZO', a.id))}" target="_blank" rel="noopener">No</a>
+      </div>
+      <p class="aviso-nota">Al pulsar se abre GitHub: solo confirma con "Submit new issue". Las sesiones lo leen en ≤ 5 min.</p>`;
+    } else if (resp) {
+      pie = `<p class="aviso-res ${a.estado === 'autorizado' ? 'ok' : 'no'}">${a.estado === 'autorizado' ? '✓ Autorizado' : '✗ Rechazado'} ${esc(hace(a.respondido))}</p>`;
+    }
+    return `<article class="aviso caja${resp ? ' respondido' : ''}" style="--c:${esc(color)}" data-id="${esc(a.id)}">
+      <p class="aviso-meta"><span class="aviso-canal">${esc(quien)}</span> · ${aut ? 'Autorización' : 'Aviso'} · ${esc(hace(a.creado))}</p>
+      <h3>${esc(a.titulo)}</h3>
+      <p class="aviso-texto">${esc(a.texto)}</p>${pie}
+    </article>`;
+  }).join('');
 }
 
 // ---------- 1. podio ----------

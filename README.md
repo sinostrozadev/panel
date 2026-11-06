@@ -89,6 +89,23 @@ canales[] (ya ordenados por posición):
 - **Llegada estimada**: el día en que, a ese ritmo, se cumplen 1.000 subs **y** (10 M vistas **o** 4.000 h). Sin ritmo →
   "sin ritmo aún"; más de 50 años → "más de 50 años".
 
+## Avisos y autorizaciones (banner)
+
+Banner arriba de todo, un bloque por aviso, con el color del canal. Las sesiones de Claude lo manejan con
+`scripts/avisos.mjs` (formato de `~/.claude/canales/avisos.json` en el README de esa carpeta):
+
+```bash
+node scripts/avisos.mjs avisar --canal linea-punteada --id ID --titulo "..." --texto "..." [--vence ISO] [--sin-publicar]
+node scripts/avisos.mjs pedir  --canal linea-punteada --id ID --titulo "..." --texto "..."   # botones Autorizar / No
+node scripts/avisos.mjs cerrar --id ID
+node scripts/avisos.mjs revisar     # lee la respuesta (issues "AUTORIZO <id>" / "RECHAZO <id>" de sinostrozadev) y la publica
+```
+
+Los botones del banner abren `github.com/sinostrozadev/panel/issues/new` con el título prellenado; Santiago solo
+confirma con "Submit new issue". `revisar` marca el aviso, cierra el issue y republica. `avisar`/`pedir` publican
+solos (`PANEL_PUBLICO=1 publicar.sh`). **Cron:** la línea `*/5 * * * * … avisos.mjs revisar` está comentada en
+`cron.txt`; NO se instaló, la pega Santiago.
+
 ## Publicación (internet)
 
 `scripts/publicar.sh` construye `index.html, app.js, estilo.css, data/` en una carpeta temporal y la empuja a la rama

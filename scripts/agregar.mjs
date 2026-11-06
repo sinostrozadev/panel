@@ -324,6 +324,20 @@ function leerMejoras(repo, rutaRel, ahora) {
 }
 const sinTilde = (s) => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
+// ---------- avisos y autorizaciones ----------
+// Solo activos/pendientes y los respondidos/cerrados en las últimas 24 h; los vencidos no salen.
+function leerAvisos(dirCanales, ahora) {
+  const j = leerJSON(path.join(dirCanales, 'avisos.json'));
+  const lista = Array.isArray(j?.avisos) ? j.avisos : [];
+  return lista.filter((a) => {
+    if (!a || !a.id) return false;
+    if (a.vence && Date.parse(a.vence) <= ahora) return false;
+    if (a.estado === 'activo' || a.estado === 'pendiente') return true;
+    if (a.estado === 'autorizado' || a.estado === 'rechazado') return a.respondido && ahora - Date.parse(a.respondido) <= DIA;
+    return false;
+  }).sort((x, y) => (Date.parse(y.creado) || 0) - (Date.parse(x.creado) || 0));
+}
+
 // ---------- canal ----------
 function armarCanal(c, dirCanales, destino, ahora) {
   const repoOk = c.repo && fs.existsSync(c.repo);
@@ -408,6 +422,7 @@ export function agregar(opciones = {}) {
     ranking: orden.map((c) => c.slug),
     canales: orden,
     calendario: calendario ?? null,
+    avisos: leerAvisos(dirCanales, ahora),
   };
   const destino = path.join(a.salida, 'panel.json');
   const tmp = destino + '.tmp';
