@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Panel de canales: la carrera de cada canal hacia la monetización de YouTube.">
+<title>Panel de canales</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1a19'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1.5' fill='%23d95926'/%3E%3Crect x='13.5' y='8' width='5' height='18' rx='1.5' fill='%233987e5'/%3E%3Crect x='21' y='13' width='5' height='13' rx='1.5' fill='%23199e70'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="saltar" href="#tabla">Saltar a la tabla de posiciones</a>
+<header class="cabecera">
+  <div class="envoltura">
+    <p class="sobretitulo">La carrera a la monetización</p>
+    <h1>Panel de canales</h1>
+    <p class="bajada" id="bajada">Cargando datos…</p>
+  </div>
+</header>
+
+<main class="envoltura" id="principal" aria-live="polite">
+  <section id="podio" class="seccion" aria-labelledby="t-podio">
+    <h2 id="t-podio">Podio</h2>
+    <p class="nota-seccion">Progreso hacia el Programa de Partners de YouTube: mitad suscriptores, mitad vistas u horas.</p>
+    <div class="podio" id="podio-pasos"></div>
+    <div class="carrera" id="carrera"></div>
+  </section>
+
+  <section id="tabla" class="seccion" aria-labelledby="t-tabla">
+    <h2 id="t-tabla">Tabla de posiciones</h2>
+    <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-tabla">
+      <table class="tabla" id="tabla-posiciones"></table>
+    </div>
+    <p class="nota-seccion" id="nota-tabla"></p>
+  </section>
+
+  <section id="canales" class="seccion" aria-labelledby="t-canales">
+    <h2 id="t-canales">Canal por canal</h2>
+    <nav class="saltos" id="saltos" aria-label="Ir a un canal"></nav>
+    <div id="tarjetas"></div>
+  </section>
+
+  <section id="trabajando" class="seccion" aria-labelledby="t-trabajando">
+    <h2 id="t-trabajando">Trabajando ahora</h2>
+    <p class="nota-seccion">Lo que hace cada proyecto en este momento. Para mirarlo en vivo: <a href="http://localhost:8777/ver" target="_blank" rel="noopener">visor del piloto</a>.</p>
+    <div class="trabajos" id="trabajos"></div>
+  </section>
+
+  <section id="calendario" class="seccion" aria-labelledby="t-calendario" hidden>
+    <h2 id="t-calendario">Calendario de hoy</h2>
+    <div id="cal"></div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="envoltura pie-fila">
+    <p id="pie-fecha">—</p>
+    <button type="button" id="actualizar" class="boton">Actualizar</button>
+  </div>
+</footer>
+
+<div class="tooltip" id="tooltip" role="status" hidden></div>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Panel de canales — líneas sugeridas para `crontab -e` (las pega Santiago; NO se instalan solas).
+# Hora del sistema = America/Santiago. Si tu crontab ya tiene estas variables (las de linea-punteada), no las repitas:
+# SHELL=/bin/bash
+# PATH=/home/santiago/.nvm/versions/node/v22.14.0/bin:/usr/local/bin:/usr/bin:/bin
+# Agregar datos cada 30 min (el servidor también re-agrega al pedir el JSON si tiene > 5 min).
+*/30 * * * * cd /home/santiago/projects/yt/panel && node scripts/agregar.mjs >> /tmp/panel-agregar.log 2>&1
+# Levantar el servidor al reiniciar WSL (si no está corriendo ya).
+@reboot cd /home/santiago/projects/yt/panel && nohup node scripts/servir.mjs >> /tmp/panel-servir.log 2>&1 &
+# Opcional, cuando exista el remoto y el dominio: publicar cada hora (sin estrategia ni plan).
+# 5 * * * * cd /home/santiago/projects/yt/panel && PANEL_DOMINIO=panel.ejemplo.cl scripts/publicar.sh >> /tmp/panel-publicar.log 2>&1
