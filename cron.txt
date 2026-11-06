@@ -8,3 +8,6 @@
 @reboot cd /home/santiago/projects/yt/panel && nohup node scripts/servir.mjs >> /tmp/panel-servir.log 2>&1 &
 # Opcional, cuando exista el remoto y el dominio: publicar cada hora (sin estrategia ni plan).
 # 5 * * * * cd /home/santiago/projects/yt/panel && PANEL_DOMINIO=panel.ejemplo.cl scripts/publicar.sh >> /tmp/panel-publicar.log 2>&1
+
+# Publicar el panel en GitHub Pages (https://sinostrozadev.github.io/panel/) dos veces al día, con plan y estrategia (Santiago: repos públicos, 2026-11-06).
+50 8,20 * * * cd /home/santiago/projects/yt/panel && node scripts/agregar.mjs >> /tmp/panel-cron.log 2>&1 && PANEL_PUBLICO=1 bash scripts/publicar.sh >> /tmp/panel-cron.log 2>&1
