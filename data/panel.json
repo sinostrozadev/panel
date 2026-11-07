@@ -1,0 +1,1680 @@
+{
+  "version": 1,
+  "generadoEn": "2026-11-07T11:57:32.974Z",
+  "zona": "America/Santiago",
+  "meta": {
+    "subs": 1000,
+    "vistas90d": 10000000,
+    "horas": 4000
+  },
+  "formulaProgreso": "0,5·min(1, subs/1000) + 0,5·min(1, max(vistas90d/10M, horas/4000))",
+  "publico": true,
+  "omitido": [],
+  "ranking": [
+    "linea-punteada",
+    "entender-chile",
+    "bolita-lab"
+  ],
+  "canales": [
+    {
+      "slug": "linea-punteada",
+      "nombre": "Línea Punteada",
+      "handle": "@lineapunteada",
+      "canalId": "UCp05AZK18-TL8pp74ntbdUw",
+      "color": "#d95926",
+      "nicho": "Geografía narrada en español",
+      "fechaCreacion": "2026-11-05",
+      "url": "https://www.youtube.com/@lineapunteada",
+      "diasDeVida": 3,
+      "repoEncontrado": true,
+      "datos": true,
+      "fechaDatos": "2026-11-07",
+      "generadoDatos": "2026-11-07T11:16:19.775Z",
+      "actual": {
+        "subs": 7,
+        "vistasTotales": 5561,
+        "horas": 802,
+        "videosPublicados": 4,
+        "vistas90d": 5561,
+        "fuenteVistas90d": "suma de Shorts (90 d)",
+        "fuenteNumeros": "públicos (curl a youtube.com)"
+      },
+      "progreso": {
+        "total": 0.10375000000000001,
+        "subs": 0.007,
+        "vistas": 0.0005561,
+        "horas": 0.2005,
+        "ruta": "horas"
+      },
+      "ritmo": {
+        "subsDia": 0.5,
+        "vistasDia": 1645,
+        "horasDia": null,
+        "base": "últimos 2 d",
+        "llegada": "2043-06-27",
+        "diasFaltan": 6076
+      },
+      "tendencia": {
+        "subs": 1,
+        "vistas": 2669,
+        "vs": "2026-11-06"
+      },
+      "serie": [
+        {
+          "fecha": "2026-11-05",
+          "subs": 6,
+          "vistas": 2271,
+          "horas": null
+        },
+        {
+          "fecha": "2026-11-06",
+          "subs": 6,
+          "vistas": 2892,
+          "horas": 460
+        },
+        {
+          "fecha": "2026-11-07",
+          "subs": 7,
+          "vistas": 5561,
+          "horas": 802
+        }
+      ],
+      "videos": [
+        {
+          "id": "p-0rgosOKdg",
+          "titulo": "¿Por qué en esta plaza cambias de país sin mostrar un solo papel?",
+          "vistas": 1270,
+          "publicadoEn": "2026-11-06T13:00:00-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/p-0rgosOKdg"
+        },
+        {
+          "id": "6LgYD_Ae5qI",
+          "titulo": "¿Por qué hay una isla argentina a solo 3,5 km de Uruguay?",
+          "vistas": 1003,
+          "publicadoEn": "2026-11-06T07:00:36-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/6LgYD_Ae5qI"
+        },
+        {
+          "id": "8rm7lrivW0Q",
+          "titulo": "Chile y Argentina pelearon un lago por una frase escrita en 1902",
+          "vistas": 1900,
+          "publicadoEn": "2026-11-05T13:00:35-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/8rm7lrivW0Q"
+        },
+        {
+          "id": "xl1dVN0KX7Q",
+          "titulo": "La Haya repartió el mar entre Perú y Chile… menos 5 canchas de arena",
+          "vistas": 1388,
+          "publicadoEn": "2026-11-05T07:00:31-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/xl1dVN0KX7Q"
+        }
+      ],
+      "capturas": [
+        {
+          "tipo": "monetizacion",
+          "fecha": "2026-11-07",
+          "archivo": "data/capturas/linea-punteada-monetizacion.png"
+        },
+        {
+          "tipo": "overview",
+          "fecha": "2026-11-07",
+          "archivo": "data/capturas/linea-punteada-overview.png"
+        }
+      ],
+      "bandeja": {
+        "proximos": [
+          {
+            "id": "2026-11-06-frontera-campo-de-hielo",
+            "titulo": "Chile y Argentina tienen un tramo de frontera que todavía no existe",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "frontera",
+            "publicarEn": "2026-11-07T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/o3yQPPqXoQA"
+          },
+          {
+            "id": "2026-11-07-frontera-bolivia-tiene-armada-y-no-tiene-mar",
+            "titulo": "Bolivia tiene Armada… y no tiene mar",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "frontera",
+            "publicarEn": "2026-11-07T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/FM9aJ326bHU"
+          },
+          {
+            "id": "2026-11-07-frontera-la-guerra-por-un-petroleo-que-no-estaba",
+            "titulo": "La guerra por un petróleo que no estaba",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "frontera",
+            "publicarEn": "2026-11-08T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/-c96F_ywLkM"
+          },
+          {
+            "id": "2026-11-07-frontera-por-que-ningun-uruguayo-firmo",
+            "titulo": "¿Por qué ningún uruguayo firmó la independencia de Uruguay?",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "frontera",
+            "publicarEn": "2026-11-08T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/fKFCTNMk7iQ"
+          },
+          {
+            "id": "2026-11-07-frontera-la-frontera-mas-vigilada-de-europa-se",
+            "titulo": "La frontera más vigilada de Europa se abrió por un papel mal leído",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "frontera",
+            "publicarEn": "2026-11-09T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/VgecejtBkTo"
+          }
+        ],
+        "totalProximos": 5,
+        "enCola": 0
+      },
+      "plan": {
+        "estado": "ok",
+        "actualizado": "2026-11-07T09:00:00-03:00",
+        "semanas": [
+          {
+            "inicio": "2026-11-02",
+            "fin": "2026-11-08",
+            "rol": "en-curso"
+          },
+          {
+            "inicio": "2026-11-09",
+            "fin": "2026-11-15",
+            "rol": "siguiente"
+          }
+        ],
+        "ranuras": [
+          {
+            "fecha": "2026-11-05",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "La Haya repartió el mar entre Perú y Chile… menos 5 canchas de arena",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "xl1dVN0KX7Q",
+            "porQue": "lanzamiento: tema fuerte de Chile/Perú con disputa viva",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-05",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "Chile y Argentina pelearon un lago por una frase escrita en 1902",
+            "tipo": "serie",
+            "serie": "La línea que falta",
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "8rm7lrivW0Q",
+            "porQue": "abre la serie del laudo de 1902 (sigue Campo de Hielo)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-06",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "¿Por qué hay una isla argentina a solo 3,5 km de Uruguay?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "6LgYD_Ae5qI",
+            "porQue": "audiencia AR/UY; tratado del 19-11-1973 cumple aniversario la semana del 16",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-06",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "¿Por qué en esta plaza cambias de país sin mostrar un solo papel?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "p-0rgosOKdg",
+            "porQue": "audiencia UY/BR; frontera urbana (formato distinto a los anteriores)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-07",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "Chile y Argentina tienen un tramo de frontera que todavía no existe",
+            "tipo": "serie",
+            "serie": "La línea que falta",
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "o3yQPPqXoQA",
+            "porQue": "continúa Laguna del Desierto (mismo laudo 1902); demarcación sigue pendiente (T13, 2026-09-07). Adelantado del 11-08: salió del diario del 11-06 y ruta aún no pasó revisión",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-07",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "Bolivia tiene Armada… y no tiene mar",
+            "tipo": "evergreen",
+            "serie": "El mar de Bolivia",
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "FM9aJ326bHU",
+            "porQue": "audiencia BO/CL; contradicción en una frase (idea 14); adelantado del 11-15 porque lugar sigue sin revisión v2",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "10:00",
+            "formato": "largo",
+            "plantilla": "largo",
+            "tema": "(sin largo esta semana)",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "idea",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "ruta B (4.000 h) empieza la semana 2",
+            "bloqueo": "no existe plantilla 16:9 todavía: ranura vacía a propósito"
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "La guerra por un petróleo que no estaba",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "-c96F_ywLkM",
+            "porQue": "audiencia BO/PY, línea de 1938 dibujable (idea 15); adelantado del 11-13 porque ruta sigue sin revisión v2",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "Uruguay nació de un empate",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "fKFCTNMk7iQ",
+            "porQue": "audiencia UY/AR que ya llegó con Martín García y Rivera (idea 18); adelantado del 11-10; guion renderizado en GitHub Actions",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-09",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "La frontera más vigilada de Europa se abrió por un papel mal leído",
+            "tipo": "contingente",
+            "serie": null,
+            "estado": "programado",
+            "fuente": "https://elordenmundial.com/hoy-en-la-historia/9-noviembre/9-de-noviembre-de-1989-caida-del-muro-de-berlin/",
+            "contingencia": "37 años de la caída del Muro de Berlín (9-11-1989): Schabowski anunció la apertura 'desde ya'",
+            "videoId": "VgecejtBkTo",
+            "porQue": "efeméride el mismo día; ángulo propio (el error de la conferencia), no 'cayó el muro'",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-09",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "ruta",
+            "tema": "Cruzó de Alaska a Rusia caminando sobre el mar… y lo detuvieron por no pasar por aduana",
+            "tipo": "serie",
+            "serie": "Del estrecho al canal",
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "continuación de Bushby mientras la noticia sigue viva (idea 2 verificada)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-10",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "El desierto más seco del mundo está pegado al océano",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "lugar con imagen fuerte (satélite) y fuente NASA (idea 12)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-10",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "Francia ganó una isla mexicana porque lo decidió el rey de Italia",
+            "tipo": "serie",
+            "serie": "Clipperton",
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "cierra la serie Clipperton (orden intercambiado por plantilla pendiente; si Clipperton 1 sale el 11-15, quedan invertidas: reordenar)",
+            "bloqueo": "plantilla lugar debe pasar revisión v2"
+          },
+          {
+            "fecha": "2026-11-11",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "ruta",
+            "tema": "El Canal de Panamá dejó sin barcos a Punta Arenas",
+            "tipo": "serie",
+            "serie": "Del estrecho al canal",
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "tercer capítulo de la serie; prepara Panamá del 11-13 (idea 20)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-11",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "La ciudad más alta del mundo existe por el oro",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "audiencia PE; récord verificable con NASA (idea 16)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-12",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "frontera",
+            "tema": "Venezuela reclama dos tercios de Guyana por un laudo de 1899",
+            "tipo": "contingente",
+            "serie": null,
+            "estado": "idea",
+            "fuente": "https://oilnow.gy/featured/guyana-government-expects-world-court-ruling-as-early-as-november-2026-in-essequibo-border-case/",
+            "contingencia": "La CIJ prepara el fallo Guyana c. Venezuela (audiencias terminadas en mayo de 2026; fallo esperado entre noviembre de 2026 y enero de 2027; consultado 2026-11-05)",
+            "videoId": null,
+            "porQue": "si la CIJ anuncia fecha de lectura, se mueve al día del fallo; solo hechos, dos versiones",
+            "bloqueo": "tema sensible: guion con revisión de neutralidad; si no hay novedad de la CIJ, entra el reemplazo (Bolivia tiene Armada… y no tiene mar)"
+          },
+          {
+            "fecha": "2026-11-12",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "ruta",
+            "tema": "La Panamericana va de Alaska a Ushuaia… menos 100 km de selva",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "idea",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "ruta continental con contradicción clara; Bushby cruzó ese tramo (cruce con la serie)",
+            "bloqueo": "verificar largo del Tapón del Darién con 2 fuentes"
+          },
+          {
+            "fecha": "2026-11-13",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "Panamá se separó de Colombia y el tratado del canal lo firmó un francés",
+            "tipo": "contingente",
+            "serie": "Del estrecho al canal",
+            "estado": "investigado",
+            "fuente": "https://history.state.gov/milestones/1899-1913/panama-canal",
+            "contingencia": "Independencia de Panamá (3-11-1903) y tratado Hay–Bunau-Varilla (18-11-1903): 123 años",
+            "videoId": null,
+            "porQue": "entre los dos aniversarios; cierra la serie del estrecho al canal (idea 19)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-13",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "ruta",
+            "tema": "Salió caminando de Punta Arenas y tardó 28 años en llegar a su casa",
+            "tipo": "contingente",
+            "serie": "Del estrecho al canal",
+            "estado": "dirigido",
+            "fuente": "https://www.itv.com/news/calendar/2026-11-02/adventurer-arrives-back-in-home-city-after-28-year-walk-round-the-world",
+            "contingencia": "Karl Bushby llega a Hull a pie tras 28 años (salió de Punta Arenas en 1998)",
+            "videoId": null,
+            "porQue": "contingencia ITV 2026-11-02 (se enfría; desplazado desde el 11-08); tema probado con 61 M; abre la serie y precede al largo del 11-15",
+            "bloqueo": "plantilla ruta debe pasar revisión v2 (hoja de contacto) antes del render"
+          },
+          {
+            "fecha": "2026-11-14",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "ruta",
+            "tema": "El náufrago que inspiró a Robinson Crusoe: cómo lo encontraron en 1709",
+            "tipo": "serie",
+            "serie": "Robinson",
+            "estado": "idea",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "ruta marítima Juan Fernández; abre mini-serie que cierra el 11-15 (idea 6)",
+            "bloqueo": "falta fuente primaria (diario de Woodes Rogers, 1712)"
+          },
+          {
+            "fecha": "2026-11-14",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "Dos países se pelean por cuál es la ciudad más austral del mundo",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "audiencia CL/AR, la de los 2 primeros videos (idea 17)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "10:00",
+            "formato": "largo",
+            "plantilla": "largo",
+            "tema": "28 años caminando: la vuelta al mundo de Karl Bushby, contada en un mapa",
+            "tipo": "contingente",
+            "serie": "Del estrecho al canal",
+            "estado": "idea",
+            "fuente": "https://www.emol.com/noticias/Tendencias/2026/11/02/1215855/karl-bushby-llega-ciudad-natal.html",
+            "contingencia": "Karl Bushby llega a Hull (fin de la caminata Punta Arenas → Hull)",
+            "videoId": null,
+            "porQue": "primer largo (ruta B 4.000 h, mid-rolls ≥ 8 min); tema caliente con Short previo como embudo",
+            "bloqueo": "plantilla 16:9 por construir (skill videos-largos)"
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "Los olvidaron en una isla 3 años: el rey de Clipperton",
+            "tipo": "serie",
+            "serie": "Clipperton",
+            "estado": "dirigido",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "abre la serie Clipperton (desplazado desde el 11-07); orden intercambiado por plantilla pendiente",
+            "bloqueo": "plantilla lugar debe pasar revisión v2"
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "lugar",
+            "tema": "Selkirk nunca pisó la isla que lleva su nombre",
+            "tipo": "serie",
+            "serie": "Robinson",
+            "estado": "investigado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "cierra la mini-serie Robinson 30 h después (idea 6)",
+            "bloqueo": null
+          }
+        ]
+      },
+      "estrategia": {
+        "objetivo": "OBJETIVO: lograr la MONETIZACIÓN y GANAR MUCHO DINERO. Lo MÁS IMPORTANTE, por encima de calidad, volumen, herramientas o cualquier otra meta, es MONETIZAR y HACER GANAR DINERO a Santiago (orden textual, 2026-11-05). Todo lo demás es instrumento. Skill estrategia-viva.",
+        "tituloSeccion": "1. Objetivo y métrica que manda",
+        "resumen": "- Meta 1 (90 días): entrar al YPP → 1.000 suscriptores + 10 M de vistas de Shorts en 90 días (ruta A) o 4.000 h de\nlargos en 12 meses (ruta B, seguro). Se trabajan las dos.\n- Meta 2 (6 meses): ingresos. Shorts pagan poco por vista (RPM ≈ US$0,03–0,10 en LatAm); los largos de 8 min con\nmid-rolls pagan 10–30×. Por eso cada Short bueno se convierte en un largo. Después: afiliados de libros/mapas (Amazon)\ny membresías; nunca sponsors que exijan opinión política.\n- KPI semanal (los lee scripts/revisar.mts por la API y los anota en salida/revisiones/):\nvistas/Short a 48 h (umbral: mediana > 5 k a la semana 2, > 20 k a la semana 4), retención media (> 60 % en Shorts de\n2–3 min; Ñerd ronda 70–76 %), suscriptores/día (> 10 a la semana 2, > 35 a la semana 4), % \"swiped away\" en los 3\nprimeros segundos (< 30 %). Si dos semanas seguidas no se cumplen, se cambia gancho/duración/tema según §5.",
+        "actualizada": "2026-11-05T22:34:53-03:00",
+        "diasDesde": 1
+      },
+      "mejoras": {
+        "ultima": "2026-11-07",
+        "dias": [
+          {
+            "fecha": "2026-11-07",
+            "detectado": [
+              "Nuestros 4 Shorts publicados (Studio, 11-07 03:25): triángulo 1.385 vistas · 23 likes · 3 comentarios · +2 subs · se quedó a ver 75,5 % · duración media 1:24 de 2:13 (63 %) · 79 % sigue a los 30 s · ≈ 38 % llega al final. Laguna 1.869 · 36 likes · 1 comentario · +4 subs · 74,7 % · 1:39 de 2:30 (66 %) · 82 % a los 30 s · ≈ 47 % al final. Martín García 1.005 · 14 likes · 1 comentario · 0 subs · retención \"sin datos\" (Studio tarda hasta 2 días). Rivera 1.276 · 27 likes · +1 sub · sin datos de retención. Campo de Hielo programado hoy 12:00. Canal: 7 subs. 95–97 % de las vistas vienen del feed de Shorts.",
+              "Ñerd (canal-meta), medido hoy: 21,5 k subs, 50 Shorts en 17 días (~3/día), mediana 184 k por video (últimos 10: 54 k). Top 3 de los últimos 30 días: Arizona 4,45 M (165 s), paso de Tehuantepec 1,63 M (155 s, 11-02), capital de Canadá 1,47 M (104 s). Video-meta nuevo: Beagle 261 k (158 s, 11-01): pregunta a los 0:05, promesa a los 0:20–0:25, 184 p/min, 12,2 cambios/min, 5 en los primeros 10 s, y tarjeta de título ilustrada a pantalla completa (\"3 ISLAS, 2 PAÍSES, CASI HAY GUERRA\" sobre islas con banderas) con transición de nubes al mapa (hoja salida/revisiones/hojas/2026-11-07-ganchos-beagle-vs-laguna.jpg).",
+              "Competencia (mismo método): GeoHitos (8,2 k subs): Corea 2,21 M (85 s, 207 p/min, 6,4 cambios/min), Groenlandia 485 k (81 s, 196 p/min, 11,1/min), Chile 439 k (73 s, 194 p/min, 13,2/min); abre en el globo, banderas, personajes 3D y humor; sus últimos 5 bajaron a 27–59 k. Mapas insólitos (3,2 k subs): San Andrés 391 k (135 s), pico del Amazonas 313 k (118 s), islas Monjes 186 k (124 s), todos de Colombia, **con voz a 140–151 p/min y 1–5 cambios/min (más lentos que nosotros)**; arrancan sin tarjeta, con el satélite del lugar y un círculo en el cuadro 0, \"Mira esta isla…\", y prometen el final a los 0:15. El nicho se llenó en 15 días: 6 canales nuevos con la misma fórmula (El Mapa lo Explica, El Porqué del Mapa, GeoFronteras, Geograf-IA, Mapas insólitos, GeoHitos).",
+              "Lo que hacemos bien (3, medido): 1. A quien nos ve le rendimos igual que Ñerd: likes por vista 1,4–2,2 % (Ñerd 1,6–2,3 %) y 1,26 suscriptores por 1.000 vistas (Ñerd ≈ 1,1). 2. Retención sobre los umbrales de ESTRATEGIA §1: 74,7–75,5 % se queda a ver (umbral: < 30 % desliza) y 63–66 % de duración media (umbral: > 60 %). Studio califica el arranque de ambos como \"kept your viewers watching longer\". 3. Lenguaje visual a la par: máscaras, cotas, índice con pictogramas, polaroids y además la fuente en pantalla, que Ñerd no muestra. El mejor nuestro (Laguna) es el de base satelital más contrastada (glaciares turquesa).",
+              "Las 5 mejoras, por impacto × facilidad (qué se ve / causa / qué cambiar): 1. La promesa llega tarde. Se ve: \"Y al final…\" suena a los 35–45 s; Ñerd a los 14–30 s y Mapas insólitos a los 15 s; nosotros perdemos el 18–21 % de la audiencia antes del segundo 30. Causa: gancho de 27–40 palabras + mito + mapa de ruta largo. Cambiar: presupuesto de palabras del arranque (gancho ≤ 30 hasta la pregunta, mito ≤ 22, mapa ≤ 25). 2. El cuadro 0 no dice dónde ni qué es raro. Se ve: tarjeta de 0,9 s con \"¿DE QUIÉN ES ESTE LAGO?\" / \"¿DE QUÉ PAÍS ES ESTA PLAZA?\"; Ñerd dice \"¿POR QUÉ ARIZONA NO TOCA EL MAR?\" o afirma el desenlace (\"EE. UU. RECHAZÓ EL PASO PERPETUO\") y a 0,7 s ya está en el satélite; Mapas insólitos no usa tarjeta: el cuadro 0 es el lugar con un círculo. Causa: molde del doc + T_TITULO = 0.9. Cambiar: molde \"¿POR QUÉ [LUGAR] [CONTRADICCIÓN]?\" (hecho) y, en código, 0,7 s y un lote de prueba sin tarjeta. 3. Los dos últimos videos perdieron ritmo. Se ve: Martín García 5,9 y Rivera 5,2 cambios/min (Rivera, 0 en 0–10 s; Martín, de 1,5 a 3 s un mapa continental sin etiquetas); Ñerd 8,8–19,0; triángulo 9,5; Laguna 16,9 y es la de más vistas, retención y subs. Causa: al reescribir los planos para la gramática de cámara se quitaron también los cortes sobre el mismo eje. Cambiar: piso ≥ 8/min y ≥ 3 en 0–10 s. Ojo: Mapas insólitos va viral con 1–5/min, así que es mejora de calidad, no la causa del alcance. 4. Temas de países chicos. Se ve: 2 de 4 giran en torno a Uruguay; los virales medidos son EE. UU./México, Colombia ×3, Corea y Chile–Argentina. Causa: banco de ideas armado desde el sur. Cambiar: en el plan semanal, 1 de cada 2 Shorts con México, Colombia o Argentina de protagonista (sin repetir temas de Ñerd). 5. La voz va lenta frente a Ñerd y GeoHitos. Se ve: 142–162 p/min contra 176–207. Causa: Edge TTS a +4 %. Cambiar: A/B de un lote a +12 % (scripts/voz.mts). Impacto dudoso: Mapas insólitos hace 391 k a 144 p/min.",
+              "La brecha que importa es de alcance: 1.005–1.869 vistas contra 54 k de mediana reciente de Ñerd (×30–140). Como la respuesta por espectador ya empata (likes 1,4–2,2 % en los cuatro canales; subs por 1.000 vistas 1,26 vs ≈ 1,1), el feed nos corta en el arranque: por eso las mejoras 1 y 2 van primero.",
+              "Mañana (08:45–09:00): el cron de las 04:45 funcionó de punta a punta por primera vez: 3 Shorts renderizados (Bolivia 04:47→05:5x, Berlín, Chaco 08:07; 66 min cada uno) + 8 guiones frontera nuevos de a uno con Opus (4–6 min por guion, 08:07→08:47); más el de Uruguay de la nube. Métricas 08:15: 7 subs · 5.561 vistas (triángulo 1.388, Laguna 1.900, Rivera 1.270, Martín García 1.003); la captura de alcance sigue fallando por tiempo de carga.",
+              "El cron del sábado 05:30 (compilar.mts) dejó salida/compilaciones/2026-11-07-compilacion.mp4 (11:27, 1920×1080, 390 MB): 5 Shorts verticales seguidos con bandas desenfocadas a los lados. Es contenido reutilizado tal cual (riesgo YPP, skill videos-largos §2): no se sube sin que Santiago lo decida."
+            ],
+            "mejorado": [
+              "4 Shorts subidos y programados por Studio (08:46–08:54, 2 min cada uno, sin fallos): Bolivia FM9aJ326bHU sáb 11-07 18:00 · Chaco -c96F_ywLkM dom 11-08 12:00 · Uruguay (render de la nube) fKFCTNMk7iQ dom 11-08 18:00 · Berlín VgecejtBkTo lun 11-09 12:00 (día del aniversario). Colchón: 5 programados hasta el lunes mediodía. Hojas de contacto en salida/revisiones/hojas/2026-11-07-*.jpg (tarjeta, índice, máscaras, cotas y cierre correctos).",
+              "Piloto compartido sin choques: cadena Línea Punteada → Bolita Lab (09:00–09:30) → Números Rojos (09:35) acordada por mensajes entre sesiones.",
+              "docs/PLAN-SEMANAL.md y docs/DECISIONES.md al día (temas de lugar/ruta desplazados a 11-10, 11-13 y 11-15 hasta revisar esas plantillas).",
+              "Render en la nube funcionando (04:10): .github/workflows/producir.yml (copiado de Bolita; runner de 4 vCPU/16 GB, concurrency 3) renderizó el Short de Uruguay en 61 min (local ≈ 40), dejó el mp4 como artifact de 147 MB y commiteó el estado como bot. Ya descargado a salida/bandeja/; hoja de contacto correcta (fuentes, satélite, capas). Automático solo si LINEA_NUBE_AUTO=1 (decisión de Santiago: nube o cron local, no ambos). Subida por API sigue esperando la auditoría de Google y el token del canal.",
+              "docs/GUION.md §2 (system prompt del generador): reloj del arranque (promesa antes del segundo 28; gancho ≤ 30 palabras hasta la pregunta, mito ≤ 22, mapa de ruta ≤ 25) y variante de actos con el nombre de la pieza (\"La sierra. …\") en 1 de cada 3 guiones, para que la tanda no suene a plantilla. Rige desde el próximo guion que se escriba.",
+              "docs/DIRECCION-VISUAL.md §1.10 piso de ritmo (≥ 8 cambios/min, ≥ 3 en 0–10 s, un corte sobre el mismo eje por escena, foto/tarjeta en 3 de cada 7 escenas) y §1.11 gancho que se mueve (2 cambios en 0–3 s, etiqueta de lugar antes del segundo 3); §2 molde de la tarjeta de título \"¿POR QUÉ [LUGAR] [CONTRADICCIÓN]?\".",
+              "docs/META-REFERENTE.md creado: canal-meta Ñerd, video-meta Beagle (261 k) en vez de Arizona (outlier), 2 de apoyo, ficha de 20 dimensiones con cifra y fecha, competidores, 7 tareas con dueño y verificación.",
+              "No se tocó src/plantillas/ (renders de producción desde las 04:45), ni contenido/backlog, ni la bandeja."
+            ],
+            "herramientas": [
+              "Detector de ritmo en el navegador (adoptado): recorrer el <video> de YouTube cada 0,5 s con currentTime, dibujar a 48×86 en un canvas y medir la diferencia entre cuadros; cuenta cortes/fotos/tarjetas por minuto sin bajar el video (yt-dlp sigue bloqueado). Mide igual lo nuestro y lo ajeno. Calibrado contra el conteo a mano de VISUAL-NERD (5,7 vs ~5 eventos por 10 s). ~1–2 min por video con el piloto.",
+              "Cuadros del gancho desde el canvas (0 / 0,7 / 1,5 / 3 / 10 / 30 s) en JPG 270×480, y **grilla lado a lado con un Chromium headless de Playwright** (el ffmpeg de Remotion no trae hstack/tile ni decodifica JPG).",
+              "Studio → Analytics del Short → Overview: trae \"Stayed to watch\", duración media, \"% a los 0:30\" y la curva; el % al final se lee del gráfico (captura con main#main.scrollTop). La pestaña Engagement queda en blanco para Shorts.",
+              "Carátulas con GPT para el cuadro 0 (propuesta, sin probar): Ñerd cambió su tarjeta de título a una imagen ilustrada tipo carátula desde el 11-01; la skill caratulas-con-gpt ya da imágenes gratis en 1–5 min. Tarea 10 de META-REFERENTE.",
+              "Búsqueda de YouTube por el piloto para encontrar competidores nuevos de la semana (Mapas insólitos, GeoHitos, El Mapa lo Explica, El Porqué del Mapa, GeoFronteras): el nicho de Shorts de mapas en español se llenó en 15 días."
+            ],
+            "agregado": [
+              "docs/META-REFERENTE.md (ficha viva).",
+              "4 hojas lado a lado en salida/revisiones/hojas/2026-11-07-ganchos-*.jpg (Ñerd Arizona vs Laguna/Martín/triángulo; Ñerd Tehuantepec y Canadá vs Rivera; GeoHitos; Mapas insólitos), cuadros a 0 / 0,7 / 1,5 / 3 s y más.",
+              "Capturas de retención de Studio y scripts de medición (local): salida/revisiones/2026-11-07-capturas/.",
+              "Una línea por decisión en docs/DECISIONES.md."
+            ],
+            "pendiente": [
+              "Santiago decide: ¿subir la compilación del sábado (11:27) como largo del domingo 11-08 10:00? Recomendación: NO hasta tener plantilla 16:9 nativa (compilación vertical con bandas = \"reutilizado\"); botón en el panel (aviso lp-2026-11-07-compilacion).",
+              "Backlog: 8 guiones nuevos (08:07–08:47) sin verificar al escribirse; verificación con web en curso esta mañana (informes en contenido/verificaciones/) antes del cron del 11-08 04:45, que los renderiza.",
+              "Sesión de código (sin renders corriendo): (0) lote de prueba sin tarjeta de título: tarjetaTitulo opcional en src/plantillas/frontera/Frontera.tsx (sin ella, el gancho arranca en el satélite con un resaltes[] sobre el lugar en 0 s); (a) src/plantillas/frontera/visual.ts T_TITULO 0,9 → 0,7 y el 0.9 fijo de src/plantillas/comun/camara.ts (cálculo de inicio del gancho); (b) aviso R6 \"ritmo bajo\" en src/plantillas/comun/camara.ts (< 8 cortes+fotos+tarjetas por minuto de voz, o < 3 en el gancho) mostrado por scripts/camara.mts; (c) validación del reloj del arranque en scripts/generar-guiones.mts (palabras hasta el fin de mapa-de-ruta ≤ 77).",
+              "A/B de voz: scripts/voz.mts PROSODIA.rate +4% → +12% en un lote de 6 (una variable por lote, ESTRATEGIA §5).",
+              "Tarjeta ilustrada en el cuadro 0: pedido por caratulas-con-gpt + campo tarjetaTitulo.imagen en src/plantillas/frontera/TarjetaTitulo.tsx, lote de prueba de 6 (META-REFERENTE tarea 10).",
+              "Plan semanal: 1 de cada 2 Shorts con México, Colombia o Argentina de protagonista (META-REFERENTE tarea 9).",
+              "Re-medir el lunes 11-09: retención de Martín García, Rivera y Campo de Hielo; vistas a 7 días del triángulo y Laguna; ritmo del primer guion escrito con las reglas nuevas.",
+              "Los guiones del backlog (contenido/backlog) se escribieron antes de estas reglas: revisarlos con el detector antes de promoverlos (no se tocaron hoy)."
+            ],
+            "notas": []
+          },
+          {
+            "fecha": "2026-11-06",
+            "detectado": [
+              "Laguna del Desierto (Short 18:00 del 11-05) desorienta: 43 planos en 150 s, zooms en diente de sierra ±1 nivel y 4 cortes secos a cientos de kilómetros. Santiago lo vio y lo dijo; el zoom no molesta, el corte seco a otro lugar sí.",
+              "La identidad de Studio en el piloto compartido quedaba en otro canal (Bolita Lab / En Números Rojos): la subida fallaba con \"timeout esperando input de archivo\" y las capturas de métricas daban \"Oops, no permission\".",
+              "Studio recuerda la última categoría del canal (Educación) y el paso \"categoría\" del subidor esperaba la por defecto (People & Blogs): fallo \"locator People & Blogs timeout\".",
+              "Las cifras que el lector de métricas sacaba del texto de Studio eran implausibles (28 d = 15.000 vistas en un canal con 2.645). La captura de monetización mostraba solo la cabecera, sin las barras al YPP.",
+              "El reinicio de la máquina (21:21) mató el render en curso; el diario no se relanza solo.",
+              "claude -p en el cron de las 04:45 no escribió guiones: los 3 intentos fallaron (código 124 = 10 min sin respuesta y código 1) con el aviso \"this sign-in ends between 2026-11-07 and 2026-11-10\". Backlog en 0.",
+              "El plan semanal (docs/PLAN-SEMANAL.md) existe pero generar-guiones todavía no lo lee: los guiones salen de la rotación, no del plan.",
+              "El modelo de \"mejoras\" no era visible para Santiago: estaba repartido entre DECISIONES.md, el estado y los commits.",
+              "Los guiones de claude -p salen con hechos de memoria, sin verificar: el proceso hijo no tiene WebSearch/WebFetch ni Write (lo reportó él mismo al terminar el guion de Uruguay: fechas, cifras de población y 3 URLs de Wikipedia escritas de memoria). El paso \"investigación con fuentes primarias\" de guiones-de-video hoy no ocurre en el generador automático: hay que meterlo antes (ideas ya investigadas en el plan) o después (revisor que verifique cada cifra con el piloto/web) antes de renderizar."
+            ],
+            "mejorado": [
+              "Gramática de cámara R1–R5 con severidad (src/plantillas/comun/camara.ts, enganchada al superRefine de frontera, lugar y ruta): error solo por corte seco a un lugar fuera de pantalla (R2/R5) o plano < 1 s (R4); aviso por diente de sierra (R1), R3 y ráfagas (R4). scripts/camara.mts <guion|props> --solo-resumen lo audita. Laguna: 22–24 violaciones; Triángulo: 0. Los 3 guiones del backlog bajaron de 42/42/38 a 32/31/33 planos y se re-renderizaron.",
+              "subir-studio.mjs verifica y cambia el canal antes de subir (asegurarCanal, exige LP_CANAL_ID) y tolera la categoría ya puesta. Rivera y Campo de Hielo subieron solos; Martín García se terminó a mano por curl al piloto.",
+              "scripts/metricas.mts: captura de monetización a página completa; descarta vistas 28 d/48 h si superan las totales; cambia de canal antes de capturar; enganchado al final de scripts/estado.mts (--sin-metricas para saltarlo).",
+              "scripts/subir.mts: los largos van en categoría 27 (Educación), no 24.",
+              "Documentación al día: docs/DIRECCION-VISUAL.md §1b, docs/GUION.md §4b/§7, docs/DECISIONES.md, docs/ESTADO-2026-11-05.md (cierre 02:40), docs/ESTRATEGIA.md con el objetivo en la primera línea.",
+              ".wslconfig con memory=12GB y swap=8GB (respaldo .wslconfig.bak-2026-11-05); vale al reiniciar WSL.",
+              "Generador de guiones arreglado (10:00): claude -p usa Opus por defecto y escribe de a un guion (414 s cada uno medido); el diario le da 45 min por plantilla; rotación solo frontera hasta revisar lugar/ruta. Primer guion nuevo en el backlog: \"La guerra por un petróleo que no estaba\" (0 errores de cámara, 3 avisos).",
+              "Verificación de hechos de los 5 guiones del backlog (11-07 02:40–03:20, 2 agentes Opus con web): 75 afirmaciones revisadas, 11 corregidas (población de Uruguay por censo final INE; atribución de las 177 ha al NPS; año de los 5.000 efectivos bolivianos; distancia Berlín–RFA \"más de 100 km\"; hora de apertura 23:30; gancho del Chaco acotado al lado paraguayo; pozo Lapacho reformulado; fuente Cote 2016), Wikipedia reemplazada por fuentes primarias (Wikisource del tratado de 1828, CIJ, CIA Factbook, NPS, Hughes 2005, State Dept 1937). Informes en contenido/verificaciones/. Ninguno descartado; zod y cámara en 0 errores."
+            ],
+            "herramientas": [
+              "Piloto compartido (8777) con cambio de identidad por canal: /clicktexto Switch account → youtube.com/account → clic en el canal. Funciona para subir y para capturar métricas; documentado en navegador-piloto e incidentes-canal.",
+              "Captura de página completa del piloto (/captura con full=1) para pantallas largas de Studio (monetización).",
+              "GitHub Pages para el panel (https://sinostrozadev.github.io/panel/): publicación estática desde scripts/publicar.sh, sin servidor; el dominio sinodev.cl queda para después (CNAME).",
+              "gh api para visibilidad de repos (gh api -X PATCH repos/... -f private=false): el gh repo edit --visibility de esta versión no sirve.",
+              "flock como lock de render compartido entre canales (/tmp/bolita-render.lock): prueba con -w 60, producción con -w 1800.",
+              "Pendiente de probar: claude setup-token (token de larga vida para claude -p en cron sin depender del inicio de sesión), carátulas por GPT (skill caratulas-con-gpt, mecanismo de Entender Chile)."
+            ],
+            "agregado": [
+              "7 skills globales nuevas: crear-canal, guiones-de-video, superar-virales-del-nicho, estrategia-viva, metricas-diarias, plan-semanal, videos-largos; y 21 contradicciones corregidas entre las 18 skills.",
+              "Estado compartido ~/.claude/canales/ (canales.json, calendario.json con ventanas y turnos, estado/<slug>.json \"trabajando ahora\").",
+              "Panel de canales (repo sinostrozadev/panel): podio, tabla, barras al YPP, planes, estrategias, trabajando ahora, calendario; local :8790 y público.",
+              "docs/PLAN-SEMANAL.md con 24 ranuras (11-05 → 11-15) en tabla + JSON.",
+              "Métricas diarias (4 capturas + JSON) portadas a Bolita Lab y Entender Chile.",
+              "Repos públicos: bolita-lab, entender-chile, linea-punteada (creado esa noche), panel.",
+              "Esta carpeta salida/revisiones/ con el formato fijo que lee el panel."
+            ],
+            "pendiente": [
+              "claude auth login (Santiago) antes del 2026-11-07 y, para el cron, claude setup-token → CLAUDE_CODE_OAUTH_TOKEN en el crontab; sin eso no hay guiones nuevos.",
+              "Backlog en 0 (mínimo 8): regenerar hoy en cuanto claude -p responda.",
+              "Estrenar lugar (Clipperton) y ruta (Bushby) tras revisar la hoja de contacto; plantilla 16:9 para el largo del domingo.",
+              "Revisor independiente de guiones (scripts/revisar-guion.mts) y generar-guiones leyendo el plan.",
+              "Lector de cifras de Studio (28 d, 48 h, progreso YPP) y la captura de alcance, que falló por tiempo de carga.",
+              "Token de YouTube del canal (métricas por API) y CNAME panel.sinodev.cl."
+            ],
+            "notas": []
+          }
+        ],
+        "totales": {
+          "detectado": 17,
+          "mejorado": 16,
+          "herramientas": 11,
+          "agregado": 11
+        }
+      },
+      "trabajando": {
+        "activo": true,
+        "motivo": null,
+        "tarea": "4 Shorts programados (11-07 18:00 Bolivia, 11-08 12:00 Chaco, 11-08 18:00 Uruguay, 11-09 12:00 Berlín); verificando 8 guiones nuevos del backlog y actualizando el plan",
+        "detalle": "Piloto liberado 08:55 (turno de Bolita Lab hasta 09:30, luego Números Rojos). Commit/push e informe a Santiago al cerrar.",
+        "desde": null,
+        "actualizado": "2026-11-07T08:57:00-03:00",
+        "agentes": []
+      },
+      "posicion": 1
+    },
+    {
+      "slug": "entender-chile",
+      "nombre": "Entender Chile",
+      "handle": "@entenderchile",
+      "canalId": "UCpdqApwfcKxTB5Bb24K4uAw",
+      "color": "#199e70",
+      "nicho": "Noticias de Chile explicadas",
+      "fechaCreacion": "2026-08-29",
+      "url": "https://www.youtube.com/@entenderchile",
+      "diasDeVida": 71,
+      "repoEncontrado": true,
+      "datos": true,
+      "fechaDatos": "2026-11-05",
+      "generadoDatos": "2026-11-06T02:12:47.637Z",
+      "actual": {
+        "subs": 48,
+        "vistasTotales": 23289,
+        "horas": null,
+        "videosPublicados": 220,
+        "vistas90d": 23212,
+        "fuenteVistas90d": "suma de Shorts (90 d)",
+        "fuenteNumeros": "públicos (curl a youtube.com, /about para vistas)"
+      },
+      "progreso": {
+        "total": 0.0251606,
+        "subs": 0.048,
+        "vistas": 0.0023212,
+        "horas": 0,
+        "ruta": "shorts"
+      },
+      "ritmo": {
+        "subsDia": 0.6956521739130435,
+        "vistasDia": 337.5217391304348,
+        "horasDia": null,
+        "base": "desde la creación (69 d)",
+        "llegada": null,
+        "diasFaltan": 29559
+      },
+      "tendencia": null,
+      "serie": [
+        {
+          "fecha": "2026-11-05",
+          "subs": 48,
+          "vistas": 23289,
+          "horas": null
+        }
+      ],
+      "videos": [
+        {
+          "id": "-swKZxjq0IA",
+          "titulo": "¿Qué significa que los demócratas le quitaron el Congreso a ",
+          "vistas": 124,
+          "publicadoEn": "2026-11-04",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/-swKZxjq0IA"
+        },
+        {
+          "id": "NkQ1XVfzGHY",
+          "titulo": "El repunte de octubre no borró las pérdidas reales de los fo",
+          "vistas": 4,
+          "publicadoEn": "2026-11-04",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/NkQ1XVfzGHY"
+        },
+        {
+          "id": "QIZfhvG4HzA",
+          "titulo": "Fondos D y E siguen en rojo tras el repunte de octubre",
+          "vistas": 0,
+          "publicadoEn": "2026-11-04",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/QIZfhvG4HzA"
+        },
+        {
+          "id": "raUYcRyD6-8",
+          "titulo": "Fernando Rabat figura como imputado por una denuncia de pres",
+          "vistas": 28,
+          "publicadoEn": "2026-11-03",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/raUYcRyD6-8"
+        },
+        {
+          "id": "pKRdG6No6V4",
+          "titulo": "Rabat figura como imputado por denuncia de prevaricación",
+          "vistas": 3,
+          "publicadoEn": "2026-11-03",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/pKRdG6No6V4"
+        },
+        {
+          "id": "8o8oCJHwxTE",
+          "titulo": "¿Por qué un diputado rompió con su propio gobierno por el ca",
+          "vistas": 64,
+          "publicadoEn": "2026-11-02",
+          "tipo": null,
+          "url": "https://youtube.com/shorts/8o8oCJHwxTE"
+        }
+      ],
+      "capturas": [],
+      "bandeja": {
+        "proximos": [],
+        "totalProximos": 0,
+        "enCola": 0
+      },
+      "plan": {
+        "estado": "sin plan",
+        "ranuras": []
+      },
+      "estrategia": null,
+      "mejoras": {
+        "ultima": "2026-11-06",
+        "dias": [
+          {
+            "fecha": "2026-11-06",
+            "detectado": [],
+            "mejorado": [],
+            "herramientas": [],
+            "agregado": [],
+            "pendiente": [],
+            "notas": [
+              "La corrida real contra la API de YouTube. No hay secrets en este checkout: todo lo anterior es contra un doble. La prueba de verdad es la corrida de Métricas de mañana a las 05:00 de Chile. No verificado.",
+              "Por qué videos.list devuelve tandas incompletas. El arreglo lo cubre y lo delata; no lo explica. Si el reintento falla siempre para los mismos id, hay una causa de fondo que esto va a dejar a la vista. No verificado.",
+              "Que los dos id de hoy sigan públicos. Lo dice canal.videos por aritmética, no una consulta directa a esos dos id, que acá no se puede hacer. Si Santiago los abre en Studio, se cierra del todo.",
+              "Los datos ya perdidos. Las vistas, me gusta e impresiones de esos video día de octubre y del 05 al 06-11 no quedaron escritos en ningún archivo y no se recuperan.",
+              "El efecto del cambio del 05-11 en la retención de los Shorts: no se puede medir, porque el PR 7 no está fusionado y ningún Short publicado lo lleva.",
+              "Un referente del nicho: la red de la sesión no resuelve www.youtube.com ni pe.linkedin.com. No verificado, por segundo día."
+            ]
+          },
+          {
+            "fecha": "2026-11-05",
+            "detectado": [],
+            "mejorado": [],
+            "herramientas": [],
+            "agregado": [],
+            "pendiente": [],
+            "notas": [
+              "El render real del Short (Remotion, voz Azure): no corrió acá. La tarjeta de apertura ahora pinta una pregunta más la promesa y hay que ver que el texto no se apriete en 1080x1920. No verificado.",
+              "**Que la pregunta de la carátula sea siempre del tema del primer bloque del Short.** Lo es en el 05-11 y en el 21-10, porque el guion pone la noticia del día primero, pero nada en el código lo garantiza. No verificado.",
+              "El Short de hoy en YouTube: la subida es programada para las 12:00 y a esta hora no está en las métricas. El Short que sale hoy lleva todavía la promesa falsa de cinco noticias, porque el PR no está fusionado.",
+              "El efecto en vistas de este cambio: se mide en los próximos días contra la mediana de 22,5 segundos vistos de hoy.",
+              "Un referente del nicho: www.youtube.com no está entre los dominios permitidos de la sesión. No verificado.",
+              "Enganche: paso 6 de la skill madrugada (rutina local diaria). Sin línea nueva de crontab ni workflow; el piloto solo existe en esta máquina.",
+              "Los fallo-*.png quedan ignorados en .gitignore; lo demás se commitea.",
+              "Por video usa la última medición de la nube (bitacora/metricas/*.json) en vez de 220 llamadas públicas."
+            ]
+          },
+          {
+            "fecha": "2026-11-04",
+            "detectado": [],
+            "mejorado": [],
+            "herramientas": [],
+            "agregado": [],
+            "pendiente": [],
+            "notas": []
+          }
+        ],
+        "totales": {
+          "detectado": 0,
+          "mejorado": 0,
+          "herramientas": 0,
+          "agregado": 0
+        }
+      },
+      "trabajando": {
+        "activo": false,
+        "motivo": "sin archivo de estado"
+      },
+      "posicion": 2
+    },
+    {
+      "slug": "bolita-lab",
+      "nombre": "Bolita Lab",
+      "handle": "@bolitalab",
+      "canalId": "UCi1_1_ItZCLY4axLshZcuZQ",
+      "color": "#3987e5",
+      "nicho": "Simulaciones físicas satisfying con música",
+      "fechaCreacion": "2026-11-04",
+      "url": "https://www.youtube.com/@bolitalab",
+      "diasDeVida": 4,
+      "repoEncontrado": true,
+      "datos": true,
+      "fechaDatos": "2026-11-07",
+      "generadoDatos": "2026-11-07T11:01:25.861Z",
+      "actual": {
+        "subs": 9,
+        "vistasTotales": 6729,
+        "horas": 9.1,
+        "videosPublicados": 6,
+        "vistas90d": 6729,
+        "fuenteVistas90d": "suma de Shorts (90 d)",
+        "fuenteNumeros": "API de YouTube (Data)"
+      },
+      "progreso": {
+        "total": 0.0056375,
+        "subs": 0.009,
+        "vistas": 0.0006729,
+        "horas": 0.002275,
+        "ruta": "horas"
+      },
+      "ritmo": {
+        "subsDia": 0,
+        "vistasDia": 1071,
+        "horasDia": 4.5,
+        "base": "últimos 2 d",
+        "llegada": null,
+        "diasFaltan": null
+      },
+      "tendencia": {
+        "subs": 0,
+        "vistas": 1934,
+        "vs": "2026-11-06"
+      },
+      "serie": [
+        {
+          "fecha": "2026-11-05",
+          "subs": 9,
+          "vistas": 4587,
+          "horas": 0.1
+        },
+        {
+          "fecha": "2026-11-06",
+          "subs": 9,
+          "vistas": 4795,
+          "horas": 0.1
+        },
+        {
+          "fecha": "2026-11-07",
+          "subs": 9,
+          "vistas": 6729,
+          "horas": 9.1
+        }
+      ],
+      "videos": [
+        {
+          "id": "XMNHIHXSLhM",
+          "titulo": "¿Chocolate, vainilla, fresa, menta o limón? ¿Qué helado gana? 🍦",
+          "vistas": 713,
+          "publicadoEn": "2026-11-06T13:00:13-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/XMNHIHXSLhM"
+        },
+        {
+          "id": "ELqZFQmmhHo",
+          "titulo": "El camarón mantis tiene 12 receptores de color; tú, solo 3",
+          "vistas": 1140,
+          "publicadoEn": "2026-11-06T07:00:05-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/ELqZFQmmhHo"
+        },
+        {
+          "id": "Z8-3_uzhpJs",
+          "titulo": "2 bolitas, 1 hueco que gira: ¿cuál escapa primero? (Canon)",
+          "vistas": 1172,
+          "publicadoEn": "2026-11-05T13:00:09-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/Z8-3_uzhpJs"
+        },
+        {
+          "id": "nJJ6-EY6jKg",
+          "titulo": "¿PlayStation, Xbox, Nintendo o PC? 🎮 ¿Cuál gana?",
+          "vistas": 1151,
+          "publicadoEn": "2026-11-05T07:00:04-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/nJJ6-EY6jKg"
+        },
+        {
+          "id": "Zn66wjkNX0w",
+          "titulo": "Un billón de segundos son más de 31.000 años",
+          "vistas": 1247,
+          "publicadoEn": "2026-11-04T13:00:17-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/Zn66wjkNX0w"
+        },
+        {
+          "id": "wWkHMfYBX0g",
+          "titulo": "¿Cuántos rebotes necesita para llenar el círculo? Canon de Pachelbel",
+          "vistas": 1283,
+          "publicadoEn": "2026-11-04T07:00:12-08:00",
+          "tipo": "short",
+          "url": "https://youtube.com/shorts/wWkHMfYBX0g"
+        }
+      ],
+      "capturas": [
+        {
+          "tipo": "monetizacion",
+          "fecha": "2026-11-07",
+          "archivo": "data/capturas/bolita-lab-monetizacion.png"
+        },
+        {
+          "tipo": "overview",
+          "fecha": "2026-11-07",
+          "archivo": "data/capturas/bolita-lab-overview.png"
+        }
+      ],
+      "bandeja": {
+        "proximos": [
+          {
+            "id": "2026-11-03-bola-cisnes-crecer-3",
+            "titulo": "3 bolitas crecen en cada rebote: ¿cuánto tardan en llenar el círculo?",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "bola",
+            "publicarEn": "2026-11-07T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/Wav_W4VRJ_8"
+          },
+          {
+            "id": "2026-11-03-dato-cleopatra-mas-cerca-de-iphone",
+            "titulo": "Cleopatra vivió más cerca del iPhone que de las pirámides",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "dato",
+            "publicarEn": "2026-11-07T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/tCaY7nso7CY"
+          },
+          {
+            "id": "2026-11-03-carrera-iphone-vs-android",
+            "titulo": "¿iPhone, Samsung, Xiaomi o Pixel? 📱 ¿Qué celular gana?",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "carrera",
+            "publicarEn": "2026-11-08T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/OzRnX27pawU"
+          },
+          {
+            "id": "2026-11-03-bola-furelise",
+            "titulo": "¿Cuántos rebotes aguanta antes de escapar? Para Elisa en neón",
+            "estado": "subido",
+            "tipo": null,
+            "plantilla": "bola",
+            "publicarEn": "2026-11-08T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/pZwZS5YXUP8"
+          },
+          {
+            "id": "2026-11-03-dato-tierra-luna",
+            "titulo": "Si la Tierra fuera una pelota de básquet, ¿dónde estaría la Luna?",
+            "estado": "subido",
+            "tipo": null,
+            "plantilla": "dato",
+            "publicarEn": "2026-11-09T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/iBORkBbkd8c"
+          },
+          {
+            "id": "2026-11-03-carrera-meses",
+            "titulo": "¿Qué mes del año gana la carrera? 🏁 Carrera de bolitas",
+            "estado": "subido",
+            "tipo": null,
+            "plantilla": "carrera",
+            "publicarEn": "2026-11-09T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/z9c6DgDFKAA"
+          },
+          {
+            "id": "2026-11-04-dato-luz-pasado",
+            "titulo": "Lo que ves en el cielo ya pasó: el Sol tiene 8 minutos de retraso",
+            "estado": "subido",
+            "tipo": null,
+            "plantilla": "dato",
+            "publicarEn": "2026-11-10T12:00:00-03:00",
+            "url": "https://youtube.com/shorts/ddtrrj2MF3M"
+          },
+          {
+            "id": "2026-11-03-carrera-messi-cr7-neymar",
+            "titulo": "¿Messi, CR7, Neymar o Mbappé? ⚽ ¿Quién gana la carrera?",
+            "estado": "subido",
+            "tipo": "short",
+            "plantilla": "carrera",
+            "publicarEn": "2026-11-10T18:00:00-03:00",
+            "url": "https://youtube.com/shorts/dy2omu9k2go"
+          }
+        ],
+        "totalProximos": 17,
+        "enCola": 3
+      },
+      "plan": {
+        "estado": "ok",
+        "actualizado": "2026-11-07T02:45:00-03:00",
+        "semanas": [
+          {
+            "inicio": "2026-11-02",
+            "fin": "2026-11-08",
+            "rol": "en-curso"
+          },
+          {
+            "inicio": "2026-11-09",
+            "fin": "2026-11-15",
+            "rol": "siguiente"
+          }
+        ],
+        "ranuras": [
+          {
+            "fecha": "2026-11-04",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "¿Cuántos rebotes necesita para llenar el círculo? Canon de Pachelbel",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "wWkHMfYBX0g",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación. Vistas al 11-07: 1282.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-04",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Un billón de segundos son más de 31.000 años",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "Zn66wjkNX0w",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP). Vistas al 11-07: 1247.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-05",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿PlayStation, Xbox, Nintendo o PC? 🎮 ¿Cuál gana?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "nJJ6-EY6jKg",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2). Vistas al 11-07: 1149.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-05",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "2 bolitas, 1 hueco que gira: ¿cuál escapa primero? (Canon)",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "Z8-3_uzhpJs",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación. Vistas al 11-07: 1171.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-06",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "El camarón mantis tiene 12 receptores de color; tú, solo 3",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "ELqZFQmmhHo",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP). Vistas al 11-07: 1129.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-06",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Chocolate, vainilla, fresa, menta o limón? ¿Qué helado gana? 🍦",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "publicado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "XMNHIHXSLhM",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2). Vistas al 11-07: 676.",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-07",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "3 bolitas crecen en cada rebote: ¿cuánto tardan en llenar el círculo?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "Wav_W4VRJ_8",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-07",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Cleopatra vivió más cerca del iPhone que de las pirámides",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "tCaY7nso7CY",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "10:00",
+            "formato": "largo",
+            "plantilla": "compilacion",
+            "tema": "Compilación semanal: los mejores Shorts de bolitas y datos de la semana",
+            "tipo": "evergreen",
+            "serie": "Compilación del domingo",
+            "estado": "idea",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "ruta B (horas de largo) y prueba del formato compilación con los renders mejorados",
+            "bloqueo": "la genera el cron dom 04:30 (compilar.mts --n 14); se sube SOLO tras el OK de Santiago (copia en su Escritorio). Riesgo \"reutilizado\": revisar monetizacion-youtube"
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿iPhone, Samsung, Xiaomi o Pixel? 📱 ¿Qué celular gana?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "OzRnX27pawU",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-08",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "¿Cuántos rebotes aguanta antes de escapar? Para Elisa en neón",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "pZwZS5YXUP8",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-09",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Si la Tierra fuera una pelota de básquet, ¿dónde estaría la Luna?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "iBORkBbkd8c",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-09",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Qué mes del año gana la carrera? 🏁 Carrera de bolitas",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "z9c6DgDFKAA",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-10",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Lo que ves en el cielo ya pasó: el Sol tiene 8 minutos de retraso",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "ddtrrj2MF3M",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-10",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Messi, CR7, Neymar o Mbappé? ⚽ ¿Quién gana la carrera?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "dy2omu9k2go",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-11",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Tu corazón late casi 3.000 millones de veces en tu vida",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "vb23i8EbyFI",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-11",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Perro, gato, hámster o loro? 🐶🐱 Carrera de bolitas",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "fnnlwWYxIMo",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-12",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Qué día de la semana gana? 📅 Carrera de bolitas",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "b3v9Q6ymd3A",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-12",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "La bolita crece con cada rebote hasta llenar el círculo (Marcha Turca)",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "6T5zmMoG93A",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-13",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "3 bolitas, un hueco: ¿cuál escapa primero? Canon de Pachelbel",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "zeb04rqSoHk",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-13",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "Naces con unos 300 huesos y de adulto tienes 206",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "O2YLb4xlTNk",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-14",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Pizza, hamburguesa, sushi o tacos? 🍕 ¿Qué comida gana?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "JKfuFS0b99U",
+            "porQue": "rotación; carrera es la más floja (1.149 y 676): seguir midiendo antes de matar (n=2)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-14",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "bola",
+            "tema": "¿En qué rebote escapa la bolita? El lago de los cisnes en neón",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "aqlybcvEYz0",
+            "porQue": "bola + dato rinden ≈ 1.150–1.280 vistas (mejor plantilla junto a dato); rotación",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "10:00",
+            "formato": "largo",
+            "plantilla": "compilacion",
+            "tema": "Compilación semanal 2: carreras, rebotes y datos de la semana",
+            "tipo": "evergreen",
+            "serie": "Compilación del domingo",
+            "estado": "idea",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "segunda compilación; mide si el largo suma horas o solo canibaliza",
+            "bloqueo": "cron dom 04:30; OK de Santiago antes de subir; si la del 11-08 no se aprobó, se revisa el formato antes de producir esta"
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "12:00",
+            "formato": "short",
+            "plantilla": "dato",
+            "tema": "El Everest no es la cima más cercana al espacio: es el Chimborazo",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "programado",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": "rKeo3b33kJM",
+            "porQue": "dato ≈ 1.130–1.250 vistas; valor educativo propio (YPP)",
+            "bloqueo": null
+          },
+          {
+            "fecha": "2026-11-15",
+            "hora": "18:00",
+            "formato": "short",
+            "plantilla": "carrera",
+            "tema": "¿Qué color gana la carrera? 🎨 El tuyo, ¿llega primero?",
+            "tipo": "evergreen",
+            "serie": null,
+            "estado": "listo",
+            "fuente": null,
+            "contingencia": null,
+            "videoId": null,
+            "porQue": "rotación (toca carrera tras el dato de las 12:00); ya renderizado el 11-07 con el CTA; el de café/té/mate pasa a la cola",
+            "bloqueo": "subida por Studio en curso (2026-11-07 mañana): falta anotar el videoId"
+          }
+        ]
+      },
+      "estrategia": {
+        "objetivo": "Objetivo: entrar al Programa de Partners de YouTube (YPP). Requisito real (2026): 1.000 suscriptores + (4.000 h de largos en 12 meses o 10 M de vistas de Shorts en 90 días). (No son 10.000: son 10 millones.) Hay un escalón previo a los 500 suscriptores + 3 subidas en 90 días que abre membresías y Super Thanks, pero no los anuncios.",
+        "tituloSeccion": "1. Cómo lo hacen los canales \"hechos con Claude\"",
+        "resumen": "Lo que ves en esos canales no es un generador de video de IA. Es código:\n\n1. Claude escribe el guion como un JSON (qué pasa, qué se dice, qué cifra sale).\n2. Claude escribe el programa que dibuja el video, casi siempre con Remotion\n(React: cada fotograma es un componente en el tiempo t), o con p5.js/Canvas grabado\ncon Chrome headless, o Manim para matemáticas. Por eso las animaciones se ven \"perfectas\":\nno son dibujos, son funciones.\n3. Los juegos \"sencillos pero atrapantes\" son simulaciones físicas deterministas:\nuna bola en un anillo con un hueco que gira, bolas que crecen al rebotar, carreras de\ncanicas, \"¿qué color gana?\". El truco de retención es que cada rebote dispara una nota\nde una melodía reconocible, la bola crece o cambia de color, y hay una pregunta abierta\n(\"¿escapa o no?\") que solo se resuelve al final. El cerebro no suelta hasta el final.\n4. El sonido no es un detalle: se sintetiza desde los eventos de la física (rebote →\nnota), así que está perfectamente sincronizado. Los \"datos\" llevan voz neural (Edge/Azure,\nElevenLabs), subtítulos palabra a palabra, whoosh en cada corte y una cama musical.\n5. …",
+        "actualizada": "2026-11-05T22:56:16-03:00",
+        "diasDesde": 1
+      },
+      "mejoras": {
+        "ultima": "2026-11-07",
+        "dias": [
+          {
+            "fecha": "2026-11-07",
+            "detectado": [
+              "Subs estancados en 9 con 4,8 K vistas (0,19 %, 1,5 subs por video): el único llamado a suscribirse es el cartel de cierre de 1,2 s (src/marca/Cierre.tsx), invisible en un Short en bucle. Medido en salida/metricas/2026-11-07/metricas.json.",
+              "carrera es la plantilla más floja (1.149 y 676 vistas) frente a bola/dato (1.130–1.280). n=2, se sigue midiendo antes de tocar la rotación.",
+              "estado.mts mostraba una caducidad del token falsa (11-13 08:01): el archivo del token se reescribe en cada refresco y perdió emitido_en, así que la cuenta corría desde la fecha del archivo. Caducidad real: 2026-11-11 22:27.",
+              "metricas.json dejaba el título vacío en los videos programados (...v al final del objeto pisaba el fallback de la bandeja).",
+              "subir-studio.mjs falló 2 veces con el primer Short de hoy (timeout en \"Visibility\" y luego en \"Video language\"): la subida del archivo iba lenta tras el reinicio (12 GB de RAM recién aplicados) y el desplegable de categoría quedó abierto tapando el diálogo. Se remató a mano desde el paso Details con CONTINUAR=1.",
+              "El canal no tenía docs/PLAN-SEMANAL.md ni docs/META-REFERENTE.md (órdenes permanentes del 11-05).",
+              "La revisión semanal (revisar.mts) escribía el informe sin los 5 encabezados que exige el panel de Santiago."
+            ],
+            "mejorado": [
+              "Token: emitido_en restaurado en secrets/youtube-token.json (emisión real 11-04 22:28) → estado.mts vuelve a avisar la fecha correcta.",
+              "scripts/metricas.mts: título de la bandeja como fallback para los programados.",
+              "3 Shorts del diario del 11-06 revisados por hoja de contacto (gancho en el frame 0, emojis en la carrera, fotos en el dato) y programados: pizza 11-14 12:00 (JKfuFS0b99U), cisnes 11-14 18:00 (aqlybcvEYz0), Everest 11-15 12:00 (rKeo3b33kJM).",
+              "scripts/revisar.mts: informe con las 5 secciones fijas (Detectado · Mejorado · Herramientas exploradas · Agregado · Pendiente) al principio, manteniendo el detalle. Verificado: tsc ok, dry-run con 23 videos y los 5 H2 en orden.",
+              "CTA de suscripción dentro del video (clímax) en las 3 plantillas, en worktree con render de prueba. Hecho y mezclado a master (commit 7b999dd): src/marca/Llamado.tsx, prop opcional llamado; 4 renders de prueba a escala 0,5 revisados (hojas en salida/pruebas/cta/). Aparece 6 s antes del escape/meta y en el remate del dato. Desde el diario del 11-07 todos los renders lo llevan; verificación: subs por 1.000 vistas ≥ 2 en 7 días (hoy 0,19)."
+            ],
+            "herramientas": [
+              "Ninguna nueva esta sesión; se usó el inventario (herramientas-disponibles): piloto 8777, helpers de fotogramas sobre el ffmpeg mínimo de Remotion, Data API para métricas. Búsqueda web para referentes (satisfying.ba11s, mikan2d) y contingencias (Leónidas 17–18 nov)."
+            ],
+            "agregado": [
+              "docs/PLAN-SEMANAL.md (semanas 11-02→08 y 11-09→15, 26 ranuras, JSON v1; cola desde el 11-16).",
+              "docs/META-REFERENTE.md (meta: satisfying.ba11s para bola/canal, mikan2d para carrera, Ñerd para dato; 8 brechas con dueño y verificación).",
+              "herramientas/navegador/lote-2026-11-07.sh; estado compartido ~/.claude/canales/estado/bolita-lab.json; línea en docs/DECISIONES.md."
+            ],
+            "pendiente": [
+              "Santiago: token reautorizado el 11-07 03:07 (ya con permiso de comentarios; caduca el 11-14 03:07, próxima renovación ≈ 11-13); ver la compilación del domingo 11-08 antes de subirla; gh secret set YOUTUBE_TOKEN_JSON cuando se apruebe la auditoría.",
+              "Reemplazar el video-meta de bola (outlier de 2023) por un Short reciente de satisfying.ba11s con el piloto libre (META-REFERENTE brecha #5).",
+              "Retención por video en metricas.mts (averageViewPercentage, brecha #4). Serie con eliminación en carrera (brecha #2). Guion dato de las Leónidas para el 11-17 18:00.",
+              "Posible borrador duplicado de \"pizza\" en Studio por el intento fallido (revisar Content → Draft)."
+            ],
+            "notas": []
+          },
+          {
+            "fecha": "2026-11-04",
+            "detectado": [],
+            "mejorado": [],
+            "herramientas": [
+              "Para adoptar hoy (gratis, sin cuenta):",
+              "Para después:",
+              "Requieren a Santiago:"
+            ],
+            "agregado": [],
+            "pendiente": [],
+            "notas": []
+          }
+        ],
+        "totales": {
+          "detectado": 7,
+          "mejorado": 5,
+          "herramientas": 4,
+          "agregado": 3
+        }
+      },
+      "trabajando": {
+        "activo": true,
+        "motivo": null,
+        "tarea": "Subiendo 3 Shorts por Studio (color favorito 11-15 18:00, 2 bolitas escapa 11-16 12:00, Canal de Panamá 11-16 18:00)",
+        "detalle": "Turno del piloto 08:55–09:30 tras Línea Punteada; después lo toma Números Rojos.",
+        "desde": null,
+        "actualizado": "2026-11-07T08:54:38-03:00",
+        "agentes": []
+      },
+      "posicion": 3
+    }
+  ],
+  "calendario": {
+    "zonaHoraria": "America/Santiago",
+    "actualizado": "2026-11-05",
+    "comentario": "Calendario compartido de todos los canales. Lo lee el panel (localhost:8790) y lo respetan las sesiones y los crons. Una sola máquina: 7,6 GB (12 GB tras wsl --shutdown), un render a la vez (lock /tmp/bolita-render.lock), un piloto (8777).",
+    "ventanas": [
+      {
+        "desde": "03:30",
+        "hasta": "08:00",
+        "uso": "PRODUCCIÓN: renders de cron (Bolita 03:30, LP 04:45, EC según su cron). Nadie lanza pruebas pesadas aquí."
+      },
+      {
+        "desde": "08:00",
+        "hasta": "08:45",
+        "uso": "ESTADO Y MÉTRICAS: estado.mts (Bolita 08:00, LP 08:15), metricas.mts dentro de cada estado, panel agrega 08:30. El piloto es de las capturas."
+      },
+      {
+        "desde": "08:45",
+        "hasta": "12:00",
+        "uso": "SUBIDAS por Studio (piloto) con prioridad; renders de producción atrasados (flock -w 1800)."
+      },
+      {
+        "desde": "12:00",
+        "hasta": "21:00",
+        "uso": "LIBRE: sesiones de día, pruebas a escala 0,25 (flock -w 60), investigación, guiones (claude -p)."
+      },
+      {
+        "desde": "21:00",
+        "hasta": "01:30",
+        "uso": "SESIÓN DE SANTIAGO (llega del trabajo): el turno sugerido tiene prioridad en piloto y lock; los demás proyectos solo tareas livianas (docs, guiones, skills)."
+      },
+      {
+        "desde": "01:30",
+        "hasta": "03:30",
+        "uso": "RENDERS DE PRUEBA largos de agentes (hasta 55 min) y re-renders; deben soltar el lock antes de las 03:30."
+      }
+    ],
+    "cron": [
+      {
+        "canal": "bolita-lab",
+        "hora": "03:30",
+        "dias": "*",
+        "tarea": "diario (render + subida)"
+      },
+      {
+        "canal": "bolita-lab",
+        "hora": "04:30",
+        "dias": "dom",
+        "tarea": "compilar largo + exportar"
+      },
+      {
+        "canal": "bolita-lab",
+        "hora": "05:00",
+        "dias": "lun",
+        "tarea": "revisar (mejora continua semanal)"
+      },
+      {
+        "canal": "bolita-lab",
+        "hora": "08:00",
+        "dias": "*",
+        "tarea": "estado + métricas diarias"
+      },
+      {
+        "canal": "linea-punteada",
+        "hora": "04:45",
+        "dias": "*",
+        "tarea": "diario (render + guiones si backlog < 8 + exportar)"
+      },
+      {
+        "canal": "linea-punteada",
+        "hora": "05:30",
+        "dias": "sáb",
+        "tarea": "compilar largo + exportar"
+      },
+      {
+        "canal": "linea-punteada",
+        "hora": "08:15",
+        "dias": "*",
+        "tarea": "estado + métricas diarias"
+      },
+      {
+        "canal": "entender-chile",
+        "hora": "ver repo canal-pipeline (madrugada)",
+        "dias": "*",
+        "tarea": "madrugada + métricas diarias"
+      },
+      {
+        "canal": "panel",
+        "hora": "08:30 y cada 30 min",
+        "dias": "*",
+        "tarea": "agregar datos del panel (node scripts/agregar.mjs)"
+      }
+    ],
+    "turnoNoche": {
+      "comentario": "Qué proyecto tiene prioridad cuando Santiago abre los chats por la noche. Sugerencia, no cárcel: si hay una urgencia (ranura vacía, incidente), manda la urgencia. Domingo = estrategia de TODOS (estrategia-viva, metricas-diarias, plan-semanal).",
+      "lun": "linea-punteada",
+      "mar": "bolita-lab",
+      "mie": "entender-chile",
+      "jue": "linea-punteada",
+      "vie": "bolita-lab",
+      "sab": "canal-nuevo o el más atrasado (ver panel)",
+      "dom": "revisión de estrategia de todos los canales + planes semanales"
+    }
+  },
+  "avisos": [
+    {
+      "id": "lp-2026-11-07-compilacion",
+      "canal": "linea-punteada",
+      "tipo": "autorizacion",
+      "titulo": "¿Subo la compilación del sábado como largo del domingo?",
+      "texto": "compilar.mts dejó 2026-11-07-compilacion.mp4 (11:27, 5 Shorts verticales seguidos con bandas desenfocadas). Recomendación de Claude: NO (cuenta como contenido reutilizado para el YPP; mejor esperar la plantilla 16:9 nativa). Si autorizas, se sube por Studio al domingo 11-08 10:00.",
+      "creado": "2026-11-07T11:57:32.899Z",
+      "vence": "2026-11-08T09:00:00-03:00",
+      "estado": "pendiente",
+      "respondido": null,
+      "issue": null
+    },
+    {
+      "id": "nr-2026-11-06-caratula-lista",
+      "canal": "entender-chile",
+      "tipo": "aviso",
+      "titulo": "Carátula de En Números Rojos por ChatGPT: lista en 4 min",
+      "texto": "Chile vs Corea, 2 variantes 1280×720: https://raw.githubusercontent.com/sinostrozadev/entender-chile/main/contenido/caratulas/externos/numeros-rojos/2026-11-06-chile-corea-1.png (y -2). Para ponerla en el video falta que verifiques el teléfono del canal en Studio (miniaturas personalizadas).",
+      "creado": "2026-11-06T12:17:18.740Z",
+      "vence": "2026-11-08T00:00:00-03:00",
+      "estado": "activo",
+      "respondido": null,
+      "issue": null
+    },
+    {
+      "id": "lp-2026-11-06-caratula-lista",
+      "canal": "linea-punteada",
+      "tipo": "aviso",
+      "titulo": "Carátula hecha por ChatGPT: funcionó (8 min)",
+      "texto": "Primera carátula pedida a GPT desde otro canal: 3 variantes 1280×720. Mírala: https://raw.githubusercontent.com/sinostrozadev/entender-chile/main/contenido/caratulas/externos/linea-punteada/2026-11-06-bushby-serie-1.png (también -2 y -3). Ya se pidió la de En Números Rojos (Chile vs Corea).",
+      "creado": "2026-11-06T12:13:35.397Z",
+      "vence": "2026-11-08T00:00:00-03:00",
+      "estado": "activo",
+      "respondido": null,
+      "issue": null
+    }
+  ]
+}
