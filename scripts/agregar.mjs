@@ -360,6 +360,7 @@ function armarCanal(c, dirCanales, destino, ahora) {
       subs: num(m.subs), vistasTotales: vistasCanal(m), horas, videosPublicados: num(m.videosPublicados),
       vistas90d: v90.valor, fuenteVistas90d: v90.fuente, fuenteNumeros: m.fuentes?.numeros ?? null,
     };
+    canal.vistas28d = num(m.vistas28d); canal.vistas48h = num(m.vistas48h);
     canal.progreso = calcularProgreso(canal.actual.subs, v90.valor, horas);
     canal.ritmo = calcularRitmo(met.serie, { subs: canal.actual.subs, vistas90d: v90.valor, horas }, c.fechaCreacion, ahora);
     const prev = met.serie.length > 1 ? met.serie.at(-2) : null;
@@ -386,6 +387,35 @@ function armarCanal(c, dirCanales, destino, ahora) {
   canal.mejoras = repoOk ? leerMejoras(c.repo, c.revisiones, ahora) : leerMejoras('/nonexistent', null, ahora);
   canal.trabajando = leerEstado(dirCanales, c.slug, ahora);
   return canal;
+}
+
+
+// ---------- resumen para la página (data/resumen.json) ----------
+function variacion(serie, campo, dias) {
+  const ult = serie.filter((s) => s[campo] != null).at(-1);
+  if (!ult) return null;
+  const t = Date.parse(ult.fecha);
+  const previos = serie.filter((s) => s[campo] != null && Date.parse(s.fecha) < t);
+  if (!previos.length) return null;
+  const objetivo = t - dias * DIA;
+  const cand = previos.filter((s) => Date.parse(s.fecha) <= objetivo).at(-1) ?? previos[0];
+  return { delta: ult[campo] - cand[campo], dias: Math.round((t - Date.parse(cand.fecha)) / DIA), desde: cand.fecha };
+}
+function resumenCanal(c, serieMin) {
+  const a = c.actual || {};
+  const vistas = a.vistasTotales && a.vistasTotales > 0 ? a.vistasTotales : null;
+  // horas: dato inconsistente si hay horas pero cero vistas
+  const horas = a.horas != null && (vistas != null || a.horas < 100) ? a.horas : null;
+  const s = vistas == null ? [] : serieMin.filter((x) => x.vistas !== 0);
+  return {
+    slug: c.slug, nombre: c.nombre, handle: c.handle, url: c.url, color: c.color, nicho: c.nicho,
+    avatar: `avatares/${c.slug}.jpg`,
+    fechaDatos: c.fechaDatos ?? null, medidoEn: c.generadoDatos ?? null,
+    subs: a.subs ?? null, vistas, videos: a.videosPublicados ?? null, horas,
+    vistas28d: c.vistas28d ?? null, vistas48h: c.vistas48h ?? null,
+    varSubs: { ayer: variacion(serieMin, 'subs', 1), sem: variacion(serieMin, 'subs', 7) },
+    varVistas: { ayer: variacion(s, 'vistas', 1), sem: variacion(s, 'vistas', 7) },
+  };
 }
 
 export function agregar(opciones = {}) {
@@ -424,6 +454,13 @@ export function agregar(opciones = {}) {
     calendario: calendario ?? null,
     avisos: leerAvisos(dirCanales, ahora),
   };
+  const res = canales.map((c) => resumenCanal(c, c.serie || []));
+  const suma = (k) => res.reduce((t, r) => t + (r[k] ?? 0), 0);
+  fs.writeFileSync(path.join(a.salida, 'resumen.json'), JSON.stringify({
+    generadoEn: new Date(ahora).toISOString(), zona: 'America/Santiago',
+    totales: { subs: suma('subs'), vistas: suma('vistas'), videos: suma('videos'), horas: suma('horas'), canales: res.length },
+    canales: res,
+  }, null, 2));
   const destino = path.join(a.salida, 'panel.json');
   const tmp = destino + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(panel, null, 2));

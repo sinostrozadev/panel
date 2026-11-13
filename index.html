@@ -1,74 +1,91 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0d0d0d">
-<meta name="description" content="Panel de canales: la carrera de cada canal hacia la monetización de YouTube.">
-<title>Panel de canales</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231a1a19'/%3E%3Crect x='6' y='18' width='5' height='8' rx='1.5' fill='%23d95926'/%3E%3Crect x='13.5' y='8' width='5' height='18' rx='1.5' fill='%233987e5'/%3E%3Crect x='21' y='13' width='5' height='13' rx='1.5' fill='%23199e70'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="estilo.css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canales</title>
+<style>
+:root{--tx:#111827;--mu:#6b7280;--li:#e5e7eb;--up:#15803d;--dn:#b91c1c}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+h1{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:0 0 28px}
+.tot{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 32px;padding-bottom:32px;border-bottom:1px solid var(--li);margin-bottom:40px}
+.tot b{display:block;font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.tot span{font-size:13px;color:var(--mu)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.card{border:1px solid var(--li);border-radius:20px;padding:28px;border-top:4px solid var(--c)}
+.head{display:flex;gap:16px;align-items:center;margin-bottom:6px}
+.head img{width:64px;height:64px;border-radius:50%;object-fit:cover;background:#f3f4f6;flex:none}
+.head h2{margin:0;font-size:20px;line-height:1.2}
+.head a{color:var(--mu);font-size:14px;text-decoration:none}.head a:hover{color:var(--c);text-decoration:underline}
+.nicho{color:var(--mu);font-size:14px;margin:0 0 22px}
+.m{display:grid;grid-template-columns:1fr 1fr;gap:18px 16px}
+.m div b{display:block;font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.m div span{font-size:12px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em}
+.m small{display:block;font-size:13px;font-weight:600;margin-top:2px}
+.up{color:var(--up)}.dn{color:var(--dn)}.eq{color:var(--mu)}
+.var{margin-top:20px;padding-top:16px;border-top:1px solid var(--li);display:grid;grid-template-columns:auto 1fr 1fr;gap:6px 14px;font-size:13px;align-items:baseline}
+.var i{font-style:normal;color:var(--mu)}.var strong{font-weight:600}
+.var .h{color:var(--mu);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+.fe{margin-top:16px;font-size:12px;color:#9ca3af}
+footer{margin-top:40px;font-size:13px;color:var(--mu)}
+@media(max-width:480px){main{padding:28px 16px}.tot b{font-size:32px}.card{padding:22px}}
+</style>
 </head>
 <body>
-<a class="saltar" href="#tabla">Saltar a la tabla de posiciones</a>
-<header class="cabecera">
-  <div class="envoltura">
-    <p class="sobretitulo">La carrera a la monetización</p>
-    <h1>Panel de canales</h1>
-    <p class="bajada" id="bajada">Cargando datos…</p>
-  </div>
-</header>
-
-<main class="envoltura" id="principal" aria-live="polite">
-  <section id="avisos" class="avisos" aria-label="Avisos y autorizaciones" hidden></section>
-
-  <section id="podio" class="seccion" aria-labelledby="t-podio">
-    <h2 id="t-podio">Podio</h2>
-    <p class="nota-seccion">Progreso hacia el Programa de Partners de YouTube: mitad suscriptores, mitad vistas u horas.</p>
-    <div class="podio" id="podio-pasos"></div>
-    <div class="carrera" id="carrera"></div>
-  </section>
-
-  <section id="tabla" class="seccion" aria-labelledby="t-tabla">
-    <h2 id="t-tabla">Tabla de posiciones</h2>
-    <div class="tabla-envoltura" tabindex="0" role="region" aria-labelledby="t-tabla">
-      <table class="tabla" id="tabla-posiciones"></table>
-    </div>
-    <p class="nota-seccion" id="nota-tabla"></p>
-  </section>
-
-  <section id="mejoras" class="seccion" aria-labelledby="t-mejoras">
-    <h2 id="t-mejoras">Qué mejoró esta semana</h2>
-    <p class="nota-seccion">Lo que cada canal detectó, mejoró, exploró y agregó en sus revisiones recientes.</p>
-    <div class="mejoras-filas" id="mejoras-filas"></div>
-  </section>
-
-  <section id="canales" class="seccion" aria-labelledby="t-canales">
-    <h2 id="t-canales">Canal por canal</h2>
-    <nav class="saltos" id="saltos" aria-label="Ir a un canal"></nav>
-    <div id="tarjetas"></div>
-  </section>
-
-  <section id="trabajando" class="seccion" aria-labelledby="t-trabajando">
-    <h2 id="t-trabajando">Trabajando ahora</h2>
-    <p class="nota-seccion">Lo que hace cada proyecto en este momento. Para mirarlo en vivo: <a href="http://localhost:8777/ver" target="_blank" rel="noopener">visor del piloto</a>.</p>
-    <div class="trabajos" id="trabajos"></div>
-  </section>
-
-  <section id="calendario" class="seccion" aria-labelledby="t-calendario" hidden>
-    <h2 id="t-calendario">Calendario de hoy</h2>
-    <div id="cal"></div>
-  </section>
+<main>
+<h1>Mis canales</h1>
+<section class="tot" id="tot"></section>
+<section class="grid" id="grid"></section>
+<footer id="pie"></footer>
 </main>
-
-<footer class="pie">
-  <div class="envoltura pie-fila">
-    <p id="pie-fecha">—</p>
-    <button type="button" id="actualizar" class="boton">Actualizar</button>
+<script>
+const $=id=>document.getElementById(id);
+const N=new Intl.NumberFormat('es-CL');
+const fmt=v=>v==null?null:N.format(Math.round(v*10)/10);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hora=iso=>{if(!iso)return null;const d=new Date(iso);return isNaN(d)?null:d.toLocaleString('es-CL',{timeZone:'America/Santiago',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
+function delta(v){
+  if(!v)return '<span class="eq">–</span>';
+  const d=v.delta,c=d>0?'up':d<0?'dn':'eq',a=d>0?'▲':d<0?'▼':'■';
+  return `<span class="${c}">${a} ${d>0?'+':''}${fmt(d)}</span>`;
+}
+function big(v,label,extra){
+  if(v==null)return '';
+  return `<div><b>${fmt(v)}</b><span>${label}</span>${extra||''}</div>`;
+}
+function viejo(c){const t=Date.parse(c.medidoEn||c.fechaDatos);if(!t)return '';const d=Math.floor((Date.now()-t)/864e5);return d>=2?` · <span class="dn">hace ${d} días</span>`:''}
+function card(c){
+  const sub=c.varSubs?.ayer, vv=c.varVistas?.ayer;
+  const hayVar=c.varSubs?.ayer||c.varSubs?.sem||c.varVistas?.ayer||c.varVistas?.sem;
+  const dias=v=>v&&v.dias>1?` <i>(${v.dias} d)</i>`:'';
+  const med=hora(c.medidoEn)||c.fechaDatos;
+  return `<article class="card" style="--c:${esc(c.color||'#888')}">
+  <div class="head"><img src="${esc(c.avatar)}" alt="" onerror="this.style.visibility='hidden'">
+    <div><h2>${esc(c.nombre)}</h2><a href="${esc(c.url||'#')}" target="_blank" rel="noopener">${esc(c.handle||'')}</a></div></div>
+  ${c.nicho?`<p class="nicho">${esc(c.nicho)}</p>`:''}
+  <div class="m">
+    ${big(c.subs,'suscriptores')}
+    ${big(c.vistas,'vistas totales')}
+    ${big(c.videos,'videos')}
+    ${big(c.horas,'horas de visionado')}
+    ${big(c.vistas28d,'vistas, 28 días')}
+    ${c.vistas48h?big(c.vistas48h,'vistas, 48 h'):''}
   </div>
-</footer>
-
-<div class="tooltip" id="tooltip" role="status" hidden></div>
-<script src="app.js" defer></script>
+  ${hayVar?`<div class="var"><span class="h"></span><span class="h">Suscriptores</span><span class="h">Vistas</span>
+    ${c.varSubs?.ayer||c.varVistas?.ayer?`<i>vs ayer</i><strong>${delta(c.varSubs?.ayer)}</strong><strong>${delta(c.varVistas?.ayer)}</strong>`:''}
+    ${c.varSubs?.sem||c.varVistas?.sem?`<i>vs 7 días</i><strong>${delta(c.varSubs?.sem)}${dias(c.varSubs?.sem)}</strong><strong>${delta(c.varVistas?.sem)}${dias(c.varVistas?.sem)}</strong>`:''}
+  </div>`:''}
+  ${med?`<div class="fe">Medido: ${esc(med)}${viejo(c)}</div>`:''}
+</article>`;
+}
+fetch('data/resumen.json?'+Date.now()).then(r=>r.json()).then(d=>{
+  const t=d.totales;
+  $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
+  $('grid').innerHTML=d.canales.map(card).join('');
+  $('pie').textContent='Actualizado: '+(hora(d.generadoEn)||'');
+}).catch(()=>{$('pie').textContent='No se pudieron cargar los datos.'});
+</script>
 </body>
 </html>
