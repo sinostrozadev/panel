@@ -13,27 +13,13 @@ body{margin:0;background:#fff;color:var(--tx);font:16px/1.45 system-ui,-apple-sy
 footer{margin-top:40px;font-size:13px;color:var(--mu)}
 
 :root{--ok:#15803d;--bad:#b91c1c;--wa:#b45309;--gris:#f9fafb;--oro:#c9a227;--plata:#9ca3af;--bron:#b87333}
-.r{position:relative;border-top:1px solid var(--li);cursor:pointer;background:transparent;border-radius:10px;opacity:0;animation:ent .35s ease forwards;animation-delay:calc(var(--k)*40ms)}
-.r:first-child{border-top-color:transparent}
-.r.p1{background:#fff;border:1px solid #e6d9a8;box-shadow:inset 3px 0 0 var(--oro);margin-bottom:2px}
-.r.p1+.r{border-top-color:transparent}
-.r:focus-visible{outline:2px solid #94a3b8;outline-offset:1px}
-.ps{display:flex;align-items:center;gap:5px}
 .med{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font:600 12px/1 system-ui,sans-serif;color:#fff;background:transparent;border:1px solid #d1d5db;color:var(--mu)}
 .p1 .med{background:var(--oro);border-color:var(--oro);color:#fff}
 .p2 .med{background:var(--plata);border-color:var(--plata);color:#fff}
 .p3 .med{background:var(--bron);border-color:var(--bron);color:#fff}
 .mv{font-size:10px;line-height:1;white-space:nowrap;font-weight:600}
 .mv.up{color:var(--up)}.mv.dn{color:var(--dn)}.mv.eq{color:#6b7280}.mv.nw{color:#2563eb}
-.who{display:flex;gap:10px;align-items:center;min-width:0}
-.who img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#f3f4f6;flex:none;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--c)}
-.who div{min-width:0}
-.who b{display:block;font-size:14px;font-weight:600;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.who .tg{font-size:11px;color:var(--mu);margin-top:1px}
-.tro{font-size:12px;margin-left:4px;font-weight:400}
-.xp u{display:block;height:100%;width:0;border-radius:2px;min-width:2px;background:var(--c);animation:llena .8s ease forwards;animation-delay:calc(var(--k)*40ms + 200ms)}
-.st{display:none;padding:2px 12px 12px;border-top:1px solid var(--li);margin:0 0 0}
-.r.open .st{display:block}
+.xp u{display:block;height:100%;border-radius:2px;min-width:2px;background:var(--c)}
 .st .g{display:flex;justify-content:space-between;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:12px 0 2px}
 .sr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;align-items:center;font-size:12px;margin-top:6px}
 .sr span{color:#374151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -41,10 +27,7 @@ footer{margin-top:40px;font-size:13px;color:var(--mu)}
 .sr .sb{grid-column:1/-1;height:3px;border-radius:2px;background:#e5e7eb;overflow:hidden}
 .sr .sb u{display:block;height:100%;min-width:2px;border-radius:2px;background:var(--c)}
 .sr .vv{grid-column:1/-1;font-size:10px;color:#6b7280}
-@keyframes ent{to{opacity:1}}
-@keyframes llena{to{width:var(--w)}}
 #pop{position:absolute;z-index:50;max-width:min(300px,calc(100vw - 24px));background:#111827;color:#f3f4f6;font-size:13px;line-height:1.4;padding:10px 12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none}
-@media(prefers-reduced-motion:reduce){.r,.xp u{animation-duration:.01s!important;animation-delay:0s!important}}
 /* cabecera, campana y notificaciones */
 .bell{position:relative;border:1px solid var(--li);background:#fff;border-radius:999px;width:38px;height:38px;cursor:pointer;display:grid;place-items:center;color:var(--tx)}
 .bell:hover{border-color:var(--mu)}
@@ -148,22 +131,27 @@ main{max-width:1600px;margin:0 auto;padding:24px 32px 64px}
 .i:hover{color:#fff;background:#6b7280;border-color:#6b7280}
 .lab{border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:help;text-decoration:underline dotted #9ca3af;text-underline-offset:3px;text-align:left}
 .lab:hover{color:var(--tx);text-decoration-color:var(--tx)}
-/* clasificación: franja horizontal */
-.lb{border:1px solid var(--li);background:var(--gris);border-radius:16px;padding:16px;margin-bottom:24px;font-variant-numeric:tabular-nums}
-.lbh{display:flex;align-items:baseline;gap:8px;margin:0 0 12px}
-.lbh h2{margin:0;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
-.lbh small{font-size:12px;color:var(--mu)}.lbh .i{align-self:center}
-.rows{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
-.r{border:1px solid var(--li);background:#fff;border-top:1px solid var(--li)}
-.r.p1{border-color:#e6d9a8}.r.p1+.r{border-top-color:var(--li)}
-.rm{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 12px 10px}
-.ps{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:28px}
 .mv{font-size:11px}
-.sc b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.1;text-align:right}
-.p1 .sc b{color:#8a6d0b}
-.xp{height:4px;margin:0 12px 12px;border-radius:2px;background:#e5e7eb;overflow:hidden}
-.who b{font-size:14px}.who .tg{font-size:12px}
+.xp{height:4px;margin:0;border-radius:2px;background:#e5e7eb;overflow:hidden}
 .tg,.mv.eq{color:var(--mu)}
+/* posición y puntaje en la cabecera de la tarjeta */
+.card.p1{border-color:#e6d9a8;box-shadow:inset 3px 0 0 var(--oro)}
+.av{position:relative;flex:none;width:48px;height:48px}
+.av img{display:block}
+.pb{position:absolute;left:-8px;top:-8px;display:flex;align-items:center;gap:3px;background:#fff;border:1px solid var(--li);border-radius:999px;padding:1px 5px 1px 1px;box-shadow:0 1px 2px rgba(17,24,39,.12)}
+.med{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font:600 11px/1 system-ui,sans-serif;border:1px solid #d1d5db;color:var(--mu)}
+.p1 .med{background:var(--oro);border-color:var(--oro);color:#fff}.p2 .med{background:var(--plata);border-color:var(--plata);color:#fff}.p3 .med{background:var(--bron);border-color:var(--bron);color:#fff}
+.pb .mv{font-size:10px}
+.ch h2 svg.gan{width:14px;height:14px;color:var(--oro);vertical-align:-2px;margin-left:4px}
+.ch-r{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.pj{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--li);background:#fff;border-radius:999px;padding:4px 10px 4px 8px;font:600 12px/1.2 system-ui,sans-serif;color:var(--tx);cursor:pointer;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pj svg{width:14px;height:14px;color:var(--mu)}.pj:hover{border-color:var(--mu)}.p1 .pj{border-color:#e6d9a8}.p1 .pj svg{color:var(--oro)}
+.pjm .big{display:flex;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}.pjm .big b{font-size:32px;letter-spacing:-.02em;line-height:1.1}.pjm .big span{color:var(--mu);font-size:13px}
+.pjm .xp{margin:8px 0 4px}
+.pjm .st{display:block;padding:0;border:0}
+.pjm .pos{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13px;margin:16px 0 0}.pjm .pos i{font-style:normal;color:var(--mu)}
+.pjm .ex{margin-top:16px;padding-top:12px;border-top:1px solid var(--li);font-size:13px;color:var(--mu2);line-height:1.5}.pjm .ex p{margin:0 0 8px}
+.pjm .sr{font-size:13px}.pjm .sr b{font-size:13px}.pjm .sr .vv{font-size:11px}
 /* rejilla de tarjetas */
 .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;align-items:stretch}
 .card{border:1px solid var(--li);border-radius:16px;border-top:3px solid var(--c);padding:20px;box-shadow:var(--sh);background:#fff;min-width:0;display:flex;flex-direction:column}
@@ -173,7 +161,7 @@ main{max-width:1600px;margin:0 auto;padding:24px 32px 64px}
 .card:hover{box-shadow:0 2px 8px rgba(17,24,39,.06)}
 .ch{display:flex;gap:12px;align-items:center}
 .ch img{width:48px;height:48px;border-radius:50%;object-fit:cover;background:#f3f4f6;flex:none}
-.ch>div{min-width:0;flex:1}
+.ch>div{min-width:0;flex:1}.ch>.av,.ch>.ch-r{flex:none}
 .ch h2{margin:0;font-size:17px;line-height:1.25;font-weight:700;overflow-wrap:anywhere}
 .ch a{display:block;color:var(--mu);font-size:13px;text-decoration:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ch a:hover{color:var(--c);text-decoration:underline}
@@ -236,14 +224,12 @@ button.mc:hover .go{color:var(--c)}
 .wk:hover{background:#eff6ff}
 .wk.on{animation:giro 4s linear infinite}.wk.sin{filter:grayscale(1);opacity:.7}
 .sec{margin-top:48px}
-@media(max-width:1279px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.rows{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1279px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:767px){
  main{padding:16px 16px 48px}.nav>div{padding:0 12px;gap:0}.nav a{padding:15px 10px 12px}
  .nav .act #ed{display:none}
  .tot{grid-template-columns:repeat(2,minmax(0,1fr))}.tot b{font-size:28px}
- .grid,.rows{grid-template-columns:minmax(0,1fr)}
- .rows{gap:8px}.rm{padding:8px 12px 8px;gap:10px}.xp{margin:0 12px 10px}
- .lb{padding:12px}
+ .grid{grid-template-columns:minmax(0,1fr)}
  .card{padding:16px}
 }
 </style>
@@ -254,7 +240,6 @@ button.mc:hover .go{color:var(--c)}
 <h1 class="sr-only">Panel de canales</h1>
 <div class="franja" id="franja" role="button" tabindex="0"></div>
 <section class="tot" id="tot"></section>
-<aside class="lb" id="lb"></aside>
 <section class="grid" id="grid"></section>
 <section class="sec" id="tab"></section>
 <section class="sec" id="per"></section>
@@ -321,9 +306,10 @@ function card(c){
   const hv=c.horasValidas,est=c.horasValidasFuente==='estimado';
   const hvTxt=hv==null?`<div class="hv"><div class="f"><span><button class="lab" type="button" data-tip="hv_na">Horas para monetizar</button></span><b class="na">sin dato</b></div></div>`:
    `<div class="hv"><div class="f"><span><button class="lab" type="button" data-tip="${est?'hv_est':'hv'}">Horas para monetizar</button></span><b>${fmt(hv)} / 4.000 h</b></div><div class="xp" style="--w:${Math.min(100,Math.max(0.8,hv/40))}%"><u></u></div>${est?'<em>estimado</em>':''}</div>`;
-  return `<article class="card" style="--c:${esc(c.color||'#888')}">
-  <div class="ch"><img src="${esc(c.avatar)}" alt="" onerror="this.style.visibility='hidden'">
-    <div><h2>${esc(c.nombre)}</h2><a href="${esc(c.url||'#')}" target="_blank" rel="noopener">${esc(c.handle||'')}</a></div>${urg(c.slug)}</div>
+  const pt=PUN[c.slug],gan=pt&&GAN===c.slug;
+  return `<article class="card${pt&&pt.posicion===1?' p1':''}" style="--c:${esc(c.color||'#888')}">
+  <div class="ch"><div class="av"><img src="${esc(c.avatar)}" alt="" onerror="this.style.visibility='hidden'">${pt?`<span class="pb" title="Puesto ${pt.posicion} en la clasificación"><span class="med">${pt.posicion}</span>${mv(pt.cambio24h)}</span>`:''}</div>
+    <div><h2>${esc(c.nombre)}${gan?TROFEO:''}</h2><a href="${esc(c.url||'#')}" target="_blank" rel="noopener">${esc(c.handle||'')}</a></div><div class="ch-r">${pt?`<button class="pj" type="button" data-pj="${esc(c.slug)}" aria-haspopup="dialog" aria-label="Puntaje ${pn(pt.puntaje)}, puesto ${pt.posicion}. Ver detalle">${GAUGE}${pn(pt.puntaje)}</button>`:''}${urg(c.slug)}</div></div>
   ${urgLista(c.slug)}
   ${c.nicho?`<p class="nicho">${esc(c.nicho)}</p>`:''}
   <div class="m">
@@ -356,7 +342,7 @@ const TIP={
  ritmo:'Ritmo = promedio de lo avanzado en la última semana: suscriptores nuevos, vistas nuevas y videos publicados, frente a la meta semanal de cada canal. No entra al puntaje; de él sale el ganador de la semana.',
  flecha:'Flecha: puestos que subió (▲) o bajó (▼) frente al cierre de ayer (última medición antes de las 00:00, hora de Chile). "–" = se mantuvo; "nuevo" = ayer aún no puntuaba.',
  est:'Estimado: el canal tiene menos de 90 días, así que se usan sus vistas totales como vistas de 90 días.',
- clasif:'Puntaje = promedio de los % de monetización: suscriptores (meta 1.000), vistas de Shorts en 90 días (meta 10 M) y horas válidas para monetizar (solo videos largos, 12 meses; meta 4.000). Cada criterio tiene tope 100 %.\n\nRitmo (en gris) = avance de la última semana frente a la meta semanal; no entra al puntaje y de él sale el ganador de la semana.\n\nFlecha: puestos que subió (▲) o bajó (▼) frente al cierre de ayer. "–" = se mantuvo; "nuevo" = ayer aún no puntuaba.',
+ clasif:'Puntaje = promedio de los % de monetización: suscriptores (meta 1.000), vistas de Shorts en 90 días (meta 10 M) y horas válidas para monetizar (solo videos largos, 12 meses; meta 4.000). Cada criterio tiene tope 100 %.\n\nRitmo = avance de la última semana frente a la meta semanal; no entra al puntaje y de él sale el ganador de la semana.\n\nFlecha: puestos que subió (▲) o bajó (▼) frente al cierre de ayer. "–" = se mantuvo; "nuevo" = ayer aún no puntuaba.',
  trofeo:'Ganador de la semana: el canal con mejor ritmo.'
 };
 const pf=v=>v==null?'–':(Math.round(v*10)/10).toLocaleString('es-CL')+' %';
@@ -373,18 +359,15 @@ function stats(t){
   const g=(id,tit,r)=>`<div class="g"><span>${tit}</span><span>${r&&r.puntaje!=null?pf(r.puntaje)+' · '+r.n+'/'+r.total:''}</span></div>`+t.criterios.filter(x=>x.grupo===id).map(x=>`<div class="sr"><span>${esc(x.nombre)}</span><b>${x.pct==null?'–':pf(x.pct)}${x.estimado?ib('est'):''}</b><div class="sb"><u style="width:${x.pct||0}%"></u></div>${x.valor!=null?`<div class="vv">${fmt(x.valor)} / ${fmt(x.meta)} ${esc(x.unidad||'')}</div>`:''}</div>`).join('');
   return `<div class="st">${g('monetizacion','Monetización',{puntaje:t.puntaje,n:t.n,total:t.total})}${g('ritmo','Ritmo semanal',t.ritmo)}</div>`;
 }
-const POS_KEY='panel.posiciones';
-function leaderboard(p){
-  let prev={};try{prev=JSON.parse(localStorage.getItem(POS_KEY)||'{}')}catch(e){}
-  const gan=p.ganadorSemana&&p.ganadorSemana.slug;
-  const filas=p.tabla.map((t,k)=>{
-    return `<div class="r p${t.posicion}" style="--c:${esc(t.color)};--k:${k};--w:${Math.min(100,Math.max(1.5,t.puntaje||0))}%" tabindex="0" role="button" aria-expanded="false">
-    <div class="rm"><div class="ps"><span class="med">${t.posicion}</span>${mv(t.cambio24h)}</div>
-    <div class="who"><img src="${esc(t.avatar)}" alt="" onerror="this.style.visibility='hidden'"><div><b>${esc(t.nombre)}${gan===t.slug?'<span class="tro" title="Ganador de la semana">🏆</span>':''}</b><div class="tg">ritmo ${pf(t.ritmo&&t.ritmo.puntaje)}</div></div></div>
-    <div class="sc"><b>${pn(t.puntaje)}</b></div></div>
-    <div class="xp"><u></u></div>${stats(t)}</div>`;}).join('');
-  try{localStorage.setItem(POS_KEY,JSON.stringify(Object.fromEntries(p.tabla.map(t=>[t.slug,t.posicion]))))}catch(e){}
-  return `<div class="lbh"><h2>Clasificación</h2><small>puntaje de monetización · ritmo semanal</small>${ib('clasif')}</div><div class="rows">${filas}</div>`;
+const TROFEO=SV('<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',' class="gan" role="img" aria-label="Ganador de la semana"><title>Ganador de la semana</title');
+const GAUGE=SV('<path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-5"/>');
+let PUN={},GAN=null;
+const ptxt=(x,pos)=>{if(!x||x.estado==='sin-datos')return 'sin dato';if(x.estado==='nuevo')return 'ayer aún no puntuaba';const p=x.posicion,d=x.puntos;return `puesto ${p}${x.estado==='sube'?` (subió ${x.puestos})`:x.estado==='baja'?` (bajó ${x.puestos})`:' (igual)'}${d?` · ${d>0?'+':''}${pn(d)} pts`:''}`};
+function verPuntaje(slug){
+  const t=PUN[slug];if(!t)return;
+  const g=(id,tit,r)=>`<div class="g"><span>${tit}</span><span>${r&&r.puntaje!=null?pf(r.puntaje)+' · '+r.n+'/'+r.total:''}</span></div>`+t.criterios.filter(x=>x.grupo===id).map(x=>`<div class="sr"><span>${esc(x.nombre)}</span><b>${x.pct==null?'–':pf(x.pct)}${x.estimado?' <small>(estimado)</small>':''}</b><div class="sb"><u style="width:${x.pct||0}%"></u></div>${x.valor!=null?`<div class="vv">${fmt(x.valor)} / ${fmt(x.meta)} ${esc(x.unidad||'')}</div>`:''}</div>`).join('');
+  const ex=(TIP.clasif||'').split('\n\n').map(x=>`<p>${esc(x)}</p>`).join('');
+  Modal.abrir({titulo:t.nombre,sub:`Puesto ${t.posicion} · puntaje ${pn(t.puntaje)}`,color:t.color,html:`<div class="pjm"><div class="big"><b>${pn(t.puntaje)}</b><span>puntaje de monetización · ritmo ${pf(t.ritmo&&t.ritmo.puntaje)}</span></div><div class="xp" style="--c:${esc(t.color)};--w:${Math.min(100,Math.max(1.5,t.puntaje||0))}%"><u style="width:var(--w)"></u></div><div class="st">${g('monetizacion','Monetización',{puntaje:t.puntaje,n:t.n,total:t.total})}${g('ritmo','Ritmo semanal',t.ritmo)}</div><div class="pos"><i>Ayer</i><span>${ptxt(t.cambio24h)}</span><i>7 días</i><span>${ptxt(t.cambio7d)}</span></div><div class="ex">${ex}</div></div>`});
 }
 /* ---------- tablero, permisos y notificaciones (solo lectura) ---------- */
 const IC={ok:'✓',bad:'✗',warn:'●',na:'–',sd:'–'};
@@ -439,8 +422,8 @@ async function cargar(){
     $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
     const orden=p?p.tabla.map(x=>x.slug):[];
     const cs=[...r.canales].sort((x,y)=>{const i=orden.indexOf(x.slug),j2=orden.indexOf(y.slug);return (i<0?99:i)-(j2<0?99:j2)});
+    PUN=p?Object.fromEntries(p.tabla.map(x=>[x.slug,x])):{};GAN=p&&p.ganadorSemana&&p.ganadorSemana.slug;
     RES=r;TAB=tab;$('grid').innerHTML=cs.map(card).join('');
-    $('lb').innerHTML=p?leaderboard(p):'<div class="lbh"><h2>Clasificación</h2></div>';
     const [h1,h2]=tablero(tab);$('tab').innerHTML=h1;$('per').innerHTML=h2;campana(tab);
     const ac=r.actualizacion||{};
     medidoMs=Date.parse(ac.medidoEn||r.generadoEn)||null;proximaMs=Date.parse(ac.proxima||'')||null;
@@ -505,6 +488,7 @@ async function verGuiones(slug){
 function abre(b,txt){pop.textContent=txt;pop.style.display='block';const r=b.getBoundingClientRect(),w=pop.offsetWidth;pop.style.left=Math.max(8,Math.min(innerWidth-w-8,r.left+scrollX-w/2+8))+'px';pop.style.top=(r.bottom+scrollY+8)+'px';pop._b=b}
 document.addEventListener('click',e=>{
   const bc=e.target.closest('[data-com]');if(bc){verComentarios(bc.dataset.com);return}
+  const bj=e.target.closest('[data-pj]');if(bj){verPuntaje(bj.dataset.pj);return}
   const bg=e.target.closest('[data-gz]');if(bg){verGuiones(bg.dataset.gz);return}
   const bl=e.target.closest('#bell,#franja');
   if(bl){const o=$('nl').classList.toggle('open');$('bell').setAttribute('aria-expanded',o);pop.style.display='none';return}
@@ -516,9 +500,8 @@ document.addEventListener('click',e=>{
   const b=e.target.closest('.i,.wk,.lab');
   if(b){e.stopPropagation();e.preventDefault();if(pop.style.display==='block'&&pop._b===b){pop.style.display='none';return}abre(b,b.id==='inf'?INFO:TIP[b.dataset.tip]||'');return}
   pop.style.display='none';
-  const r=e.target.closest('.r');if(r){const o=r.classList.toggle('open');r.setAttribute('aria-expanded',o)}
 });
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){pop.style.display='none';$('nl').classList.remove('open')}if((e.key==='Enter')&&e.target.id==='franja'){e.target.click()}if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('r')){e.preventDefault();e.target.click()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){pop.style.display='none';$('nl').classList.remove('open')}if((e.key==='Enter')&&e.target.id==='franja'){e.target.click()}});
 $('bt').onclick=cargar;setInterval(reloj,30000);setInterval(()=>{if(!document.hidden)cargar()},300000);cargar();
 </script>
 </body>
