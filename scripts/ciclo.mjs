@@ -204,7 +204,15 @@ function calcular(lista, historial, pubs, ahora) {
     const primero = snaps.find((s) => s.tabla.length);
     return primero && primero.t < ahora - ms * 0.4 ? primero : null; // historia más corta: se compara con lo más antiguo
   };
-  const s24 = antesDe(DIA), s7 = antesDe(7 * DIA);
+  // "vs. ayer": última medición ANTES de las 00:00 de hoy en America/Santiago (una comparación por día).
+  const inicioDia = (ms) => {
+    const f = (t) => Object.fromEntries(new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Santiago', hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }).formatToParts(new Date(t)).map((x) => [x.type, +x.value]));
+    const p = f(ms);
+    return ms - (((p.hour % 24) * 60 + p.minute) * 60 + p.second) * 1000 - (ms % 1000);
+  };
+  const medianoche = inicioDia(ahora);
+  const sAyer = [...snaps].reverse().find((s) => s.t < medianoche && s.tabla.length) ?? null;
+  const s24 = sAyer, s7 = antesDe(7 * DIA);
   const tabla = actualTabla.map((f) => {
     const c = lista.find((x) => x.slug === f.slug);
     return { ...f, nombre: c.nombre, handle: c.handle ?? null, color: c.color ?? '#888', avatar: `avatares/${c.slug}.jpg`,
