@@ -45,9 +45,16 @@ h1{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);
 a{color:#1d4ed8}
 .src{font-size:14px;color:#374151;margin:0 0 6px;word-break:break-word}
 .vacio{padding:30px 0;color:var(--mu);text-align:center}
+.nav{position:sticky;top:0;z-index:15;background:#fffe;backdrop-filter:blur(8px);border-bottom:1px solid var(--li)}
+.nav div{max-width:760px;margin:0 auto;padding:0 16px;display:flex;gap:4px;align-items:center}
+.nav a{padding:13px 14px;font-size:14px;font-weight:600;color:var(--mu);text-decoration:none;border-bottom:3px solid transparent}
+.nav a.on{color:var(--tx);border-bottom-color:var(--tx)}
+.nav span{margin-left:auto;font-size:12px;color:#9ca3af}
+.top a{color:var(--tx);font-weight:600}
 </style>
 </head>
 <body>
+<nav class="nav"><div><a href="./">Panel</a><a class="on" href="guiones.html" aria-current="page">Guiones</a><span>Guiones por canal</span></div></nav>
 <main>
 <div class="top"><a href="./">← Panel</a><h1>Guiones</h1></div>
 <p class="sub" id="sub">Cargando…</p>

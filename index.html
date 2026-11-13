@@ -140,15 +140,44 @@ table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeri
 .fc{font-weight:600}.fq{color:#374151}.fa{color:var(--mu);font-size:12px;text-align:right}
 .fi small{grid-column:1/-1;color:var(--mu);font-size:12px}
 @media(max-width:560px){.fi{grid-template-columns:1fr}.fa{text-align:left}}
-.gl{border:1px solid var(--li);background:#fff;border-radius:999px;padding:0 14px;height:38px;display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--tx);text-decoration:none;margin-left:auto;margin-right:10px}.gl:hover{border-color:var(--mu)}
+.nav{position:sticky;top:0;z-index:30;background:#fffe;backdrop-filter:blur(8px);border-bottom:1px solid var(--li)}
+.nav div{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;gap:4px;align-items:center}
+.nav a{padding:13px 14px;font-size:14px;font-weight:600;color:var(--mu);text-decoration:none;border-bottom:3px solid transparent}
+.nav a:hover{color:var(--tx)}.nav a.on{color:var(--tx);border-bottom-color:var(--tx)}
+.nav span{margin-left:auto;font-size:12px;color:#9ca3af}
+main{padding-top:28px!important}
+.m{gap:20px 16px}.m div span{display:flex;gap:5px;align-items:center}
+.hv{margin-top:20px;font-size:13px;color:#374151}.hv b{font-weight:700}.hv .xp{margin:6px 0 0}.hv .na{color:#9ca3af}
+.card .xp u{animation:none;width:var(--w)}
+.cf{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:18px}
+.ub{border:1px solid;border-radius:999px;padding:4px 11px;font:600 12px/1.2 system-ui;cursor:pointer;background:#fff}
+.ub.crit{color:#b91c1c;border-color:#fca5a5;background:#fef2f2}.ub.avi{color:#b45309;border-color:#fcd34d;background:#fffbeb}
+.ok0{font-size:12px;color:#9ca3af}
+.gb{margin-left:auto;border:1px solid var(--li);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--tx);text-decoration:none}.gb:hover{border-color:var(--mu)}
+.ul{display:none;margin-top:10px;font-size:12px;border-top:1px solid var(--li)}.ul.on{display:block}
+.ul div{padding:6px 0;border-bottom:1px solid #f1f2f4}.ul small{display:block;color:var(--mu)}
+.vm{border:0;background:none;color:var(--mu);font:inherit;font-size:12px;cursor:pointer;padding:0;margin-top:16px;text-decoration:underline}
+.vm:hover{color:var(--tx)}
+.var{display:none}.var.on{display:grid}
+.wk{border:0;background:none;cursor:pointer;font-size:15px;line-height:1;padding:2px 3px;margin-top:4px;border-radius:6px;display:inline-block}
+.wk:hover{background:#eff6ff}
+.wk.on{animation:giro 4s linear infinite}.wk.sin{filter:grayscale(1);opacity:.7}
+@keyframes giro{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.wk.on{animation:pulso 2.4s ease-in-out infinite}}
+@keyframes pulso{50%{opacity:.35}}
+#pop{white-space:pre-line}
+.ft summary{cursor:pointer;list-style:none;font-weight:600;color:#1d4ed8}.ft summary::-webkit-details-marker{display:none}
+.ft summary::after{content:' ▾';color:var(--mu)}.ft[open] summary::after{content:' ▴'}
+
 .act{display:flex;gap:10px;align-items:center;margin:-8px 0 28px;font-size:12px;color:var(--mu)}
 .act button#bt{font:inherit;font-size:18px;line-height:1;border:1px solid var(--li);background:#fff;color:var(--tx);border-radius:999px;width:36px;height:36px;cursor:pointer}.act button#bt.gira{animation:gir 1s linear infinite}@keyframes gir{to{transform:rotate(360deg)}}
 .act button:hover{border-color:var(--mu)}.act button:disabled{opacity:.5;cursor:default}
 </style>
 </head>
 <body>
+<nav class="nav"><div><a class="on" href="./" aria-current="page">Panel</a><a href="guiones.html">Guiones</a><span>Mis canales</span></div></nav>
 <main>
-<div class="top"><h1>Mis canales</h1><a class="gl" href="guiones.html">Guiones</a><button class="bell" id="bell" type="button" aria-label="Notificaciones" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="n" id="bn" hidden></span></button><div class="nl" id="nl"></div></div>
+<div class="top"><h1>Panel</h1><button class="bell" id="bell" type="button" aria-label="Notificaciones" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="n" id="bn" hidden></span></button><div class="nl" id="nl"></div></div>
 <div class="franja" id="franja" role="button" tabindex="0"></div>
 <section class="tot" id="tot"></section>
 <div class="act"><button id="bt" type="button" aria-label="Actualizar" title="Actualizar">⟳</button><span id="ed"></span><button class="i" id="inf" type="button" aria-label="Información">i</button></div>
@@ -170,29 +199,46 @@ function delta(v){
   const d=v.delta,c=d>0?'up':d<0?'dn':'eq',a=d>0?'▲':d<0?'▼':'■';
   return `<span class="${c}">${a} ${d>0?'+':''}${fmt(d)}</span>`;
 }
-function big(v,label,extra){
-  if(v==null)return '';
-  return `<div><b>${fmt(v)}</b><span>${label}</span>${extra||''}</div>`;
+function big(v,label,tip){
+  return `<div><b>${v==null?'–':fmt(v)}</b><span>${label} ${ib(tip)}</span></div>`;
 }
 function viejo(c){const t=Date.parse(c.medidoEn||c.fechaDatos);if(!t)return '';const d=Math.floor((Date.now()-t)/864e5);return d>=2?` · <span class="dn">hace ${d} días</span>`:''}
+let TAB=null;
+const VK='panel.versus';
+const versusAbierto=()=>{try{return localStorage.getItem(VK)==='1'}catch(e){return false}};
+function urg(slug){
+  const ns=((TAB&&TAB.notificaciones)||[]).filter(n=>n.slug===slug);
+  if(!ns.length)return '<span class="ok0">✓ al día</span>';
+  const crit=ns.some(n=>n.severidad==='critica');
+  return `<button class="ub ${crit?'crit':'avi'}" type="button" data-u="${esc(slug)}" aria-expanded="false">● ${ns.length} urgencia${ns.length>1?'s':''}</button>`;
+}
+function urgLista(slug){
+  const ns=((TAB&&TAB.notificaciones)||[]).filter(n=>n.slug===slug);
+  return ns.length?`<div class="ul" id="ul-${esc(slug)}">${ns.map(n=>`<div>${n.severidad==='critica'?'🔴':'🟠'} ${esc(n.texto)}${n.limiteTxt?`<small>hasta ${esc(n.limiteTxt)}</small>`:''}</div>`).join('')}</div>`:'';
+}
 function card(c){
-  const sub=c.varSubs?.ayer, vv=c.varVistas?.ayer;
-  const hayVar=c.varSubs?.ayer||c.varSubs?.sem||c.varVistas?.ayer||c.varVistas?.sem;
   const dias=v=>v&&v.dias>1?` <i>(${v.dias} d)</i>`:'';
   const med=hora(c.medidoEn)||c.fechaDatos;
+  const hayVar=c.varSubs?.ayer||c.varSubs?.sem||c.varVistas?.ayer||c.varVistas?.sem;
+  const ab=versusAbierto();
+  const hv=c.horasValidas;
+  const hvTxt=hv==null?`<div class="hv"><span>Horas válidas para monetizar:</span> <b class="na">sin dato</b> ${ib('hv_na')}</div>`:
+   `<div class="hv"><span>Horas válidas para monetizar:</span> <b>${fmt(hv)} / 4.000</b>${c.horasValidasFuente==='estimado'?' <i>(est.)</i>':''} ${ib(c.horasValidasFuente==='estimado'?'hv_est':'hv')}<div class="xp" style="--w:${Math.min(100,Math.max(0.8,hv/40))}%"><u></u></div></div>`;
   return `<article class="card" style="--c:${esc(c.color||'#888')}">
   <div class="head"><img src="${esc(c.avatar)}" alt="" onerror="this.style.visibility='hidden'">
     <div><h2>${esc(c.nombre)}</h2><a href="${esc(c.url||'#')}" target="_blank" rel="noopener">${esc(c.handle||'')}</a></div></div>
   ${c.nicho?`<p class="nicho">${esc(c.nicho)}</p>`:''}
   <div class="m">
-    ${big(c.subs,'suscriptores')}
-    ${big(c.vistas,'vistas totales')}
-    ${big(c.videos,'videos')}
-    ${big(c.horas,'horas de visionado')}
-    ${big(c.vistas28d,'vistas, 28 días')}
-    ${c.vistas48h?big(c.vistas48h,'vistas, 48 h'):''}
+    ${big(c.subs,'Suscriptores','m_subs')}
+    ${big(c.vistas,'Vistas totales','m_vistas')}
+    ${big(c.likes,'Me gusta totales','m_likes')}
+    ${big(c.comentarios,'Comentarios totales','m_com')}
   </div>
-  ${hayVar?`<div class="var"><span class="h"></span><span class="h">Suscriptores</span><span class="h">Vistas</span>
+  ${hvTxt}
+  <div class="cf">${urg(c.slug)}<a class="gb" href="guiones.html#${esc(c.slug)}">Guiones</a></div>
+  ${urgLista(c.slug)}
+  ${hayVar?`<button class="vm" type="button" aria-expanded="${ab}">${ab?'ocultar variaciones':'ver más: variaciones'}</button>
+  <div class="var${ab?' on':''}"><span class="h"></span><span class="h">Suscriptores</span><span class="h">Vistas</span>
     ${c.varSubs?.ayer||c.varVistas?.ayer?`<i>vs ayer</i><strong>${delta(c.varSubs?.ayer)}</strong><strong>${delta(c.varVistas?.ayer)}</strong>`:''}
     ${c.varSubs?.sem||c.varVistas?.sem?`<i>vs 7 días</i><strong>${delta(c.varSubs?.sem)}${dias(c.varSubs?.sem)}</strong><strong>${delta(c.varVistas?.sem)}${dias(c.varVistas?.sem)}</strong>`:''}
   </div>`:''}
@@ -200,7 +246,14 @@ function card(c){
 </article>`;
 }
 const TIP={
- puntaje:'Puntaje = promedio de los % de monetización: suscriptores (meta 1.000), vistas de Shorts en 90 días (meta 10 M) y horas de visionado (meta 4.000). Cada criterio tiene tope 100 %.',
+ m_subs:'Suscriptores: personas que siguen el canal ahora mismo.',
+ m_vistas:'Vistas totales: todas las reproducciones de todos los videos y Shorts del canal desde su creación.',
+ m_likes:'Me gusta totales: suma de los me gusta de todos los videos y Shorts públicos del canal.',
+ m_com:'Comentarios totales: suma de los comentarios de todos los videos y Shorts públicos del canal.',
+ hv:'Horas válidas para monetizar: horas vistas en los últimos 12 meses solo de videos LARGOS públicos (los Shorts no cuentan). YouTube pide 4.000 para entrar al programa de socios. Medido con YouTube Analytics.',
+ hv_est:'Horas válidas para monetizar (estimadas): horas de videos largos de los últimos 12 meses calculadas por el repo del canal como vistas × duración × 40 % de retención. YouTube pide 4.000.',
+ hv_na:'Sin dato: este canal aún no tiene acceso a YouTube Analytics, así que no se pueden medir las horas de videos largos (las 4.000 h no cuentan Shorts).',
+ puntaje:'Puntaje = promedio de los % de monetización: suscriptores (meta 1.000), vistas de Shorts en 90 días (meta 10 M) y horas válidas para monetizar (solo videos largos, 12 meses; meta 4.000). Cada criterio tiene tope 100 %.',
  ritmo:'Ritmo = promedio de lo avanzado en la última semana: suscriptores nuevos, vistas nuevas y videos publicados, frente a la meta semanal de cada canal. No entra al puntaje; de él sale el ganador de la semana.',
  flecha:'Flecha: puestos que subió (▲) o bajó (▼) frente al cierre de ayer (última medición antes de las 00:00, hora de Chile). "–" = se mantuvo; "nuevo" = ayer aún no puntuaba.',
  est:'Estimado: el canal tiene menos de 90 días, así que se usan sus vistas totales como vistas de 90 días.',
@@ -236,18 +289,22 @@ function leaderboard(p){
 /* ---------- tablero, permisos y notificaciones (solo lectura) ---------- */
 const IC={ok:'✓',bad:'✗',warn:'●',na:'–',sd:'–'};
 const dsd=iso=>{if(!iso)return '';const d=new Date(iso);if(isNaN(d))return '';const h=hm(d),f=x=>x.toLocaleDateString('en-CA',{timeZone:'America/Santiago'});return f(d)===f(new Date())?'desde '+h:'desde '+d.toLocaleDateString('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit'})+' '+h};
-const tag=(c,disp)=>{if(!c||(c.estado!=='warn'&&c.estado!=='bad')||!disp)return '';const w=c.trabajo;if(!w||!w.asignado)return `<div class="tr sin">⏸ sin asignar${w&&w.detalle?`<small>${esc(w.detalle)}</small>`:''}</div>`;return `<div class="tr on">🔧 en trabajo · ${esc(w.agente)}${w.desde?` <i>${esc(dsd(w.desde))}</i>`:''}<small>${esc(w.detalle)}</small></div>`};
+let WN=0;
+const tag=(c,disp)=>{if(!c||(c.estado!=='warn'&&c.estado!=='bad')||!disp)return '';const w=c.trabajo;const k='w_'+(WN++);
+ if(!w||!w.asignado){TIP[k]='Sin asignar'+(w&&w.detalle?'\n'+w.detalle:'');return `<div><button class="wk sin" type="button" data-tip="${k}" aria-label="Sin asignar">⏸</button></div>`}
+ TIP[k]=`Agente: ${w.agente}${w.desde?'\n'+dsd(w.desde):''}\n${w.detalle||''}`;return `<div><button class="wk on" type="button" data-tip="${k}" aria-label="En trabajo">🔧</button></div>`};
 const cel=c=>!c?'<div class="cl s-sd"><span class="ic">–</span><div><b>sin dato</b></div></div>':`<div class="cl s-${c.estado}"><span class="ic">${IC[c.estado]||'–'}</span><div><b>${esc(c.texto)}</b>${c.detalle?`<small>${esc(c.detalle)}</small>`:''}</div></div>`;
 function antig(t){const m=Math.round((Date.now()-Date.parse(t.generadoEn))/60000);if(!(m>=0))return '';return m<90?`hace ${m} min`:`hace ${Math.floor(m/60)} h`}
 function tablero(t){
   if(!t)return ['',''];
+  WN=0;
   t.tareas.forEach(x=>{TIP['t_'+x.id]=x.ayuda});
   const stale=(Date.now()-Date.parse(t.generadoEn))>6*36e5;
   const pie=`<div class="fe2">Tablero calculado ${antig(t)} (${esc(hora(t.generadoEn)||'')})${stale?' · <span class="dn">puede estar desactualizado: el PC no lo ha renovado</span>':''}. Semana objetivo: hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</div>`;
   const tw=t.trabajo||{disponible:false,items:[]},disp=!!tw.disponible;
   const cn=Object.fromEntries(t.canales.map(c=>[c.slug,c]));const tn=Object.fromEntries(t.tareas.map(x=>[x.id,x.nombre]));
   const its=tw.items.filter(w=>w.asignado);
-  const ft=!disp?`<div class="ft off">Trabajo de agentes: sin información de agentes${tw.actualizado?` (último dato ${esc(hora(tw.actualizado)||'')})`:''}.</div>`:`<div class="ft"><b>En trabajo ahora</b>${its.length?its.map(w=>{const c=cn[w.canal]||{nombre:w.canal,color:'#888'};return `<div class="fi" style="--c:${esc(c.color)}"><span class="fc">${esc(c.nombre)}</span><span class="fq">${esc(w.tareas.map(i=>tn[i]||i).join(' · '))}</span><span class="fa">${esc(w.agente)}${w.desde?` · ${esc(dsd(w.desde))}`:''}</span><small>${esc(w.detalle)}</small></div>`}).join(''):'<div class="fi">nadie asignado</div>'}</div>`;
+  const ft=!disp?`<div class="ft off">Trabajo de agentes: sin información de agentes${tw.actualizado?` (último dato ${esc(hora(tw.actualizado)||'')})`:''}.</div>`:`<details class="ft"${FT_OPEN?' open':''}><summary>🔧 ${its.length} trabajo${its.length===1?'':'s'} en curso</summary>${its.length?its.map(w=>{const c=cn[w.canal]||{nombre:w.canal,color:'#888'};return `<div class="fi" style="--c:${esc(c.color)}"><span class="fc">${esc(c.nombre)}</span><span class="fq">${esc(w.tareas.map(i=>tn[i]||i).join(' · '))}</span><span class="fa">${esc(w.agente)}${w.desde?` · ${esc(dsd(w.desde))}`:''}</span><small>${esc(w.detalle)}</small></div>`}).join(''):'<div class="fi">nadie asignado</div>'}</details>`;
   const tb=`${ft}<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}${tag(x.celdas[c.slug],disp)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   const ROT={token:'Token YouTube',scopes:'Permisos API',telefono:'Teléfono',auditoria:'Auditoría API',repo:'Repo GitHub',nube:'Render en nube',ultima:'Última corrida'};
   const AY={token:'Estado del token OAuth de YouTube del canal: fecha de vencimiento (caduca a los 7 días mientras la API no esté auditada). Entender Chile lo guarda como secreto en GitHub.',scopes:'Qué puede hacer el token: subir, comentarios y analytics.',telefono:'Verificación por teléfono del canal (habilita miniaturas personalizadas y más cupo de subida).',auditoria:'Auditoría de la API de YouTube: si está aprobada, los tokens dejan de caducar.',repo:'Si el repo del canal está en GitHub y es público (necesario para Actions gratis).',nube:'Si el canal puede renderizar/producir en GitHub Actions.',ultima:'Última corrida de la producción del canal (o de sus métricas si no tiene nube diaria).'};
@@ -265,6 +322,7 @@ function campana(t){
   nl.innerHTML=`<h3>Requiere tu mano (${ns.length})</h3>`+(ns.length?ns.map(n=>`<div class="ni ${n.severidad}"><span class="d"></span><div><b>${esc(n.canal)}:</b> ${esc(n.texto)}${lim(n)}</div></div>`).join(''):'<div class="ni vacio">Nada pendiente.</div>');
   if(crit.length){fr.classList.add('on');fr.innerHTML=`<b>${crit.length} crítica${crit.length>1?'s':''}</b><span>${esc(crit[0].canal)}: ${esc(crit[0].texto)}</span>`}else fr.classList.remove('on');
 }
+let FT_OPEN=false;
 let proximaMs=null,medidoMs=null,INFO='';
 let msg='',ultHash=null,ultCambio=null;
 function reloj(){
@@ -284,7 +342,7 @@ async function cargar(){
     $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
     const orden=p?p.tabla.map(x=>x.slug):[];
     const cs=[...r.canales].sort((x,y)=>{const i=orden.indexOf(x.slug),j2=orden.indexOf(y.slug);return (i<0?99:i)-(j2<0?99:j2)});
-    $('grid').innerHTML=cs.map(card).join('');
+    TAB=tab;$('grid').innerHTML=cs.map(card).join('');
     $('lb').innerHTML=p?leaderboard(p):'<div class="lbh"><h2>Clasificación</h2></div>';
     const [h1,h2]=tablero(tab);$('tab').innerHTML=h1;$('per').innerHTML=h2;campana(tab);
     const ac=r.actualizacion||{};
@@ -303,7 +361,12 @@ document.addEventListener('click',e=>{
   const bl=e.target.closest('#bell,#franja');
   if(bl){const o=$('nl').classList.toggle('open');$('bell').setAttribute('aria-expanded',o);pop.style.display='none';return}
   if(!e.target.closest('#nl')){$('nl').classList.remove('open');$('bell').setAttribute('aria-expanded','false')}
-  const b=e.target.closest('.i');
+  const ub=e.target.closest('.ub');
+  if(ub){const l=document.getElementById('ul-'+ub.dataset.u);if(l){const o=l.classList.toggle('on');ub.setAttribute('aria-expanded',o)}pop.style.display='none';return}
+  const vm=e.target.closest('.vm');
+  if(vm){const v=vm.nextElementSibling,o=v.classList.toggle('on');vm.textContent=o?'ocultar variaciones':'ver más: variaciones';vm.setAttribute('aria-expanded',o);try{localStorage.setItem(VK,o?'1':'0')}catch(x){}return}
+  const sm=e.target.closest('.ft summary');if(sm){setTimeout(()=>{FT_OPEN=!!document.querySelector('.ft[open]')},0);return}
+  const b=e.target.closest('.i,.wk');
   if(b){e.stopPropagation();e.preventDefault();if(pop.style.display==='block'&&pop._b===b){pop.style.display='none';return}abre(b,b.id==='inf'?INFO:TIP[b.dataset.tip]||'');return}
   pop.style.display='none';
   const r=e.target.closest('.r');if(r){const o=r.classList.toggle('open');r.setAttribute('aria-expanded',o)}

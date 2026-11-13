@@ -52,6 +52,42 @@ async function accessToken(repo) {
   return (await r.json()).access_token ?? null;
 }
 
+// Me gusta y comentarios totales = suma de statistics de TODOS los videos públicos del canal
+// (lista de la playlist de subidas + videos.list en lotes de 50; ~2 unidades por cada 50 videos).
+// Con token propio la playlist incluye privados/programados: se filtran por status.privacyStatus.
+async function totalesDeVideos(id, headers, key) {
+  const k = key ? '&key=' + encodeURIComponent(key) : '';
+  const get = async (u) => { const r = await fetch(u + k, { headers, signal: AbortSignal.timeout(20_000) }); if (!r.ok) throw new Error(u.split('?')[0].split('/').pop() + ' HTTP ' + r.status); return r.json(); };
+  const ids = []; let pt = '';
+  for (let i = 0; i < 40; i++) {
+    const j = await get(`https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=50&playlistId=${'UU' + id.slice(2)}${pt ? '&pageToken=' + pt : ''}`);
+    for (const it of j.items ?? []) if (it.contentDetails?.videoId) ids.push(it.contentDetails.videoId);
+    pt = j.nextPageToken; if (!pt) break;
+  }
+  let likes = 0, comentarios = 0, n = 0;
+  for (let i = 0; i < ids.length; i += 50) {
+    const lote = ids.slice(i, i + 50).join(',');
+    let j; try { j = await get(`https://www.googleapis.com/youtube/v3/videos?part=statistics,status&id=${lote}`); } catch { j = await get(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${lote}`); }
+    for (const v of j.items ?? []) {
+      if (v.status && v.status.privacyStatus !== 'public') continue;
+      likes += Number(v.statistics?.likeCount) || 0; comentarios += Number(v.statistics?.commentCount) || 0; n++;
+    }
+  }
+  return { likes, comentarios, videosContados: n };
+}
+
+// Horas que YouTube cuenta para el YPP: minutos vistos en 365 días de todo lo que NO es Short
+// (creatorContentType = videoOnDemand + liveStream; 'shorts' no cuenta). Solo con token con scope analytics.
+async function horasValidasAnalytics(at, ahora) {
+  const f = (ms) => new Date(ms).toISOString().slice(0, 10);
+  const u = `https://youtubeanalytics.googleapis.com/v2/reports?ids=channel==MINE&startDate=${f(ahora - 365 * DIA)}&endDate=${f(ahora)}&metrics=estimatedMinutesWatched&dimensions=creatorContentType`;
+  const r = await fetch(u, { headers: { Authorization: 'Bearer ' + at }, signal: AbortSignal.timeout(20_000) });
+  if (!r.ok) throw new Error('analytics HTTP ' + r.status);
+  const j = await r.json();
+  const min = (j.rows ?? []).filter((x) => x[0] !== 'shorts').reduce((t, x) => t + (Number(x[1]) || 0), 0);
+  return Math.round(min / 60 * 100) / 100;
+}
+
 export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey = null } = {}) {
   const f = path.join(DATA, 'vivo.json');
   const vivo = leerJSON(f) ?? { canales: {} };
@@ -67,6 +103,7 @@ export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey
       for (const repo of REPOS_TOKEN) { try { at = await accessToken(repo); } catch { /* siguiente */ } if (at) break; }
       if (!at) throw new Error('sin token de YouTube utilizable');
     }
+    const cab = at ? { Authorization: 'Bearer ' + at } : {};
     const url = 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=' + ids.join(',') + (apiKey ? '&key=' + encodeURIComponent(apiKey) : '');
     const r = await fetch(url, { headers: at ? { Authorization: 'Bearer ' + at } : {}, signal: AbortSignal.timeout(20_000) });
     if (!r.ok) throw new Error('channels.list HTTP ' + r.status);
@@ -77,7 +114,27 @@ export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey
       canales[it.id] = { subs: s.hiddenSubscriberCount ? null : Number(s.subscriberCount), vistas: Number(s.viewCount), videos: Number(s.videoCount) };
     }
     if (!Object.keys(canales).length) throw new Error('respuesta sin canales');
-    Object.assign(vivo.canales, canales);
+    // me gusta / comentarios totales (si falla un canal se conserva su último valor)
+    const avisos = [];
+    for (const id of Object.keys(canales)) {
+      try { Object.assign(canales[id], await totalesDeVideos(id, cab, apiKey)); } catch (e) { avisos.push(`totales ${id}: ${e.message}`); }
+    }
+    // horas válidas para monetizar: cada token mide SU canal (channels.mine); sin token, se conserva el último valor
+    if (!apiKey) {
+      const repos = [...new Set([...REPOS_TOKEN, ...listaCanales().map((c) => c.repo).filter(Boolean)])];
+      for (const repo of repos) {
+        try {
+          const t = await accessToken(repo); if (!t) continue;
+          const m = await fetch('https://www.googleapis.com/youtube/v3/channels?part=id&mine=true', { headers: { Authorization: 'Bearer ' + t }, signal: AbortSignal.timeout(20_000) });
+          const mid = (await m.json()).items?.[0]?.id;
+          if (!mid || !canales[mid]) continue;
+          canales[mid].horasValidas = await horasValidasAnalytics(t, ahora);
+          canales[mid].horasValidasEn = new Date(ahora).toISOString();
+        } catch (e) { avisos.push(`horas ${path.basename(repo)}: ${e.message}`); }
+      }
+    }
+    for (const [id, v] of Object.entries(canales)) vivo.canales[id] = { ...(vivo.canales[id] ?? {}), ...v };
+    if (avisos.length) vivo.avisos = avisos.slice(0, 5); else delete vivo.avisos;
     vivo.medidoEn = new Date(ahora).toISOString();
     delete vivo.error;
     escribirJSON(f, vivo);
@@ -90,13 +147,15 @@ export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey
 }
 
 // ---------- historial ----------
-const CAMPOS = ['subs', 'vistas', 'videos', 'horas', 'vistas90d'];
+const CAMPOS = ['subs', 'vistas', 'videos', 'horas', 'vistas90d', 'likes', 'comentarios', 'horasValidas'];
 function filasDeMetricas(c) {
   if (!c.repo) return { filas: [], ultimo: null };
   const base = path.join(c.repo, 'salida', 'metricas');
   let dias = [];
   try { dias = fs.readdirSync(base).filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort(); } catch { return { filas: [], ultimo: null }; }
   const filas = []; let ultimo = null;
+  // Entender Chile: su repo estima las horas de LARGOS (vistas × duración × 40 %) en proyeccion.json
+  const proy = new Map((leerJSON(path.join(base, 'proyeccion.json')) ?? []).filter((x) => x?.fecha && num(x.horasEst) != null).map((x) => [x.fecha, x.horasEst]));
   for (const d of dias) {
     const m = leerJSON(path.join(base, d, 'metricas.json'));
     if (!m || num(m.subs) == null) continue;
@@ -111,6 +170,7 @@ function filasDeMetricas(c) {
       subs: num(m.subs), vistas: (() => { const v = tot == null ? suma : (suma == null ? tot : Math.max(tot, suma)); return v ? v : null; })(), // 0 = dato roto, no se guarda
       videos: num(m.videosPublicados), horas: num(p.horas12m) ?? num(m.horasTotales), vistas90d: num(p.vistasShorts90d),
       vistas28d: num(m.vistas28d),
+      ...(proy.has(m.fecha || d) ? { horasValidas: proy.get(m.fecha || d), horasValidasFuente: 'estimado' } : {}),
     });
     ultimo = { m, d };
   }
@@ -120,6 +180,15 @@ function filasDeMetricas(c) {
 function publicaciones(ultimo) {
   const v = Array.isArray(ultimo?.m?.videos) ? ultimo.m.videos : [];
   return v.filter((x) => x && x.privado !== true).map((x) => Date.parse(x.publicadoEn || '')).filter(Number.isFinite);
+}
+
+// Entender Chile no tiene token de Analytics en el panel: usa lo que su repo ya estima (bitacora/metricas/proyeccion.json,
+// horas de LARGOS = vistas × duración × 40 %). Devuelve el último valor, o null si el canal no tiene ese archivo.
+function horasDeProyeccion(c) {
+  if (!c.repo) return null;
+  const l = leerJSON(path.join(c.repo, 'bitacora', 'metricas', 'proyeccion.json'));
+  const u = Array.isArray(l) ? l.filter((x) => num(x?.horasEst) != null).at(-1) : null;
+  return u ? { valor: u.horasEst, fecha: u.fecha } : null;
 }
 
 function actualizarHistorial(lista, vivo, remoto = null) {
@@ -149,9 +218,13 @@ function actualizarHistorial(lista, vivo, remoto = null) {
       if (ant && ant.ts === ts) continue;
       const conHoras = [...previas].reverse();
       const acarrear = (k) => conHoras.find((r) => num(r[k]) != null)?.[k] ?? null;
+      const proy = horasDeProyeccion(c);
       const horasDe = conHoras.find((r) => num(r.horas) != null);
       const fila = { canal: c.slug, fuente: 'api', ts, subs: num(v.subs) ?? ant?.subs ?? null, vistas: v.vistas, videos: num(v.videos),
-        horas: acarrear('horas'), horasDe: horasDe ? (horasDe.horasDe ?? horasDe.ts) : null, vistas90d: acarrear('vistas90d') };
+        horas: acarrear('horas'), horasDe: horasDe ? (horasDe.horasDe ?? horasDe.ts) : null, vistas90d: acarrear('vistas90d'),
+        likes: num(v.likes) ?? acarrear('likes'), comentarios: num(v.comentarios) ?? acarrear('comentarios'),
+        horasValidas: num(v.horasValidas) ?? proy?.valor ?? acarrear('horasValidas'),
+        horasValidasFuente: num(v.horasValidas) != null ? 'analytics' : proy ? 'estimado' : (conHoras.find((r) => num(r.horasValidas) != null)?.horasValidasFuente ?? null) };
       if (ant && CAMPOS.every((k) => (ant[k] ?? null) === (fila[k] ?? null))) continue;
       // el contador público de videos no cuenta programados/privados: si la fila anterior viene de métricas con otro conteo, se conserva el de métricas
       todas.push(fila); todas.sort((a, b) => a.ts.localeCompare(b.ts));
@@ -273,18 +346,22 @@ export function procesar(salida, ahora = Date.now(), { remoto = leerRemoto() } =
       const hr = historial.filas.filter((r) => r.canal === c.slug && num(r.horas) != null).at(-1);
       if (hr) c.horasFecha = (hr.horasDe ?? hr.ts).slice(0, 10);
       const vs = (campo, ms) => variacion(historial.filas, c.slug, campo, ms, ahora);
+      const ac = (k) => historial.filas.filter((r) => r.canal === c.slug && num(r[k]) != null).at(-1);
+      c.likes = ac('likes')?.likes ?? null; c.comentarios = ac('comentarios')?.comentarios ?? null;
+      const hv = ac('horasValidas');
+      c.horasValidas = hv?.horasValidas ?? null; c.horasValidasFuente = hv?.horasValidasFuente ?? null; c.horasValidasFecha = hv ? hv.ts.slice(0, 10) : null;
       c.varSubs = { ayer: vs('subs', DIA), sem: vs('subs', 7 * DIA) };
       c.varVistas = { ayer: vs('vistas', DIA), sem: vs('vistas', 7 * DIA) };
     }
     const suma = (k) => res.canales.reduce((t, r) => t + (r[k] ?? 0), 0);
-    res.totales = { subs: suma('subs'), vistas: suma('vistas'), videos: suma('videos'), horas: suma('horas'), canales: res.canales.length };
+    res.totales = { subs: suma('subs'), vistas: suma('vistas'), videos: suma('videos'), horas: suma('horas'), likes: suma('likes'), comentarios: suma('comentarios'), canales: res.canales.length };
     res.actualizacion = { medidoEn, proxima, intervaloMin: 60, ultimaFila: ult, error: vivo?.error ?? null };
     res.generadoEn = generadoEn;
     escribirJSON(fr, res);
   }
   // hash de contenido: sin marcas de tiempo, para publicar solo si algo cambió
   const sig = JSON.stringify({
-    c: (res?.canales ?? []).map((c) => [c.slug, c.subs, c.vistas, c.videos, c.horas, c.vistas28d, c.vistas48h]),
+    c: (res?.canales ?? []).map((c) => [c.slug, c.subs, c.vistas, c.videos, c.horas, c.vistas28d, c.vistas48h, c.likes, c.comentarios, c.horasValidas]),
     p: calc.tabla.map((t) => [t.slug, t.puntaje, t.posicion, t.n]), a: calc.adelantamientos.map((a) => a.ts + a.texto), r: calc.tabla.map((t) => t.ritmo.puntaje),
   });
   const hash = crypto.createHash('sha1').update(sig).digest('hex');

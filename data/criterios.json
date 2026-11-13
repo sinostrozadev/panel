@@ -23,9 +23,9 @@
     },
     {
       "id": "horas",
-      "nombre": "Horas de visionado, 12 meses",
+      "nombre": "Horas válidas para monetizar (largos, 12 meses)",
       "calculo": "valor",
-      "campo": "horas",
+      "campo": "horasValidas",
       "meta": 4000,
       "peso": 1,
       "unidad": "h",
