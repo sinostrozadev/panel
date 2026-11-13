@@ -15,6 +15,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { refrescarVivo, procesar, publicarSiCambio } from './ciclo.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const META = { subs: 1000, vistas90d: 10_000_000, horas: 4000 };
@@ -465,11 +466,18 @@ export function agregar(opciones = {}) {
   const tmp = destino + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(panel, null, 2));
   fs.renameSync(tmp, destino);
-  return { destino, panel };
+  // historial, puntajes, adelantamientos y parche del resumen (scripts/ciclo.mjs)
+  const ciclo = procesar(a.salida);
+  return { destino, panel, ciclo };
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const { destino, panel } = agregar(args(process.argv.slice(2)));
+  const ar = args(process.argv.slice(2));
+  const esLocal = !process.argv.includes('--salida') && !process.env.PANEL_SIN_CICLO;
+  // medición horaria (YouTube Data API, 1 unidad); si falla se usa lo último conocido
+  if (esLocal) console.log('medición viva:', JSON.stringify(await refrescarVivo()));
+  const { destino, panel, ciclo } = agregar(ar);
   const res = panel.canales.map((c) => `${c.posicion ?? '-'} ${c.nombre}: ${c.datos ? `${(c.progreso.total * 100).toFixed(2)} % · ${c.actual.subs} subs` : 'sin datos todavía'}`);
   console.log(`panel.json → ${destino}\n  ${res.join('\n  ')}`);
+  if (esLocal && !process.env.PANEL_SIN_PUBLICAR) console.log('publicación:', JSON.stringify(publicarSiCambio(ciclo.hash)));
 }

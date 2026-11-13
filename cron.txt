@@ -14,3 +14,6 @@
 
 # Avisos/autorizaciones: leer respuestas de Santiago (issues "AUTORIZO <id>" / "RECHAZO <id>") cada 5 min (la pega Santiago).
 # */5 * * * * cd /home/santiago/projects/yt/panel && node scripts/avisos.mjs revisar >> /tmp/panel-avisos.log 2>&1
+
+# Nota (2026-11-12): el cron */30 de agregar.mjs ahora también mide cada hora (API de YouTube, 1 unidad), guarda data/historial.json,
+# calcula puntajes/adelantamientos y publica a gh-pages SOLO si cambió algo. La nube (.github/workflows/actualizar.yml, secreto YT_API_KEY) hace lo mismo cada hora.

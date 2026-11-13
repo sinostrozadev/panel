@@ -1,0 +1,70 @@
+{
+  "_doc": "Criterios (scripts/puntaje.mjs). grupo 'monetizacion': entran al PUNTAJE PRINCIPAL y ordenan el leaderboard (promedio simple de % con dato, tope 100). grupo 'ritmo': 'Ritmo de la semana', su propio promedio, no entra al puntaje principal; de él sale el ganador de la semana. calculo: 'valor' = valor/meta; 'crecimiento_semanal' = alza de 'campo' en 7 d / meta; 'publicados_7d' = videos publicados en 7 d / meta del canal. campo vistas90d: Studio si existe; si no, vistas totales (canal < 90 días, marcado estimado). peso=1 por defecto.",
+  "criterios": [
+    {
+      "id": "subs",
+      "nombre": "Suscriptores",
+      "calculo": "valor",
+      "campo": "subs",
+      "meta": 1000,
+      "peso": 1,
+      "unidad": "subs",
+      "grupo": "monetizacion"
+    },
+    {
+      "id": "shorts90d",
+      "nombre": "Vistas de Shorts, 90 días",
+      "calculo": "valor",
+      "campo": "vistas90d",
+      "meta": 10000000,
+      "peso": 1,
+      "unidad": "vistas",
+      "grupo": "monetizacion"
+    },
+    {
+      "id": "horas",
+      "nombre": "Horas de visionado, 12 meses",
+      "calculo": "valor",
+      "campo": "horas",
+      "meta": 4000,
+      "peso": 1,
+      "unidad": "h",
+      "grupo": "monetizacion"
+    },
+    {
+      "id": "subs_sem",
+      "nombre": "Crecimiento semanal de suscriptores",
+      "calculo": "crecimiento_semanal",
+      "campo": "subs",
+      "meta": 50,
+      "peso": 1,
+      "unidad": "subs/sem",
+      "grupo": "ritmo"
+    },
+    {
+      "id": "vistas_sem",
+      "nombre": "Crecimiento semanal de vistas",
+      "calculo": "crecimiento_semanal",
+      "campo": "vistas",
+      "meta": 50000,
+      "peso": 1,
+      "unidad": "vistas/sem",
+      "grupo": "ritmo"
+    },
+    {
+      "id": "constancia",
+      "nombre": "Constancia (videos en 7 días)",
+      "calculo": "publicados_7d",
+      "meta": 7,
+      "metaPorCanal": {
+        "bolita-lab": 21,
+        "linea-punteada": 14,
+        "numeros-rojos": 10,
+        "entender-chile": 7
+      },
+      "peso": 1,
+      "unidad": "videos",
+      "grupo": "ritmo"
+    }
+  ]
+}

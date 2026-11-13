@@ -1,0 +1,41 @@
+{
+ "_doc": "Copia pública (sin rutas) del registro de canales; la usa el workflow de la nube. La regenera scripts/ciclo.mjs.",
+ "canales": [
+  {
+   "slug": "bolita-lab",
+   "nombre": "Bolita Lab",
+   "handle": "@bolitalab",
+   "canalId": "UCi1_1_ItZCLY4axLshZcuZQ",
+   "color": "#3987e5",
+   "nicho": "Simulaciones físicas satisfying con música",
+   "fechaCreacion": "2026-11-04"
+  },
+  {
+   "slug": "linea-punteada",
+   "nombre": "Línea Punteada",
+   "handle": "@lineapunteada",
+   "canalId": "UCp05AZK18-TL8pp74ntbdUw",
+   "color": "#d95926",
+   "nicho": "Geografía narrada en español",
+   "fechaCreacion": "2026-11-05"
+  },
+  {
+   "slug": "entender-chile",
+   "nombre": "Entender Chile",
+   "handle": "@entenderchile",
+   "canalId": "UCpdqApwfcKxTB5Bb24K4uAw",
+   "color": "#199e70",
+   "nicho": "Noticias de Chile explicadas",
+   "fechaCreacion": "2026-08-29"
+  },
+  {
+   "slug": "numeros-rojos",
+   "nombre": "En Números Rojos",
+   "handle": "@enumerosrojos",
+   "canalId": "UC8uOwislkGbnnfoqsJ_FgAw",
+   "color": "#c98500",
+   "nicho": "Economía explicada con datos",
+   "fechaCreacion": "2026-11-05"
+  }
+ ]
+}

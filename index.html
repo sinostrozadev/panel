@@ -31,13 +31,46 @@ h1{font-size:15px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
 .fe{margin-top:16px;font-size:12px;color:#9ca3af}
 footer{margin-top:40px;font-size:13px;color:var(--mu)}
 @media(max-width:480px){main{padding:28px 16px}.tot b{font-size:32px}.card{padding:22px}}
+
+main{max-width:1400px}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:32px;align-items:start}
+.layout .grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.lb{position:sticky;top:20px;border:1px solid var(--li);border-radius:20px;padding:24px;max-height:calc(100vh - 40px);overflow:auto}
+.lb h2{margin:0 0 4px;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu)}
+.lb .sub{font-size:12px;color:var(--mu);margin:0 0 14px}
+.lb h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:22px 0 8px;padding-top:16px;border-top:1px solid var(--li)}
+.lh{display:grid;grid-template-columns:28px 1fr 56px 56px;gap:6px;font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;padding:0 0 4px}
+.lh span:nth-child(n+3){text-align:right}
+.row{border-top:1px solid var(--li)}
+.row summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:28px 1fr 56px 56px;gap:6px;align-items:center;padding:10px 0}
+.row summary::-webkit-details-marker{display:none}
+.pos{font-weight:700;font-size:18px;color:var(--mu)}
+.who{display:flex;gap:10px;align-items:center;min-width:0}
+.who img{width:34px;height:34px;border-radius:50%;object-fit:cover;background:#f3f4f6;flex:none}
+.who b{display:block;font-size:14px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who i{font-style:normal;font-size:11px;font-weight:600;display:block}
+.pc{text-align:right;font-weight:700;font-size:14px}.pc small{display:block;font-weight:400;font-size:11px;color:var(--mu)}
+.bar{height:6px;border-radius:3px;background:#f3f4f6;overflow:hidden;margin-top:4px}.bar u{display:block;height:100%;background:var(--c,#6b7280);border-radius:3px;min-width:2px}
+.des{padding:2px 0 12px 34px;font-size:12px}
+.des .g{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--mu);margin:8px 0 2px}
+.des .cr{margin:6px 0}.des .cr div{display:flex;justify-content:space-between;gap:8px}.des .cr span{color:var(--mu)}
+.des .nt{font-size:11px;color:#9ca3af}
+.ev{font-size:13px;margin:6px 0}.ev i{font-style:normal;color:var(--mu);font-size:12px}
+.gan{font-size:14px}.gan b{font-size:16px}
+.act{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:-8px 0 28px;font-size:13px;color:var(--mu)}
+.act button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--li);background:#fff;color:var(--tx);border-radius:999px;padding:7px 16px;cursor:pointer}
+.act button:hover{border-color:var(--mu)}.act button:disabled{opacity:.5;cursor:default}
+.nota{font-size:12px;color:#9ca3af;margin-top:6px;max-width:720px}
+@media(max-width:1000px){.layout{grid-template-columns:1fr}.lb{position:static;max-height:none;order:-1}}
 </style>
 </head>
 <body>
 <main>
 <h1>Mis canales</h1>
 <section class="tot" id="tot"></section>
-<section class="grid" id="grid"></section>
+<div class="act"><button id="bt" type="button">Actualizar</button><span id="ed"></span></div>
+<p class="nota" id="nota">Los datos se refrescan cada hora desde el PC de Santiago y, además, desde la nube (GitHub Actions) cuando el PC está apagado. La página solo se republica cuando cambian los números; "Actualizar" vuelve a pedir el último dato publicado.</p>
+<div class="layout"><section class="grid" id="grid"></section><aside class="lb" id="lb"></aside></div>
 <footer id="pie"></footer>
 </main>
 <script>
@@ -80,12 +113,65 @@ function card(c){
   ${med?`<div class="fe">Medido: ${esc(med)}${viejo(c)}</div>`:''}
 </article>`;
 }
-fetch('data/resumen.json?'+Date.now()).then(r=>r.json()).then(d=>{
-  const t=d.totales;
-  $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
-  $('grid').innerHTML=d.canales.map(card).join('');
-  $('pie').textContent='Actualizado: '+(hora(d.generadoEn)||'');
-}).catch(()=>{$('pie').textContent='No se pudieron cargar los datos.'});
+const pf=v=>v==null?'–':(Math.round(v*10)/10).toLocaleString('es-CL')+' %';
+function chg(c){
+  if(!c||c.estado==='sin-datos')return '<i class="eq">sin historial</i>';
+  if(c.estado==='nuevo')return '<i class="eq">nuevo</i>';
+  if(c.estado==='igual')return '<i class="eq">= igual</i>';
+  const up=c.estado==='sube';
+  return `<i class="${up?'up':'dn'}">${up?'▲':'▼'} ${c.puestos} ${c.puestos===1?'puesto':'puestos'}</i>`;
+}
+function desglose(t){
+  const g=(id,tit,r)=>{
+    const cs=t.criterios.filter(x=>x.grupo===id);
+    return `<div class="g">${tit}${r&&r.puntaje!=null?` · ${pf(r.puntaje)} (${r.n}/${r.total} criterios)`:''}</div>`+cs.map(x=>`<div class="cr"><div><span>${esc(x.nombre)}</span><b>${x.pct==null?'sin dato':pf(x.pct)}${x.estimado?' <small title="estimado">(est.)</small>':''}</b></div>
+    <div class="bar" style="--c:${esc(t.color)}"><u style="width:${x.pct||0}%"></u></div>
+    ${x.valor!=null?`<div class="nt">${fmt(x.valor)} de ${fmt(x.meta)} ${esc(x.unidad||'')}${x.nota?' · '+esc(x.nota):''}</div>`:''}</div>`).join('');
+  };
+  return `<div class="des">${g('monetizacion','Monetización',{puntaje:t.puntaje,n:t.n,total:t.total})}${g('ritmo','Ritmo de la semana',t.ritmo)}</div>`;
+}
+function leaderboard(p,adel){
+  const filas=p.tabla.map(t=>`<details class="row" style="--c:${esc(t.color)}"><summary>
+    <span class="pos">${t.posicion}.º</span>
+    <div><div class="who"><img src="${esc(t.avatar)}" alt="" onerror="this.style.visibility='hidden'"><div><b>${esc(t.nombre)}</b>${chg(t.cambio24h)}<i class="eq" style="font-weight:400">7 d: ${chg(t.cambio7d).replace(/<\/?i[^>]*>/g,'')}</i></div></div>
+      <div class="bar" style="--c:${esc(t.color)}"><u style="width:${Math.min(100,t.puntaje||0)}%"></u></div></div>
+    <span class="pc">${pf(t.puntaje)}<small>${t.n}/${t.total} crit.</small></span>
+    <span class="pc">${pf(t.ritmo&&t.ritmo.puntaje)}<small>${t.ritmo?t.ritmo.n+'/'+t.ritmo.total:''}</small></span>
+  </summary>${desglose(t)}</details>`).join('');
+  const ev=(adel&&adel.eventos||[]).slice(0,8).map(e=>`<div class="ev"><i>${esc(e.cuando)}</i> · ${esc(e.texto)}</div>`).join('')||'<div class="ev"><i>Sin adelantamientos todavía.</i></div>';
+  const g=p.ganadorSemana;
+  return `<h2>Leaderboard</h2><p class="sub">Puntaje = promedio de los % de monetización (suscriptores, Shorts 90 d, horas). Toca un canal para ver el desglose. Flechas: puestos frente a hace 24 h; abajo, frente a hace 7 d.</p>
+  <div class="lh"><span></span><span>Canal</span><span>Puntaje</span><span>Ritmo</span></div>${filas}
+  <h3>Adelantamientos</h3>${ev}
+  <h3>Ganador de la semana</h3>${g?`<div class="gan"><b>${esc(g.nombre)}</b><br><span class="eq">mejor ritmo de la semana: ${pf(g.ritmo)} (${g.n} criterios)</span></div>`:'<div class="ev"><i>Sin datos.</i></div>'}`;
+}
+let proximaMs=null,medidoMs=null;
+function reloj(){
+  const m=medidoMs?Math.max(0,Math.round((Date.now()-medidoMs)/60000)):null;
+  const txt=m==null?'':'Datos de hace '+(m<60?m+' min':Math.floor(m/60)+' h '+(m%60)+' min');
+  let pr='';
+  if(proximaMs){pr=proximaMs>Date.now()?' · próxima actualización automática ≈ '+new Date(proximaMs).toLocaleTimeString('es-CL',{timeZone:'America/Santiago',hour:'2-digit',minute:'2-digit'}):' · próxima en curso (si los números no cambian, no se republica)'}
+  $('ed').textContent=txt+pr;
+}
+async function cargar(){
+  $('bt').disabled=true;
+  try{
+    const q='?t='+Date.now();
+    const [r,p,a]=await Promise.all([fetch('data/resumen.json'+q,{cache:'no-store'}).then(x=>x.json()),fetch('data/puntajes.json'+q,{cache:'no-store'}).then(x=>x.ok?x.json():null).catch(()=>null),fetch('data/adelantamientos.json'+q,{cache:'no-store'}).then(x=>x.ok?x.json():null).catch(()=>null)]);
+    const t=r.totales;
+    $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
+    const orden=p?p.tabla.map(x=>x.slug):[];
+    const cs=[...r.canales].sort((x,y)=>{const i=orden.indexOf(x.slug),j=orden.indexOf(y.slug);return (i<0?99:i)-(j<0?99:j)});
+    $('grid').innerHTML=cs.map(card).join('');
+    $('lb').innerHTML=p?leaderboard(p,a):'<h2>Leaderboard</h2><p class="sub">Aún sin datos.</p>';
+    const ac=r.actualizacion||{};
+    medidoMs=Date.parse(ac.medidoEn||r.generadoEn)||null;proximaMs=Date.parse(ac.proxima||'')||null;
+    $('pie').textContent='Publicado: '+(hora(r.generadoEn)||'')+(ac.error?' · última consulta a la API falló, se muestra lo último conocido':'');
+    reloj();
+  }catch(e){$('pie').textContent='No se pudieron cargar los datos.'}
+  $('bt').disabled=false;
+}
+$('bt').onclick=cargar;setInterval(reloj,30000);cargar();
 </script>
 </body>
 </html>

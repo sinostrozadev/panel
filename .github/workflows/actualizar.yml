@@ -1,0 +1,48 @@
+name: Actualizar panel
+# Cada hora mide los canales (YouTube Data API) y publica el panel en gh-pages, aunque el PC esté apagado.
+# Necesita el secreto YT_API_KEY (Settings > Secrets and variables > Actions). Sin él, termina sin error.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: panel-actualizar
+  cancel-in-progress: false
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Descargar lo último publicado (gh-pages)
+        run: |
+          mkdir -p data
+          if git fetch -q origin gh-pages; then
+            for f in historial resumen puntajes; do git show FETCH_HEAD:data/$f.json > data/$f.json 2>/dev/null || rm -f data/$f.json; done
+            git show FETCH_HEAD:CNAME > "$RUNNER_TEMP/CNAME" 2>/dev/null || true
+          fi
+      - name: Medir y recalcular
+        id: nube
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: node scripts/nube.mjs
+      - name: Publicar en gh-pages
+        if: steps.nube.outputs.publicar == 'true'
+        run: |
+          set -e
+          SITE="$RUNNER_TEMP/site"
+          mkdir -p "$SITE/data"
+          cp index.html "$SITE/"; cp -r avatares "$SITE/avatares"
+          for f in resumen historial puntajes adelantamientos; do cp data/$f.json "$SITE/data/"; done
+          touch "$SITE/.nojekyll"
+          [ -f "$RUNNER_TEMP/CNAME" ] && cp "$RUNNER_TEMP/CNAME" "$SITE/CNAME" || true
+          cd "$SITE"
+          git init -q -b gh-pages
+          git add -A
+          git -c user.name="panel-bot" -c user.email="panel-bot@users.noreply.github.com" commit -q -m "panel: actualización en la nube $(date -Iseconds)"
+          git push -q --force "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" gh-pages:gh-pages
