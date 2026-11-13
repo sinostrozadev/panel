@@ -1,0 +1,14 @@
+{
+  "_doc": "Estado de permisos que NO se pueden leer de un archivo: se anota a mano. Solo estados y fechas, nunca valores de tokens. Lo lee scripts/tablero.mjs.",
+  "telefono": {
+    "bolita-lab": { "verificado": true, "fecha": "2026-11-08", "nota": "miniaturas personalizadas habilitadas" },
+    "linea-punteada": { "verificado": true, "fecha": "2026-11-08", "nota": "miniaturas personalizadas habilitadas" },
+    "numeros-rojos": { "verificado": true, "fecha": "2026-11-08", "nota": "número de un familiar; miniaturas habilitadas" },
+    "entender-chile": { "verificado": null, "fecha": null, "nota": "desconocido" }
+  },
+  "auditoriaApi": { "estado": "en-revision", "desde": "2026-11-05", "nota": "YouTube Compliance Review; se da por aprobada cuando exista bolita-lab/secrets/api-auditada" },
+  "repoPublicoRespaldo": {
+    "entender-chile": true
+  },
+  "tokenCaducaDias": 7
+}

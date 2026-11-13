@@ -16,6 +16,8 @@ import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { refrescarVivo, procesar, publicarSiCambio } from './ciclo.mjs';
+import { generarTablero, digestTablero } from './tablero.mjs';
+import crypto from 'node:crypto';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const META = { subs: 1000, vistas90d: 10_000_000, horas: 4000 };
@@ -468,6 +470,11 @@ export function agregar(opciones = {}) {
   fs.renameSync(tmp, destino);
   // historial, puntajes, adelantamientos y parche del resumen (scripts/ciclo.mjs)
   const ciclo = procesar(a.salida);
+  // tablero de tareas, permisos y notificaciones (solo lectura; si falla no rompe el ciclo)
+  try {
+    const tab = generarTablero({ ahora, salida: a.salida });
+    ciclo.hash = crypto.createHash('sha1').update(ciclo.hash + digestTablero(tab)).digest('hex');
+  } catch (e) { console.error('tablero falló:', e.message); }
   return { destino, panel, ciclo };
 }
 
