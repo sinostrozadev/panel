@@ -109,7 +109,8 @@ main{max-width:1400px}
 table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeric:tabular-nums}
 .tb th,.tb td{padding:11px 12px;text-align:left;vertical-align:top;border-top:1px solid var(--li);font-size:13px}
 .tb thead th{border-top:0;font-size:12px;font-weight:600;color:var(--tx);border-bottom:2px solid var(--c,#e5e7eb);background:var(--gris)}
-.tb tbody th{font-weight:500;color:#374151;width:24%;background:#fff}
+.tb tbody th{font-weight:500;color:#374151;width:24%;background:#fff;position:sticky;left:0;z-index:1;box-shadow:1px 0 0 var(--li)}
+.tb thead th:first-child{position:sticky;left:0;z-index:2}
 .tb td{width:19%}
 .cl{display:flex;gap:7px;align-items:flex-start}
 .ic{flex:none;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 system-ui;color:#fff;background:#d1d5db;margin-top:1px}
@@ -229,9 +230,10 @@ function tablero(t){
   const pie=`<div class="fe2">Tablero calculado ${antig(t)} (${esc(hora(t.generadoEn)||'')})${stale?' · <span class="dn">puede estar desactualizado: el PC no lo ha renovado</span>':''}. Semana objetivo: hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</div>`;
   const tb=`<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   const ROT={token:'Token YouTube',scopes:'Permisos API',telefono:'Teléfono',auditoria:'Auditoría API',repo:'Repo GitHub',nube:'Render en nube',ultima:'Última corrida'};
-  const cards=t.permisos.filas.map(f=>{const c=t.canales.find(x=>x.slug===f.slug)||{};return `<article class="pc" style="--c:${esc(c.color||'#888')}"><h3>${esc(c.nombre||f.slug)}</h3>${Object.keys(ROT).map(k=>`<div class="pi"><span>${ROT[k]}</span>${cel(f.items[k])}</div>`).join('')}</article>`}).join('');
+  const AY={token:'Estado del token OAuth de YouTube del canal: fecha de vencimiento (caduca a los 7 días mientras la API no esté auditada). Entender Chile lo guarda como secreto en GitHub.',scopes:'Qué puede hacer el token: subir, comentarios y analytics.',telefono:'Verificación por teléfono del canal (habilita miniaturas personalizadas y más cupo de subida).',auditoria:'Auditoría de la API de YouTube: si está aprobada, los tokens dejan de caducar.',repo:'Si el repo del canal está en GitHub y es público (necesario para Actions gratis).',nube:'Si el canal puede renderizar/producir en GitHub Actions.',ultima:'Última corrida de la producción del canal (o de sus métricas si no tiene nube diaria).'};
+  Object.keys(AY).forEach(k=>{TIP['p_'+k]=AY[k]});
   const g=t.permisos.globales.ytApiKey;
-  const pm=`<h2>Permisos y salud</h2><p class="sub">Solo estados y fechas; nunca se muestran valores de tokens.</p><div class="pg">${cards}</div><div class="glob"><b>Clave YT_API_KEY del panel</b>${cel(g)}</div>${pie}`;
+  const pm=`<h2>Permisos y salud</h2><p class="sub">Solo estados y fechas; nunca se muestran valores de tokens.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${Object.keys(ROT).map(k=>`<tr><th>${ROT[k]} ${ib('p_'+k)}</th>${t.canales.map(c=>{const f=t.permisos.filas.find(x=>x.slug===c.slug);return `<td>${cel(f&&f.items[k])}</td>`}).join('')}</tr>`).join('')}<tr><th>Clave del panel (YT_API_KEY)</th><td colspan="${t.canales.length}">${cel(g)}</td></tr></tbody></table></div>${pie}`;
   return [tb,pm];
 }
 function campana(t){

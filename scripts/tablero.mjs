@@ -132,6 +132,27 @@ function analizarCanal(c, cal, ban, pl, ahora, finSemana, finSiguiente) {
   return { todas, enSemana, sig, conteo, stock, completadas, primeraVacia, largosProg, largosPlan };
 }
 
+// ---------- canales de nube diaria (noticias del día; sin calendario/bandeja) ----------
+const sh = (cmd, args, ms = 20000) => { try { return execFileSync(cmd, args, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: ms }); } catch { return null; } };
+function nubeDiaria(repo) {
+  const wf = path.join(repo, '.github', 'workflows', 'edicion-diaria.yml');
+  if (!existe(wf)) return null;
+  const mm = (sh('git', ['-C', repo, 'remote', 'get-url', 'origin']) || '').trim().match(/github\.com[:/](.+?)\/(.+?)(?:\.git)?$/);
+  const slugGh = mm ? `${mm[1]}/${mm[2]}` : null;
+  let runs = null;
+  if (slugGh) { const o = sh('gh', ['run', 'list', '-R', slugGh, '-w', 'edicion-diaria.yml', '-L', '12', '--json', 'conclusion,createdAt,event,status']); try { runs = JSON.parse(o); } catch {} }
+  let secretos = null;
+  if (slugGh) { const o = sh('gh', ['secret', 'list', '-R', slugGh]); if (o != null) secretos = new Set(o.split('\n').map((l) => l.split(/\s+/)[0]).filter(Boolean)); }
+  // los bots pushean y el clon local puede ir atrasado: se une el árbol local con origin/main
+  const guiones = new Set();
+  try { for (const f of fs.readdirSync(path.join(repo, 'contenido', 'guiones', 'informe'))) guiones.add(f.replace(/\.[a-z]+$/, '')); } catch {}
+  for (const l of (sh('git', ['-C', repo, 'ls-tree', '--name-only', 'origin/main', 'contenido/guiones/informe/']) || '').split('\n')) if (l) guiones.add(path.basename(l).replace(/\.[a-z]+$/, ''));
+  const metricas = new Set();
+  try { for (const f of fs.readdirSync(path.join(repo, 'bitacora', 'metricas'))) { const m = f.match(/^(\d{4}-\d{2}-\d{2})\.md$/); if (m) metricas.add(m[1]); } } catch {}
+  for (const l of (sh('git', ['-C', repo, 'ls-tree', '--name-only', 'origin/main', 'bitacora/metricas/']) || '').split('\n')) { const m = path.basename(l).match(/^(\d{4}-\d{2}-\d{2})\.md$/); if (m) metricas.add(m[1]); }
+  return { slugGh, runs, secretos, guiones, metricas };
+}
+
 // ---------- celdas ----------
 const celda = (estado, texto, detalle) => ({ estado, texto, ...(detalle ? { detalle } : {}) });
 const semaforoRatio = (n, t) => (t === 0 ? 'na' : n === t ? 'ok' : n / t >= 0.5 ? 'warn' : 'bad');
@@ -151,13 +172,13 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
   const sigFecha = { desde: ymd(sigIni + HORA), hasta: ymd(sigFin - HORA) };
 
   const filasTareas = [
-    { id: 'programados', nombre: 'Programados hasta el domingo', ayuda: 'Ranuras de Shorts del calendario, desde ahora hasta el domingo 23:59, que ya tienen video programado en YouTube. Verde solo si están todas.', celdas: {} },
+    { id: 'programados', nombre: 'Programados hasta el domingo', ayuda: 'Ranuras de Shorts del calendario, desde ahora hasta el domingo 23:59, que ya tienen video programado en YouTube. Verde solo si están todas. Entender Chile (noticias del día, sin calendario): verde si la edición de hoy está producida (hay guion del informe de hoy y la cadena Edición diaria cerró en verde hoy); la de mañana no puede existir antes porque se escribe de madrugada.', celdas: {} },
     { id: 'largos', nombre: 'Largos de la semana', ayuda: 'Ranuras de videos largos hasta el domingo con video programado.', celdas: {} },
     { id: 'guiones', nombre: 'Guiones de la próxima semana', ayuda: 'Ranuras de lunes a domingo de la semana siguiente que ya tienen guion (asignado en el plan, programado o disponible en el stock de guiones).', celdas: {} },
     { id: 'aprobados', nombre: 'Guiones aprobados', ayuda: 'Pendiente de activar: aún no existe un registro de aprobación de guiones.', celdas: {} },
     { id: 'metricas', nombre: 'Métricas de hoy', ayuda: 'Existe salida/metricas/<hoy>/metricas.json (las capturas corren a las 08:15).', celdas: {} },
     { id: 'caratulas', nombre: 'Carátulas de largos', ayuda: 'Largos programados que ya tienen miniatura asignada.', celdas: {} },
-    { id: 'colchon', nombre: 'Colchón', ayuda: 'Tiempo hasta la primera ranura sin video programado. Verde desde 4 días, ámbar 2 a 4, rojo menos de 2.', celdas: {} },
+    { id: 'colchon', nombre: 'Colchón', ayuda: 'Tiempo hasta la primera ranura sin video programado. Verde desde 4 días, ámbar 2 a 4, rojo menos de 2. Entender Chile: horas desde la última corrida exitosa de la cadena (verde hasta 26 h, ámbar hasta 50 h).', celdas: {} },
   ];
   const T = Object.fromEntries(filasTareas.map((t) => [t.id, t]));
   const filasPerm = [];
@@ -183,7 +204,9 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
     const ban = repo ? bandeja(repo) : null;
     const pl = repo ? plan(repo) : null;
     const A = cal && ban ? analizarCanal(c, cal, ban, pl, ahora, domMs, sigFin) : null;
-    if (!A) sup[c.slug] = 'Sin contenido/calendario.json ni salida/bandeja: estructura distinta; solo se llenan métricas, repo y workflows.';
+    const ND = !A ? nubeDiaria(repo) : null;
+    if (!A && ND) sup[c.slug] = 'Canal de noticias del día producido en la nube (workflow edicion-diaria.yml); sin calendario ni bandeja local. Criterio propio, explicado en la ayuda de cada fila.';
+    else if (!A) sup[c.slug] = 'Sin contenido/calendario.json ni salida/bandeja: estructura distinta; solo se llenan métricas, repo y workflows.';
 
     // 1 programados
     if (A) {
@@ -210,11 +233,29 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
       for (const id of ['programados', 'largos', 'guiones', 'caratulas', 'colchon']) T[id].celdas[c.slug] = celda('sd', 'sin dato');
     }
     T.aprobados.celdas[c.slug] = celda('na', 'pendiente', 'pendiente de activar');
+    if (ND) {
+      const corridas = (ND.runs ?? []).filter((r) => r.status === 'completed');
+      const exitos = corridas.filter((r) => r.conclusion === 'success');
+      const ultOk = exitos.length ? Date.parse(exitos[0].createdAt) : null;
+      const hoyOk = exitos.some((r) => ymd(Date.parse(r.createdAt)) === hoy);
+      const hayGuionHoy = ND.guiones.has(hoy);
+      const ult = corridas[0];
+      if (!ND.runs) T.programados.celdas[c.slug] = celda('sd', 'sin dato', 'gh no respondió');
+      else if (hayGuionHoy && hoyOk) T.programados.celdas[c.slug] = celda('ok', 'hoy ✓', 'edición de hoy producida; la de mañana se genera de madrugada');
+      else if (hayGuionHoy || hoyOk) T.programados.celdas[c.slug] = celda('warn', 'parcial', hayGuionHoy ? 'hay guion de hoy pero la cadena no cerró en verde' : 'la cadena corrió pero no hay guion de hoy');
+      else T.programados.celdas[c.slug] = celda(p.h < 9 ? 'warn' : 'bad', p.h < 9 ? 'aún no' : 'falta', `sin edición de hoy; último guion: ${[...ND.guiones].sort().at(-1)?.slice(5).split('-').reverse().join('-') ?? '—'}${ult ? `; última corrida: ${ult.conclusion}` : ''}`);
+      T.largos.celdas[c.slug] = celda('na', 'no aplica', 'sin largos: el informe en video está apagado (solo Shorts y Claves)');
+      T.guiones.celdas[c.slug] = celda('na', 'no aplica', 'noticias del día: cada guion se escribe de madrugada');
+      T.caratulas.celdas[c.slug] = celda('na', 'no aplica', 'sin largos programados');
+      if (ultOk) { const h = (ahora - ultOk) / HORA; T.colchon.celdas[c.slug] = celda(h <= 26 ? 'ok' : h <= 50 ? 'warn' : 'bad', h < 1 ? '<1 h' : h < 48 ? `${Math.floor(h)} h` : `${Math.floor(h / 24)} d`, `desde la última corrida OK de la cadena (${ddmmhm(ultOk)})`); }
+      else T.colchon.celdas[c.slug] = celda(ND.runs ? 'bad' : 'sd', ND.runs ? 'sin éxito' : 'sin dato', 'sin corridas exitosas recientes');
+      ND.hoyOk = hoyOk; ND.ult = ult; ND.ultOk = ultOk;
+    }
     // métricas
     const mf = path.join(repo, 'salida', 'metricas', hoy, 'metricas.json');
-    const mHoy = existe(mf);
+    const mHoy = existe(mf) || !!ND?.metricas.has(hoy);
     const mDirs = (() => { try { return fs.readdirSync(path.join(repo, 'salida', 'metricas')).filter((x) => /^\d{4}-\d{2}-\d{2}$/.test(x)).sort(); } catch { return []; } })();
-    const mUlt = mDirs.at(-1) || null;
+    const mUlt = (ND ? [...ND.metricas].sort() : mDirs).at(-1) || null;
     const antes9 = p.h < 9;
     T.metricas.celdas[c.slug] = mHoy ? celda('ok', '✓', `medidas ${hoy.slice(5).split('-').reverse().join('-')}`) : celda(antes9 ? 'warn' : 'bad', antes9 ? 'aún no' : 'falta', mUlt ? `última: ${mUlt.slice(5).split('-').reverse().join('-')}` : 'nunca medidas');
 
@@ -257,6 +298,14 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
     const ultMetMs = mUlt ? chileAMs(+mUlt.slice(0, 4), +mUlt.slice(5, 7), +mUlt.slice(8, 10), 23, 59) : null;
     const atras = ultMetMs == null ? 99 : (ahora - ultMetMs) / DIA;
     const ultima = { estado: atras < 1 ? 'ok' : atras < 2 ? 'warn' : 'bad', texto: `métricas ${mUlt ? ddmmFecha(mUlt) : '—'}`, detalle: [cronMs ? `cron.log ${ddmmhm(cronMs)}` : null, logMs ? `último log ${ddmmhm(logMs)}` : null].filter(Boolean).join(' · ') || 'sin logs' };
+    if (ND) {
+      const S = ND.secretos;
+      const up = S?.has('YT_REFRESH_TOKEN'), an = S?.has('YT_ANALYTICS_REFRESH_TOKEN');
+      token = S ? (up ? { estado: 'ok', texto: 'en la nube', detalle: 'secreto YT_REFRESH_TOKEN en GitHub; no se lee su emisión' } : { estado: 'bad', texto: 'falta', detalle: 'sin YT_REFRESH_TOKEN en GitHub' }) : { estado: 'sd', texto: 'sin dato', detalle: 'gh no respondió' };
+      Object.assign(scopesFila, S ? { estado: up && an ? 'ok' : up ? 'warn' : 'bad', texto: [up ? 'subir' : null, an ? 'analytics' : null].filter(Boolean).join(' · ') || 'ninguno', detalle: 'comentarios: no verificable' } : { estado: 'sd', texto: 'sin dato' });
+      if (ND.runs) { const u = ND.ult; Object.assign(ultima, u ? { estado: ND.hoyOk ? 'ok' : u.conclusion === 'success' ? 'warn' : 'bad', texto: `${u.conclusion === 'success' ? 'OK' : u.conclusion} ${ddmmhm(Date.parse(u.createdAt))}`, detalle: `Edición diaria (${u.event === 'schedule' ? 'cron' : u.event})${ND.ultOk ? ` · último OK ${ddmmhm(ND.ultOk)}` : ''}` } : { estado: 'sd', texto: 'sin corridas', detalle: '' }); }
+      if (nube.estado === 'ok') nube.detalle = 'es su motor: todo corre en GitHub Actions (edicion-diaria.yml)';
+    }
     filasPerm.push({ slug: c.slug, items: { token, scopes: scopesFila, telefono, auditoria, repo: repoEst, nube, ultima } });
 
     // ---------- notificaciones ----------
