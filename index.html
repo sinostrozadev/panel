@@ -128,6 +128,19 @@ table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeri
 .fe2{font-size:12px;color:#9ca3af;margin-top:14px}
 @media(max-width:480px){.tb th,.tb td{padding:9px 8px}.tb tbody th{font-size:12px}}
 @media(max-width:1000px){.layout{grid-template-columns:1fr}.lb{position:static;max-height:none;order:-1}}
+.tr{margin-top:6px;font-size:11px;line-height:1.3;border-radius:8px;padding:4px 7px;display:block}
+.tr small{display:block;color:inherit;opacity:.85;margin-top:1px;font-size:11px}
+.tr i{font-style:normal;opacity:.75}
+.tr.on{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+.tr.sin{background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb}
+.ft{border:1px solid var(--li);border-radius:14px;padding:12px 14px;margin:0 0 20px;background:#f8fafc;font-size:13px}
+.ft.off{color:var(--mu);background:#fff}
+.ft>b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
+.fi{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:6px 0 6px 10px;border-top:1px solid #eef0f3;border-left:3px solid var(--c,#ccc);margin-top:6px}
+.fc{font-weight:600}.fq{color:#374151}.fa{color:var(--mu);font-size:12px;text-align:right}
+.fi small{grid-column:1/-1;color:var(--mu);font-size:12px}
+@media(max-width:560px){.fi{grid-template-columns:1fr}.fa{text-align:left}}
+.gl{border:1px solid var(--li);background:#fff;border-radius:999px;padding:0 14px;height:38px;display:grid;place-items:center;font-size:13px;font-weight:600;color:var(--tx);text-decoration:none;margin-left:auto;margin-right:10px}.gl:hover{border-color:var(--mu)}
 .act{display:flex;gap:10px;align-items:center;margin:-8px 0 28px;font-size:12px;color:var(--mu)}
 .act button#bt{font:inherit;font-size:18px;line-height:1;border:1px solid var(--li);background:#fff;color:var(--tx);border-radius:999px;width:36px;height:36px;cursor:pointer}.act button#bt.gira{animation:gir 1s linear infinite}@keyframes gir{to{transform:rotate(360deg)}}
 .act button:hover{border-color:var(--mu)}.act button:disabled{opacity:.5;cursor:default}
@@ -135,7 +148,7 @@ table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeri
 </head>
 <body>
 <main>
-<div class="top"><h1>Mis canales</h1><button class="bell" id="bell" type="button" aria-label="Notificaciones" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="n" id="bn" hidden></span></button><div class="nl" id="nl"></div></div>
+<div class="top"><h1>Mis canales</h1><a class="gl" href="guiones.html">Guiones</a><button class="bell" id="bell" type="button" aria-label="Notificaciones" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="n" id="bn" hidden></span></button><div class="nl" id="nl"></div></div>
 <div class="franja" id="franja" role="button" tabindex="0"></div>
 <section class="tot" id="tot"></section>
 <div class="act"><button id="bt" type="button" aria-label="Actualizar" title="Actualizar">⟳</button><span id="ed"></span><button class="i" id="inf" type="button" aria-label="Información">i</button></div>
@@ -148,6 +161,7 @@ table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeri
 <script>
 const $=id=>document.getElementById(id);
 const N=new Intl.NumberFormat('es-CL');
+const hm=d=>d.toLocaleTimeString('es-CL',{timeZone:'America/Santiago',hour:'2-digit',minute:'2-digit'});
 const fmt=v=>v==null?null:N.format(Math.round(v*10)/10);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const hora=iso=>{if(!iso)return null;const d=new Date(iso);return isNaN(d)?null:d.toLocaleString('es-CL',{timeZone:'America/Santiago',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})};
@@ -221,6 +235,8 @@ function leaderboard(p){
 }
 /* ---------- tablero, permisos y notificaciones (solo lectura) ---------- */
 const IC={ok:'✓',bad:'✗',warn:'●',na:'–',sd:'–'};
+const dsd=iso=>{if(!iso)return '';const d=new Date(iso);if(isNaN(d))return '';const h=hm(d),f=x=>x.toLocaleDateString('en-CA',{timeZone:'America/Santiago'});return f(d)===f(new Date())?'desde '+h:'desde '+d.toLocaleDateString('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit'})+' '+h};
+const tag=(c,disp)=>{if(!c||(c.estado!=='warn'&&c.estado!=='bad')||!disp)return '';const w=c.trabajo;if(!w||!w.asignado)return `<div class="tr sin">⏸ sin asignar${w&&w.detalle?`<small>${esc(w.detalle)}</small>`:''}</div>`;return `<div class="tr on">🔧 en trabajo · ${esc(w.agente)}${w.desde?` <i>${esc(dsd(w.desde))}</i>`:''}<small>${esc(w.detalle)}</small></div>`};
 const cel=c=>!c?'<div class="cl s-sd"><span class="ic">–</span><div><b>sin dato</b></div></div>':`<div class="cl s-${c.estado}"><span class="ic">${IC[c.estado]||'–'}</span><div><b>${esc(c.texto)}</b>${c.detalle?`<small>${esc(c.detalle)}</small>`:''}</div></div>`;
 function antig(t){const m=Math.round((Date.now()-Date.parse(t.generadoEn))/60000);if(!(m>=0))return '';return m<90?`hace ${m} min`:`hace ${Math.floor(m/60)} h`}
 function tablero(t){
@@ -228,7 +244,11 @@ function tablero(t){
   t.tareas.forEach(x=>{TIP['t_'+x.id]=x.ayuda});
   const stale=(Date.now()-Date.parse(t.generadoEn))>6*36e5;
   const pie=`<div class="fe2">Tablero calculado ${antig(t)} (${esc(hora(t.generadoEn)||'')})${stale?' · <span class="dn">puede estar desactualizado: el PC no lo ha renovado</span>':''}. Semana objetivo: hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</div>`;
-  const tb=`<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const tw=t.trabajo||{disponible:false,items:[]},disp=!!tw.disponible;
+  const cn=Object.fromEntries(t.canales.map(c=>[c.slug,c]));const tn=Object.fromEntries(t.tareas.map(x=>[x.id,x.nombre]));
+  const its=tw.items.filter(w=>w.asignado);
+  const ft=!disp?`<div class="ft off">Trabajo de agentes: sin información de agentes${tw.actualizado?` (último dato ${esc(hora(tw.actualizado)||'')})`:''}.</div>`:`<div class="ft"><b>En trabajo ahora</b>${its.length?its.map(w=>{const c=cn[w.canal]||{nombre:w.canal,color:'#888'};return `<div class="fi" style="--c:${esc(c.color)}"><span class="fc">${esc(c.nombre)}</span><span class="fq">${esc(w.tareas.map(i=>tn[i]||i).join(' · '))}</span><span class="fa">${esc(w.agente)}${w.desde?` · ${esc(dsd(w.desde))}`:''}</span><small>${esc(w.detalle)}</small></div>`}).join(''):'<div class="fi">nadie asignado</div>'}</div>`;
+  const tb=`${ft}<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}${tag(x.celdas[c.slug],disp)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   const ROT={token:'Token YouTube',scopes:'Permisos API',telefono:'Teléfono',auditoria:'Auditoría API',repo:'Repo GitHub',nube:'Render en nube',ultima:'Última corrida'};
   const AY={token:'Estado del token OAuth de YouTube del canal: fecha de vencimiento (caduca a los 7 días mientras la API no esté auditada). Entender Chile lo guarda como secreto en GitHub.',scopes:'Qué puede hacer el token: subir, comentarios y analytics.',telefono:'Verificación por teléfono del canal (habilita miniaturas personalizadas y más cupo de subida).',auditoria:'Auditoría de la API de YouTube: si está aprobada, los tokens dejan de caducar.',repo:'Si el repo del canal está en GitHub y es público (necesario para Actions gratis).',nube:'Si el canal puede renderizar/producir en GitHub Actions.',ultima:'Última corrida de la producción del canal (o de sus métricas si no tiene nube diaria).'};
   Object.keys(AY).forEach(k=>{TIP['p_'+k]=AY[k]});
@@ -246,7 +266,6 @@ function campana(t){
   if(crit.length){fr.classList.add('on');fr.innerHTML=`<b>${crit.length} crítica${crit.length>1?'s':''}</b><span>${esc(crit[0].canal)}: ${esc(crit[0].texto)}</span>`}else fr.classList.remove('on');
 }
 let proximaMs=null,medidoMs=null,INFO='';
-const hm=d=>d.toLocaleTimeString('es-CL',{timeZone:'America/Santiago',hour:'2-digit',minute:'2-digit'});
 let msg='',ultHash=null,ultCambio=null;
 function reloj(){
   const m=medidoMs?Math.max(0,Math.round((Date.now()-medidoMs)/60000)):null;

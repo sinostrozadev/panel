@@ -329,8 +329,19 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
   notis.sort((a, b) => orden[a.severidad] - orden[b.severidad] || (a.limite ? Date.parse(a.limite) : Infinity) - (b.limite ? Date.parse(b.limite) : Infinity));
   notis.forEach((n, i) => { n.id = `${n.tipo || 'n'}-${n.slug || 'global'}`; });
 
+  // ---------- trabajo de agentes (~/.claude/canales/trabajo.json; se copia lo necesario, sin rutas) ----------
+  const tr = leer(path.join(process.env.HOME || '', '.claude', 'canales', 'trabajo.json'));
+  const trMs = tr?.actualizado ? Date.parse(tr.actualizado) : NaN;
+  const trVivo = Array.isArray(tr?.trabajos) && trMs && (ahora - trMs) <= 12 * HORA;
+  const trabajo = trVivo ? { disponible: true, actualizado: new Date(trMs).toISOString(), items: tr.trabajos.map((w) => ({ canal: w.canal, tareas: w.tareas || [], agente: String(w.agente || ''), detalle: String(w.detalle || ''), desde: w.desde || null, asignado: !!w.agente && !/^sin asignar$/i.test(String(w.agente).trim()) })) } : { disponible: false, actualizado: tr?.actualizado || null, items: [] };
+  for (const f of filasTareas) for (const [slug, cel] of Object.entries(f.celdas)) {
+    if (cel.estado !== 'warn' && cel.estado !== 'bad') continue;
+    const w = trabajo.items.find((x) => x.canal === slug && x.tareas.includes(f.id));
+    if (w) cel.trabajo = { agente: w.agente, detalle: w.detalle, desde: w.desde, asignado: w.asignado };
+  }
   const out = {
     version: 1,
+    trabajo,
     generadoEn: new Date(ahora).toISOString(),
     zona: ZONA,
     semana: { hasta: domFecha, siguiente: sigFecha },
