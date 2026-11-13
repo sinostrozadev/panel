@@ -17,7 +17,7 @@ const TIPOS = {
   '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8',
 };
 // Solo se sirve lo que es del sitio (nada de scripts/, .git, etc.).
-const PERMITIDO = /^\/(index\.html|app\.js|estilo\.css|data\/[\w.\-/]+|docs\/capturas\/[\w.\-]+)$/;
+const PERMITIDO = /^\/(index\.html|guiones\.html|guiones\.js|guiones\.css|app\.js|estilo\.css|data\/[\w.\-/]+|docs\/capturas\/[\w.\-]+)$/;
 
 let agregando = null;
 async function refrescarSiViejo() {

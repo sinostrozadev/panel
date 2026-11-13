@@ -17,7 +17,7 @@ if ! URL="$(git remote get-url origin 2>/dev/null)"; then
 fi
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
-cp index.html guiones.html "$TMP/"
+cp index.html guiones.html guiones.js guiones.css "$TMP/"
 cp -r avatares "$TMP/avatares"
 node scripts/agregar.mjs --salida "$TMP/data" --publico
 # la página nueva solo usa resumen.json: no se publica el resto

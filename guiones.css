@@ -1,0 +1,29 @@
+/* Lista y lector de guiones (compartido por guiones.html y el diálogo del panel). Todo bajo .gz */
+.gz{--li:#e5e7eb;--mu:#6b7280;--tx:#111827;font-size:17px;line-height:1.5;color:var(--tx)}
+.gz .gz-cnt{font-size:13px;color:var(--mu);margin:0 0 14px}
+.gz .gz-dia{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:22px 0 8px}
+.gz .gz-dia:first-of-type{margin-top:6px}
+.gz .gz-it{display:block;width:100%;text-align:left;border:1px solid var(--li);border-left:5px solid var(--c,#888);border-radius:14px;background:#fff;padding:14px 16px;margin:0 0 10px;font:inherit;cursor:pointer;color:inherit}
+.gz .gz-it:hover{border-color:var(--mu);border-left-color:var(--c,#888)}
+.gz .gz-it b{display:block;font-size:17px;line-height:1.3;font-weight:600}
+.gz .gz-meta{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13px;color:var(--mu);margin-top:6px}
+.gz .gz-bd{display:inline-block;border-radius:999px;padding:1px 9px;font-size:12px;font-weight:600;background:#f3f4f6;color:#374151}
+.gz .gz-bd.programado{background:#dcfce7;color:#166534}.gz .gz-bd.publicado{background:#e0e7ff;color:#3730a3}.gz .gz-bd.renderizado{background:#fef3c7;color:#92400e}
+.gz .gz-bd.privado{background:#fae8ff;color:#86198f}.gz .gz-bd.sin-asignar{background:#fee2e2;color:#991b1b}.gz .gz-bd.guion-del-dia{background:#e0f2fe;color:#075985}
+.gz .gz-vacio{padding:30px 0;color:var(--mu);text-align:center}
+/* lector */
+.gz .gz-rb{position:sticky;top:0;z-index:2;background:#fffe;backdrop-filter:blur(6px);display:flex;gap:8px;align-items:center;padding:10px 0;border-bottom:1px solid var(--li);margin-bottom:14px}
+.gz .gz-rb button{font:inherit;font-size:14px;border:1px solid var(--li);background:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;color:var(--tx)}
+.gz .gz-rb button:disabled{opacity:.35;cursor:default}.gz .gz-rb .gz-sp{flex:1}.gz .gz-rb small{color:var(--mu)}
+.gz h2{font-size:26px;line-height:1.25;margin:6px 0 8px}
+.gz h3{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);margin:28px 0 8px;font-weight:600}
+.gz p{font-size:19px;line-height:1.6;margin:0 0 14px}
+.gz p.gz-m{font-size:13px;color:var(--mu);margin:-6px 0 10px;font-family:ui-monospace,monospace}
+.gz .gz-fk{display:grid;grid-template-columns:1fr;gap:2px;padding:9px 0;border-top:1px solid #f1f2f4}
+.gz .gz-fk span{font-size:12px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em}
+.gz .gz-fk div{font-size:17px;white-space:pre-wrap}
+.gz .gz-ap{margin:22px 0 4px;border:1px dashed #cbd5e1;border-radius:12px;padding:10px 14px;font-size:14px;color:var(--mu);background:#f8fafc}
+.gz .gz-ap b{color:#374151}
+.gz .gz-src{font-size:14px;color:#374151;margin:0 0 6px;word-break:break-word}
+.gz a{color:#1d4ed8}
+@media(max-width:560px){.gz h2{font-size:22px}.gz p{font-size:18px}}

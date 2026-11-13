@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Canales</title>
+<link rel="stylesheet" href="guiones.css">
 <style>
 :root{--tx:#111827;--mu:#6b7280;--li:#e5e7eb;--up:#15803d;--dn:#b91c1c}
 *{box-sizing:border-box}
@@ -133,13 +134,6 @@ table.tb{border-collapse:collapse;width:100%;min-width:560px;font-variant-numeri
 .tr i{font-style:normal;opacity:.75}
 .tr.on{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
 .tr.sin{background:#f3f4f6;color:#6b7280;border:1px solid #e5e7eb}
-.ft{border:1px solid var(--li);border-radius:14px;padding:12px 14px;margin:0 0 20px;background:#f8fafc;font-size:13px}
-.ft.off{color:var(--mu);background:#fff}
-.ft>b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:6px}
-.fi{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:2px 10px;padding:6px 0 6px 10px;border-top:1px solid #eef0f3;border-left:3px solid var(--c,#ccc);margin-top:6px}
-.fc{font-weight:600}.fq{color:#374151}.fa{color:var(--mu);font-size:12px;text-align:right}
-.fi small{grid-column:1/-1;color:var(--mu);font-size:12px}
-@media(max-width:560px){.fi{grid-template-columns:1fr}.fa{text-align:left}}
 .nav{position:sticky;top:0;z-index:30;background:#fffe;backdrop-filter:blur(8px);border-bottom:1px solid var(--li)}
 .nav div{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;gap:4px;align-items:center}
 .nav a{padding:13px 14px;font-size:14px;font-weight:600;color:var(--mu);text-decoration:none;border-bottom:3px solid transparent}
@@ -166,12 +160,44 @@ main{padding-top:28px!important}
 @media(prefers-reduced-motion:reduce){.wk.on{animation:pulso 2.4s ease-in-out infinite}}
 @keyframes pulso{50%{opacity:.35}}
 #pop{white-space:pre-line}
-.ft summary{cursor:pointer;list-style:none;font-weight:600;color:#1d4ed8}.ft summary::-webkit-details-marker{display:none}
-.ft summary::after{content:' ▾';color:var(--mu)}.ft[open] summary::after{content:' ▴'}
 
 .act{display:flex;gap:10px;align-items:center;margin:-8px 0 28px;font-size:12px;color:var(--mu)}
 .act button#bt{font:inherit;font-size:18px;line-height:1;border:1px solid var(--li);background:#fff;color:var(--tx);border-radius:999px;width:36px;height:36px;cursor:pointer}.act button#bt.gira{animation:gir 1s linear infinite}@keyframes gir{to{transform:rotate(360deg)}}
 .act button:hover{border-color:var(--mu)}.act button:disabled{opacity:.5;cursor:default}
+/* videos recientes */
+.uv{margin-top:20px;padding-top:16px;border-top:1px solid var(--li)}
+.uv h3{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+.vr{display:grid;grid-template-columns:72px minmax(0,1fr);gap:4px 10px;align-items:start;padding:7px 0;border-top:1px solid #f1f2f4}
+.vr:first-of-type{border-top:0}
+.vr img{width:72px;height:41px;object-fit:cover;border-radius:6px;background:#f3f4f6;display:block}
+.vt{display:block;color:var(--tx);text-decoration:none;font-size:13px;line-height:1.3;font-weight:600;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.vt:hover{text-decoration:underline}
+.vs{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:12px;color:var(--mu);margin-top:3px;font-variant-numeric:tabular-nums}
+.vs span{white-space:nowrap}.vs .vf{margin-left:auto;color:#9ca3af}
+/* comentarios: botón del contador */
+.cbtn{border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:6px}
+.cbtn b{text-decoration:underline dotted #9ca3af;text-underline-offset:5px}.cbtn:hover b{color:var(--c)}
+.cbtn em{font-style:normal;font-size:16px;margin-left:4px;vertical-align:3px}
+.cbtn:focus-visible,.gb:focus-visible,.mx:focus-visible{outline:2px solid #94a3b8;outline-offset:2px}
+/* diálogo único */
+#mod{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+#mod[hidden]{display:none}
+.mbk{position:absolute;inset:0;background:rgba(17,24,39,.5)}
+.mbox{position:relative;background:#fff;width:min(720px,100%);max-height:min(88vh,100%);max-height:min(88dvh,100%);border-radius:18px;border-top:4px solid var(--c,#888);box-shadow:0 24px 70px rgba(0,0,0,.3);display:flex;flex-direction:column;outline:0}
+.mh{display:flex;align-items:center;gap:10px;padding:14px 18px 10px;border-bottom:1px solid var(--li)}
+.mh h2{margin:0;font-size:17px;line-height:1.25;flex:1;min-width:0}
+.mh small{display:block;font-size:12px;font-weight:400;color:var(--mu);margin-top:2px}
+.mx{flex:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--li);background:#fff;font-size:22px;line-height:1;cursor:pointer;color:var(--tx)}.mx:hover{border-color:var(--mu)}
+.mbd{overflow:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:6px 18px 22px;flex:1}
+body.mod-on{overflow:hidden}
+.cm{padding:12px 0;border-top:1px solid #f1f2f4}.cm:first-child{border-top:0}
+.cmh{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px;font-size:13px}.cmh b{font-size:14px}.cmh time{color:var(--mu);margin-left:auto;font-size:12px}
+.cm p{margin:4px 0 6px;font-size:15px;line-height:1.45;white-space:pre-wrap;overflow-wrap:anywhere}
+.cmf{font-size:12px;color:var(--mu)}.cmf a{color:#1d4ed8;text-decoration:none}.cmf a:hover{text-decoration:underline}
+.cc{background:var(--c,#888);color:#fff;border-radius:999px;padding:0 7px;font-size:11px;font-weight:600}
+.cr{margin:8px 0 0 10px;padding:6px 10px;border-left:3px solid var(--c,#888);background:#f8fafc;border-radius:0 8px 8px 0;font-size:13px}.cr p{font-size:14px;margin:2px 0 0}.cr small{color:var(--mu);font-size:12px}
+.mvac{padding:28px 0;text-align:center;color:var(--mu);font-size:14px}
+@media(max-width:560px){#mod{padding:0;align-items:flex-end}.mbox{width:100%;max-height:92vh;max-height:92dvh;border-radius:18px 18px 0 0}.mbd{padding:6px 14px 28px}}
 </style>
 </head>
 <body>
@@ -187,6 +213,8 @@ main{padding-top:28px!important}
 <footer id="pie"></footer>
 <div id="pop" role="tooltip"></div>
 </main>
+<div id="mod" hidden><div class="mbk" data-cerrar></div><div class="mbox" role="dialog" aria-modal="true" aria-labelledby="mt" tabindex="-1"><header class="mh"><h2 id="mt"></h2><button class="mx" type="button" data-cerrar aria-label="Cerrar">&times;</button></header><div class="mbd" id="mb"></div></div></div>
+<script src="guiones.js"></script>
 <script>
 const $=id=>document.getElementById(id);
 const N=new Intl.NumberFormat('es-CL');
@@ -203,7 +231,7 @@ function big(v,label,tip){
   return `<div><b>${v==null?'–':fmt(v)}</b><span>${label} ${ib(tip)}</span></div>`;
 }
 function viejo(c){const t=Date.parse(c.medidoEn||c.fechaDatos);if(!t)return '';const d=Math.floor((Date.now()-t)/864e5);return d>=2?` · <span class="dn">hace ${d} días</span>`:''}
-let TAB=null;
+let TAB=null,RES=null;
 const VK='panel.versus';
 const versusAbierto=()=>{try{return localStorage.getItem(VK)==='1'}catch(e){return false}};
 function urg(slug){
@@ -215,6 +243,15 @@ function urg(slug){
 function urgLista(slug){
   const ns=((TAB&&TAB.notificaciones)||[]).filter(n=>n.slug===slug);
   return ns.length?`<div class="ul" id="ul-${esc(slug)}">${ns.map(n=>`<div>${n.severidad==='critica'?'🔴':'🟠'} ${esc(n.texto)}${n.limiteTxt?`<small>hasta ${esc(n.limiteTxt)}</small>`:''}</div>`).join('')}</div>`:'';
+}
+let VID={};
+const rel=iso=>{const ms=Date.now()-Date.parse(iso);if(!Number.isFinite(ms))return '';const m=Math.round(ms/6e4);if(m<1)return 'recién';if(m<60)return `hace ${m} min`;const h=Math.round(m/60);if(h<48)return `hace ${h} h`;const d=Math.round(h/24);return d<60?`hace ${d} días`:`hace ${Math.round(d/30)} meses`};
+const dcorta=iso=>new Date(iso).toLocaleDateString('es-CL',{timeZone:'America/Santiago',day:'numeric',month:'short'});
+const ytv=id=>'https://www.youtube.com/watch?v='+encodeURIComponent(id);
+function videos(c){
+  const v=VID[c.slug];if(!v||!v.items||!v.items.length)return '';
+  const sg=(x)=>x.subsGanados!=null?`<span title="Suscriptores ganados por este video">${x.subsGanados>0?'+':''}${fmt(x.subsGanados)} subs</span>`:`<span title="Suscriptores ganados">– subs ${ib('v_subs_na')}</span>`;
+  return `<div class="uv"><h3>Últimos videos publicados</h3>${v.items.map(x=>`<div class="vr"><a href="${esc(ytv(x.id))}" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="https://i.ytimg.com/vi/${encodeURIComponent(x.id)}/mqdefault.jpg" alt="" loading="lazy" referrerpolicy="no-referrer"></a><div><a class="vt" href="${esc(ytv(x.id))}" target="_blank" rel="noopener" title="${esc(x.titulo)}">${esc(x.titulo)}</a><div class="vs"><span title="Vistas">👁 ${x.vistas==null?'–':fmt(x.vistas)}</span><span title="Me gusta">👍 ${x.likes==null?'–':fmt(x.likes)}</span><span title="Comentarios">💬 ${x.comentarios==null?'–':fmt(x.comentarios)}</span>${sg(x)}<span class="vf">${esc(dcorta(x.publicadoEn))}</span></div></div></div>`).join('')}</div>`;
 }
 function card(c){
   const dias=v=>v&&v.dias>1?` <i>(${v.dias} d)</i>`:'';
@@ -232,11 +269,12 @@ function card(c){
     ${big(c.subs,'Suscriptores','m_subs')}
     ${big(c.vistas,'Vistas totales','m_vistas')}
     ${big(c.likes,'Me gusta totales','m_likes')}
-    ${big(c.comentarios,'Comentarios totales','m_com')}
+    <div><button class="cbtn" type="button" data-com="${esc(c.slug)}" aria-haspopup="dialog" aria-label="Ver los últimos comentarios de ${esc(c.nombre)}"><b>${c.comentarios==null?'–':fmt(c.comentarios)}<em aria-hidden="true">💬</em></b></button><span>Comentarios totales ${ib('m_com')}</span></div>
   </div>
   ${hvTxt}
-  <div class="cf">${urg(c.slug)}<a class="gb" href="guiones.html#${esc(c.slug)}">Guiones</a></div>
+  <div class="cf">${urg(c.slug)}<button class="gb" type="button" data-gz="${esc(c.slug)}" aria-haspopup="dialog" style="background:#fff;cursor:pointer;font-family:inherit">Guiones</button></div>
   ${urgLista(c.slug)}
+  ${videos(c)}
   ${hayVar?`<button class="vm" type="button" aria-expanded="${ab}">${ab?'ocultar variaciones':'ver más: variaciones'}</button>
   <div class="var${ab?' on':''}"><span class="h"></span><span class="h">Suscriptores</span><span class="h">Vistas</span>
     ${c.varSubs?.ayer||c.varVistas?.ayer?`<i>vs ayer</i><strong>${delta(c.varSubs?.ayer)}</strong><strong>${delta(c.varVistas?.ayer)}</strong>`:''}
@@ -249,7 +287,8 @@ const TIP={
  m_subs:'Suscriptores: personas que siguen el canal ahora mismo.',
  m_vistas:'Vistas totales: todas las reproducciones de todos los videos y Shorts del canal desde su creación.',
  m_likes:'Me gusta totales: suma de los me gusta de todos los videos y Shorts públicos del canal.',
- m_com:'Comentarios totales: suma de los comentarios de todos los videos y Shorts públicos del canal.',
+ m_com:'Comentarios totales: suma de los comentarios de todos los videos y Shorts públicos del canal. Toca el número para ver los últimos.',
+ v_subs_na:'Suscriptores ganados por video: solo se miden con acceso a YouTube Analytics del canal, y este canal aún no lo tiene en el panel.',
  hv:'Horas válidas para monetizar: horas vistas en los últimos 12 meses solo de videos LARGOS públicos (los Shorts no cuentan). YouTube pide 4.000 para entrar al programa de socios. Medido con YouTube Analytics.',
  hv_est:'Horas válidas para monetizar (estimadas): horas de videos largos de los últimos 12 meses calculadas por el repo del canal como vistas × duración × 40 % de retención. YouTube pide 4.000.',
  hv_na:'Sin dato: este canal aún no tiene acceso a YouTube Analytics, así que no se pueden medir las horas de videos largos (las 4.000 h no cuentan Shorts).',
@@ -302,10 +341,7 @@ function tablero(t){
   const stale=(Date.now()-Date.parse(t.generadoEn))>6*36e5;
   const pie=`<div class="fe2">Tablero calculado ${antig(t)} (${esc(hora(t.generadoEn)||'')})${stale?' · <span class="dn">puede estar desactualizado: el PC no lo ha renovado</span>':''}. Semana objetivo: hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</div>`;
   const tw=t.trabajo||{disponible:false,items:[]},disp=!!tw.disponible;
-  const cn=Object.fromEntries(t.canales.map(c=>[c.slug,c]));const tn=Object.fromEntries(t.tareas.map(x=>[x.id,x.nombre]));
-  const its=tw.items.filter(w=>w.asignado);
-  const ft=!disp?`<div class="ft off">Trabajo de agentes: sin información de agentes${tw.actualizado?` (último dato ${esc(hora(tw.actualizado)||'')})`:''}.</div>`:`<details class="ft"${FT_OPEN?' open':''}><summary>🔧 ${its.length} trabajo${its.length===1?'':'s'} en curso</summary>${its.length?its.map(w=>{const c=cn[w.canal]||{nombre:w.canal,color:'#888'};return `<div class="fi" style="--c:${esc(c.color)}"><span class="fc">${esc(c.nombre)}</span><span class="fq">${esc(w.tareas.map(i=>tn[i]||i).join(' · '))}</span><span class="fa">${esc(w.agente)}${w.desde?` · ${esc(dsd(w.desde))}`:''}</span><small>${esc(w.detalle)}</small></div>`}).join(''):'<div class="fi">nadie asignado</div>'}</details>`;
-  const tb=`${ft}<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}${tag(x.celdas[c.slug],disp)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    const tb=`<h2>Tareas por canal</h2><p class="sub">Solo lectura. Semana objetivo hasta el domingo ${esc(t.semana.hasta.slice(8)+'-'+t.semana.hasta.slice(5,7))}.</p><div class="tw"><table class="tb"><thead><tr><th></th>${t.canales.map(c=>`<th style="--c:${esc(c.color)}">${esc(c.nombre)}</th>`).join('')}</tr></thead><tbody>${t.tareas.map(x=>`<tr><th>${esc(x.nombre)} ${ib('t_'+x.id)}</th>${t.canales.map(c=>`<td>${cel(x.celdas[c.slug])}${tag(x.celdas[c.slug],disp)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   const ROT={token:'Token YouTube',scopes:'Permisos API',telefono:'Teléfono',auditoria:'Auditoría API',repo:'Repo GitHub',nube:'Render en nube',ultima:'Última corrida'};
   const AY={token:'Estado del token OAuth de YouTube del canal: fecha de vencimiento (caduca a los 7 días mientras la API no esté auditada). Entender Chile lo guarda como secreto en GitHub.',scopes:'Qué puede hacer el token: subir, comentarios y analytics.',telefono:'Verificación por teléfono del canal (habilita miniaturas personalizadas y más cupo de subida).',auditoria:'Auditoría de la API de YouTube: si está aprobada, los tokens dejan de caducar.',repo:'Si el repo del canal está en GitHub y es público (necesario para Actions gratis).',nube:'Si el canal puede renderizar/producir en GitHub Actions.',ultima:'Última corrida de la producción del canal (o de sus métricas si no tiene nube diaria).'};
   Object.keys(AY).forEach(k=>{TIP['p_'+k]=AY[k]});
@@ -322,7 +358,6 @@ function campana(t){
   nl.innerHTML=`<h3>Requiere tu mano (${ns.length})</h3>`+(ns.length?ns.map(n=>`<div class="ni ${n.severidad}"><span class="d"></span><div><b>${esc(n.canal)}:</b> ${esc(n.texto)}${lim(n)}</div></div>`).join(''):'<div class="ni vacio">Nada pendiente.</div>');
   if(crit.length){fr.classList.add('on');fr.innerHTML=`<b>${crit.length} crítica${crit.length>1?'s':''}</b><span>${esc(crit[0].canal)}: ${esc(crit[0].texto)}</span>`}else fr.classList.remove('on');
 }
-let FT_OPEN=false;
 let proximaMs=null,medidoMs=null,INFO='';
 let msg='',ultHash=null,ultCambio=null;
 function reloj(){
@@ -336,13 +371,14 @@ async function cargar(){
   try{
     const j=u=>fetch(u+'?t='+Date.now(),{cache:'no-store'}).then(x=>{if(!x.ok)throw new Error(u+' '+x.status);return x.json()});
     const [r,p,a,tab]=await Promise.all([j('data/resumen.json'),j('data/puntajes.json').catch(()=>null),j('data/adelantamientos.json').catch(()=>null),j('data/tablero.json').catch(()=>null)]);
-    const h=(tab&&tab.generadoEn||'')+(r.generadoEn||'')+'|'+(p&&p.generadoEn||'')+'|'+((r.actualizacion||{}).medidoEn||'');
+    await Promise.all(r.canales.map(async c=>{const v=await j('data/videos/'+c.slug+'.json').catch(()=>null);if(v)VID[c.slug]=v}));
+    const h=(tab&&tab.generadoEn||'')+Object.values(VID).map(v=>v.medidoEn).join(',')+(r.generadoEn||'')+'|'+(p&&p.generadoEn||'')+'|'+((r.actualizacion||{}).medidoEn||'');
     const igual=ultHash===h;
     const t=r.totales;
     $('tot').innerHTML=[[t.subs,'suscriptores'],[t.vistas,'vistas'],[t.videos,'videos'],[t.canales,'canales']].map(([v,l])=>`<div><b>${fmt(v)}</b><span>${l}</span></div>`).join('');
     const orden=p?p.tabla.map(x=>x.slug):[];
     const cs=[...r.canales].sort((x,y)=>{const i=orden.indexOf(x.slug),j2=orden.indexOf(y.slug);return (i<0?99:i)-(j2<0?99:j2)});
-    TAB=tab;$('grid').innerHTML=cs.map(card).join('');
+    RES=r;TAB=tab;$('grid').innerHTML=cs.map(card).join('');
     $('lb').innerHTML=p?leaderboard(p):'<div class="lbh"><h2>Clasificación</h2></div>';
     const [h1,h2]=tablero(tab);$('tab').innerHTML=h1;$('per').innerHTML=h2;campana(tab);
     const ac=r.actualizacion||{};
@@ -356,8 +392,59 @@ async function cargar(){
   setTimeout(()=>{bt.disabled=false;bt.classList.remove('gira')},Math.max(0,700-(Date.now()-ini)));
 }
 const pop=$('pop');
+/* ---------- diálogo único (comentarios, guiones): foco atrapado, aria-modal, Esc, clic fuera ---------- */
+const Modal=(()=>{
+  const root=$('mod'),box=root.querySelector('.mbox'),body=$('mb'),tit=$('mt');
+  const fondo=()=>[document.querySelector('main'),document.querySelector('.nav')].filter(Boolean);
+  let prev=null,alCerrar=null;
+  const foco=()=>[...box.querySelectorAll('a[href],button:not([disabled]),input,[tabindex]:not([tabindex="-1"])')].filter(e=>e.offsetParent!==null||e===document.activeElement);
+  function abrir({titulo,sub,color,html,cerrado}){
+    if(root.hidden)prev=document.activeElement;
+    tit.innerHTML=esc(titulo)+(sub?`<small>${esc(sub)}</small>`:'');
+    box.style.setProperty('--c',color||'#888');body.innerHTML=html||'';alCerrar=cerrado||null;
+    root.hidden=false;document.body.classList.add('mod-on');fondo().forEach(e=>e.inert=true);
+    pop.style.display='none';body.scrollTop=0;box.focus();return body;
+  }
+  function cerrar(){
+    if(root.hidden)return;root.hidden=true;document.body.classList.remove('mod-on');fondo().forEach(e=>e.inert=false);
+    body.innerHTML='';const f=alCerrar;alCerrar=null;if(f)f();
+    if(prev&&prev.isConnected&&prev.focus)prev.focus();prev=null;
+  }
+  root.addEventListener('click',e=>{if(e.target.closest('[data-cerrar]'))cerrar()});
+  document.addEventListener('keydown',e=>{
+    if(root.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();e.stopPropagation();cerrar();return}
+    if(e.key==='Tab'){const f=foco();if(!f.length){e.preventDefault();box.focus();return}
+      const a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&(document.activeElement===a||document.activeElement===box)){e.preventDefault();z.focus()}
+      else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  },true);
+  return {abrir,cerrar,cuerpo:body};
+})();
+const nombreDe=slug=>{const c=(RES&&RES.canales||[]).find(x=>x.slug===slug);return c||{nombre:slug,color:'#888'}};
+async function verComentarios(slug){
+  const c=nombreDe(slug);
+  Modal.abrir({titulo:'Comentarios · '+c.nombre,color:c.color,html:'<div class="mvac">Cargando…</div>'});
+  try{
+    const d=await fetch(`data/comentarios/${encodeURIComponent(slug)}.json?t=${Date.now()}`,{cache:'no-store'}).then(x=>{if(!x.ok)throw new Error(x.status);return x.json()});
+    const it=d.items||[];
+    Modal.abrir({titulo:'Comentarios · '+c.nombre,sub:it.length?`Últimos ${it.length}, del más reciente al más antiguo · medido ${rel(d.medidoEn)}`:'',color:c.color,
+      html:it.length?it.map(x=>`<article class="cm"><div class="cmh"><b>${esc(x.autor)}</b>${x.delCanal?'<span class="cc">canal</span>':''}<time datetime="${esc(x.fecha)}" title="${esc(hora(x.fecha)||'')}">${esc(rel(x.fecha))}</time></div><p>${esc(x.texto)}</p><div class="cmf">${x.videoId?`en <a href="${esc(ytv(x.videoId))}" target="_blank" rel="noopener">${esc(x.videoTitulo||'ver el video')}</a> · `:''}👍 ${fmt(x.likes||0)}${x.respuestas?` · ↩ ${fmt(x.respuestas)} respuesta${x.respuestas>1?'s':''}`:''}</div>${x.respuestaCanal?`<div class="cr"><small>↩ Respuesta del canal · ${esc(rel(x.respuestaCanal.fecha))}</small><p>${esc(x.respuestaCanal.texto)}</p></div>`:''}</article>`).join(''):'<div class="mvac">Este canal aún no tiene comentarios públicos.</div>'});
+  }catch(e){Modal.abrir({titulo:'Comentarios · '+c.nombre,color:c.color,html:'<div class="mvac">No se pudieron cargar los comentarios. Reintenta en unos minutos.</div>'})}
+}
+async function verGuiones(slug){
+  const c=nombreDe(slug);
+  const host=Modal.abrir({titulo:'Guiones · '+c.nombre,color:c.color,html:'<div class="mvac">Cargando…</div>'});
+  try{
+    const idx=await Guiones.j('data/guiones/index.json');
+    if(!idx.canales.some(x=>x.slug===slug))throw new Error('sin guiones');
+    await Guiones.montar(host,{slug,idx,scroller:host});
+  }catch(e){host.innerHTML='<div class="mvac">No se pudieron cargar los guiones.</div>'}
+}
 function abre(b,txt){pop.textContent=txt;pop.style.display='block';const r=b.getBoundingClientRect(),w=pop.offsetWidth;pop.style.left=Math.max(8,Math.min(innerWidth-w-8,r.left+scrollX-w/2+8))+'px';pop.style.top=(r.bottom+scrollY+8)+'px';pop._b=b}
 document.addEventListener('click',e=>{
+  const bc=e.target.closest('[data-com]');if(bc){verComentarios(bc.dataset.com);return}
+  const bg=e.target.closest('[data-gz]');if(bg){verGuiones(bg.dataset.gz);return}
   const bl=e.target.closest('#bell,#franja');
   if(bl){const o=$('nl').classList.toggle('open');$('bell').setAttribute('aria-expanded',o);pop.style.display='none';return}
   if(!e.target.closest('#nl')){$('nl').classList.remove('open');$('bell').setAttribute('aria-expanded','false')}
@@ -365,7 +452,6 @@ document.addEventListener('click',e=>{
   if(ub){const l=document.getElementById('ul-'+ub.dataset.u);if(l){const o=l.classList.toggle('on');ub.setAttribute('aria-expanded',o)}pop.style.display='none';return}
   const vm=e.target.closest('.vm');
   if(vm){const v=vm.nextElementSibling,o=v.classList.toggle('on');vm.textContent=o?'ocultar variaciones':'ver más: variaciones';vm.setAttribute('aria-expanded',o);try{localStorage.setItem(VK,o?'1':'0')}catch(x){}return}
-  const sm=e.target.closest('.ft summary');if(sm){setTimeout(()=>{FT_OPEN=!!document.querySelector('.ft[open]')},0);return}
   const b=e.target.closest('.i,.wk');
   if(b){e.stopPropagation();e.preventDefault();if(pop.style.display==='block'&&pop._b===b){pop.style.display='none';return}abre(b,b.id==='inf'?INFO:TIP[b.dataset.tip]||'');return}
   pop.style.display='none';

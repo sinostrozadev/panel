@@ -25,6 +25,7 @@ jobs:
           if git fetch -q origin gh-pages; then
             for f in historial resumen puntajes tablero; do git show FETCH_HEAD:data/$f.json > data/$f.json 2>/dev/null || rm -f data/$f.json; done
             git show FETCH_HEAD:CNAME > "$RUNNER_TEMP/CNAME" 2>/dev/null || true
+            for d in comentarios videos; do mkdir -p data/$d; git archive FETCH_HEAD data/$d 2>/dev/null | tar -x 2>/dev/null || true; done
             mkdir -p "$RUNNER_TEMP/prev"; git archive FETCH_HEAD data/guiones | tar -x -C "$RUNNER_TEMP/prev" 2>/dev/null || true
           fi
       - name: Medir y recalcular
@@ -38,7 +39,7 @@ jobs:
           set -e
           SITE="$RUNNER_TEMP/site"
           mkdir -p "$SITE/data"
-          cp index.html guiones.html "$SITE/"; [ -d "$RUNNER_TEMP/prev/data/guiones" ] && cp -r "$RUNNER_TEMP/prev/data/guiones" "$SITE/data/guiones" || true; cp -r avatares "$SITE/avatares"
+          cp index.html guiones.html guiones.js guiones.css "$SITE/"; for d in comentarios videos; do [ -d data/$d ] && cp -r data/$d "$SITE/data/$d"; done; [ -d "$RUNNER_TEMP/prev/data/guiones" ] && cp -r "$RUNNER_TEMP/prev/data/guiones" "$SITE/data/guiones" || true; cp -r avatares "$SITE/avatares"
           for f in resumen historial puntajes adelantamientos tablero; do [ -f data/$f.json ] && cp data/$f.json "$SITE/data/"; done
           touch "$SITE/.nojekyll"
           [ -f "$RUNNER_TEMP/CNAME" ] && cp "$RUNNER_TEMP/CNAME" "$SITE/CNAME" || true

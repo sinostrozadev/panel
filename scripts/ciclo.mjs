@@ -13,6 +13,7 @@ import crypto from 'node:crypto';
 import { spawnSync, execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { cargarCriterios, tablaEn } from './puntaje.mjs';
+import { medirComunidad, copiarComunidad } from './comunidad.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(RAIZ, 'data');
@@ -120,6 +121,7 @@ export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey
       try { Object.assign(canales[id], await totalesDeVideos(id, cab, apiKey)); } catch (e) { avisos.push(`totales ${id}: ${e.message}`); }
     }
     // horas válidas para monetizar: cada token mide SU canal (channels.mine); sin token, se conserva el último valor
+    const tokens = new Map();
     if (!apiKey) {
       const repos = [...new Set([...REPOS_TOKEN, ...listaCanales().map((c) => c.repo).filter(Boolean)])];
       for (const repo of repos) {
@@ -128,11 +130,17 @@ export async function refrescarVivo({ forzar = false, ahora = Date.now(), apiKey
           const m = await fetch('https://www.googleapis.com/youtube/v3/channels?part=id&mine=true', { headers: { Authorization: 'Bearer ' + t }, signal: AbortSignal.timeout(20_000) });
           const mid = (await m.json()).items?.[0]?.id;
           if (!mid || !canales[mid]) continue;
+          tokens.set(mid, t);
           canales[mid].horasValidas = await horasValidasAnalytics(t, ahora);
           canales[mid].horasValidasEn = new Date(ahora).toISOString();
         } catch (e) { avisos.push(`horas ${path.basename(repo)}: ${e.message}`); }
       }
     }
+    // comentarios recientes y últimos 3 videos (diálogos del panel); si falla un canal se conserva su archivo anterior
+    try {
+      const inf = await medirComunidad({ lista: listaCanales(), dir: DATA, tokens, key: apiKey, ahora });
+      for (const [s, o] of Object.entries(inf)) for (const [k, v] of Object.entries(o)) if (k.startsWith('error')) avisos.push(`${s} ${k}: ${v}`);
+    } catch (e) { avisos.push('comunidad: ' + e.message); }
     for (const [id, v] of Object.entries(canales)) vivo.canales[id] = { ...(vivo.canales[id] ?? {}), ...v };
     if (avisos.length) vivo.avisos = avisos.slice(0, 5); else delete vivo.avisos;
     vivo.medidoEn = new Date(ahora).toISOString();
@@ -359,10 +367,11 @@ export function procesar(salida, ahora = Date.now(), { remoto = leerRemoto() } =
     res.generadoEn = generadoEn;
     escribirJSON(fr, res);
   }
+  const firmaComunidad = copiarComunidad(DATA, salida);
   // hash de contenido: sin marcas de tiempo, para publicar solo si algo cambió
   const sig = JSON.stringify({
     c: (res?.canales ?? []).map((c) => [c.slug, c.subs, c.vistas, c.videos, c.horas, c.vistas28d, c.vistas48h, c.likes, c.comentarios, c.horasValidas]),
-    p: calc.tabla.map((t) => [t.slug, t.puntaje, t.posicion, t.n]), a: calc.adelantamientos.map((a) => a.ts + a.texto), r: calc.tabla.map((t) => t.ritmo.puntaje),
+    p: calc.tabla.map((t) => [t.slug, t.puntaje, t.posicion, t.n]), a: calc.adelantamientos.map((a) => a.ts + a.texto), r: calc.tabla.map((t) => t.ritmo.puntaje), u: firmaComunidad,
   });
   const hash = crypto.createHash('sha1').update(sig).digest('hex');
   escribirJSON(path.join(salida, 'puntajes.json'), {
