@@ -1,0 +1,38 @@
+{
+ "generadoEn": "2026-11-14T05:00:15.939Z",
+ "eventos": [
+  {
+   "ts": "2026-11-13T01:09:03.704Z",
+   "cuando": "12-11 22:09",
+   "supera": "entender-chile",
+   "a": "linea-punteada",
+   "texto": "Entender Chile superó a Línea Punteada",
+   "puntajes": {
+    "entender-chile": 2.83,
+    "linea-punteada": 2.68
+   }
+  },
+  {
+   "ts": "2026-11-09T11:15:52.091Z",
+   "cuando": "09-11 08:15",
+   "supera": "linea-punteada",
+   "a": "entender-chile",
+   "texto": "Línea Punteada superó a Entender Chile",
+   "puntajes": {
+    "linea-punteada": 3.4,
+    "entender-chile": 2.52
+   }
+  },
+  {
+   "ts": "2026-11-08T11:15:50.199Z",
+   "cuando": "08-11 08:15",
+   "supera": "linea-punteada",
+   "a": "bolita-lab",
+   "texto": "Línea Punteada superó a Bolita Lab",
+   "puntajes": {
+    "linea-punteada": 1.35,
+    "bolita-lab": 0.59
+   }
+  }
+ ]
+}

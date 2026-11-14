@@ -1,0 +1,201 @@
+{
+ "generadoEn": "2026-11-14T05:00:15.939Z",
+ "zona": "America/Santiago",
+ "totales": {
+  "subs": 141,
+  "vistas": 77938,
+  "videos": 277,
+  "horas": 395.4,
+  "likes": 1425,
+  "comentarios": 82,
+  "canales": 4
+ },
+ "canales": [
+  {
+   "slug": "bolita-lab",
+   "nombre": "Bolita Lab",
+   "handle": "@bolitalab",
+   "url": "https://www.youtube.com/@bolitalab",
+   "color": "#3987e5",
+   "nicho": "Simulaciones físicas satisfying con música",
+   "avatar": "avatares/bolita-lab.jpg",
+   "fechaDatos": "2026-11-13",
+   "medidoEn": "2026-11-14T05:00:02.013Z",
+   "subs": 31,
+   "vistas": 22384,
+   "videos": 24,
+   "horas": 44.5,
+   "vistas28d": 15242,
+   "vistas48h": 0,
+   "varSubs": {
+    "ayer": {
+     "delta": 5,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": {
+     "delta": 22,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 4091,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": {
+     "delta": 17589,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "horasFecha": "2026-11-13",
+   "likes": 346,
+   "comentarios": 30,
+   "horasValidas": 0,
+   "horasValidasFuente": "analytics",
+   "horasValidasFecha": "2026-11-14"
+  },
+  {
+   "slug": "linea-punteada",
+   "nombre": "Línea Punteada",
+   "handle": "@lineapunteada",
+   "url": "https://www.youtube.com/@lineapunteada",
+   "color": "#d95926",
+   "nicho": "Geografía narrada en español",
+   "avatar": "avatares/linea-punteada.jpg",
+   "fechaDatos": "2026-11-13",
+   "medidoEn": "2026-11-14T04:00:01.849Z",
+   "subs": 53,
+   "vistas": 28474,
+   "videos": 17,
+   "horas": 343.9,
+   "vistas28d": 22339,
+   "vistas48h": 0,
+   "varSubs": {
+    "ayer": {
+     "delta": 2,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": {
+     "delta": 47,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 2412,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": {
+     "delta": 25582,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "horasFecha": "2026-11-13",
+   "likes": 562,
+   "comentarios": 15,
+   "horasValidas": 0.9,
+   "horasValidasFuente": "analytics",
+   "horasValidasFecha": "2026-11-14"
+  },
+  {
+   "slug": "entender-chile",
+   "nombre": "Entender Chile",
+   "handle": "@entenderchile",
+   "url": "https://www.youtube.com/@entenderchile",
+   "color": "#199e70",
+   "nicho": "Noticias de Chile explicadas",
+   "avatar": "avatares/entender-chile.jpg",
+   "fechaDatos": "2026-11-12",
+   "medidoEn": "2026-11-13T20:30:01.354Z",
+   "subs": 55,
+   "vistas": 25509,
+   "videos": 228,
+   "horas": null,
+   "vistas28d": 7200,
+   "vistas48h": 1209,
+   "varSubs": {
+    "ayer": {
+     "delta": 7,
+     "dias": 8,
+     "desde": "2026-11-06"
+    },
+    "sem": {
+     "delta": 7,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 2220,
+     "dias": 8,
+     "desde": "2026-11-06"
+    },
+    "sem": {
+     "delta": 2220,
+     "dias": 8,
+     "desde": "2026-11-06"
+    }
+   },
+   "likes": 495,
+   "comentarios": 33,
+   "horasValidas": 170.12,
+   "horasValidasFuente": "estimado",
+   "horasValidasFecha": "2026-11-13"
+  },
+  {
+   "slug": "numeros-rojos",
+   "nombre": "En Números Rojos",
+   "handle": "@enumerosrojos",
+   "url": "https://www.youtube.com/@enumerosrojos",
+   "color": "#c98500",
+   "nicho": "Economía explicada con datos",
+   "avatar": "avatares/numeros-rojos.jpg",
+   "fechaDatos": "2026-11-12",
+   "medidoEn": "2026-11-13T22:30:01.771Z",
+   "subs": 2,
+   "vistas": 1571,
+   "videos": 8,
+   "horas": 7,
+   "vistas28d": 1500,
+   "vistas48h": 66,
+   "varSubs": {
+    "ayer": {
+     "delta": 0,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": null
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 24,
+     "dias": 1,
+     "desde": "2026-11-13"
+    },
+    "sem": null
+   },
+   "horasFecha": "2026-11-13",
+   "likes": 22,
+   "comentarios": 4,
+   "horasValidas": null,
+   "horasValidasFuente": null,
+   "horasValidasFecha": null
+  }
+ ],
+ "actualizacion": {
+  "medidoEn": "2026-11-14T05:00:02.013Z",
+  "proxima": "2026-11-14T06:30:00.000Z",
+  "intervaloMin": 60,
+  "ultimaFila": "2026-11-14T05:00:02.013Z",
+  "error": null
+ }
+}

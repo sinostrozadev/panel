@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guiones · Canales</title>
+<link rel="stylesheet" href="guiones.css">
+<style>
+:root{--tx:#111827;--mu:#6b7280;--li:#e5e7eb;--c:#888}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--tx);font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:20px 16px 80px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.top a{color:var(--tx);font-weight:600;text-decoration:none;font-size:14px;border:1px solid var(--li);border-radius:999px;padding:6px 12px}
+h1{font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin:0;font-weight:600}
+.sub{font-size:13px;color:var(--mu);margin:0 0 16px}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:10px}
+.tab{flex:none;border:1px solid var(--li);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer;border-left:6px solid var(--c)}
+.tab[aria-selected=true]{background:#111827;color:#fff;border-color:#111827;border-left-color:var(--c)}
+.tab small{opacity:.7;margin-left:4px}
+.nav{position:sticky;top:0;z-index:15;background:#fffe;backdrop-filter:blur(8px);border-bottom:1px solid var(--li)}
+.nav div{max-width:760px;margin:0 auto;padding:0 16px;display:flex;gap:4px;align-items:center}
+.nav a{padding:13px 14px;font-size:14px;font-weight:600;color:var(--mu);text-decoration:none;border-bottom:3px solid transparent}
+.nav a.on{color:var(--tx);border-bottom-color:var(--tx)}
+.nav span{margin-left:auto;font-size:12px;color:#9ca3af}
+</style>
+</head>
+<body>
+<nav class="nav"><div><a href="./">Panel</a><a class="on" href="guiones.html" aria-current="page">Guiones</a><span>Guiones por canal</span></div></nav>
+<main>
+<div class="top"><a href="./">← Panel</a><h1>Guiones</h1></div>
+<p class="sub" id="sub">Cargando…</p>
+<div class="tabs" id="tabs" role="tablist"></div>
+<div id="lista"></div>
+</main>
+<script src="guiones.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let IDX=null,CUR=null;
+function tabs(){$('tabs').innerHTML=IDX.canales.map(c=>`<button class="tab" role="tab" style="--c:${esc(c.color)}" aria-selected="${c.slug===CUR}" data-s="${esc(c.slug)}">${esc(c.nombre)}<small>${c.total}</small></button>`).join('')}
+async function pintar(id){
+  tabs();
+  await Guiones.montar($('lista'),{slug:CUR,idx:IDX,esc:true,id,
+    onLeer:i=>history.replaceState(null,'','#'+encodeURIComponent(CUR+'/'+i)),
+    onLista:()=>history.replaceState(null,'','#'+encodeURIComponent(CUR))});
+}
+document.addEventListener('click',async e=>{const t=e.target.closest('.tab');if(t){CUR=t.dataset.s;await pintar()}});
+(async()=>{
+  try{
+    IDX=await Guiones.j('data/guiones/index.json');
+    const gen=new Date(IDX.generadoEn);
+    $('sub').textContent=`Semana en curso y la siguiente (${IDX.ventana.desde.slice(8)}-${IDX.ventana.desde.slice(5,7)} al ${IDX.ventana.hasta.slice(8)}-${IDX.ventana.hasta.slice(5,7)}); Entender Chile: últimos 7 días. Actualizado ${gen.toLocaleString('es-CL',{timeZone:'America/Santiago',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}.`;
+    const h=decodeURIComponent((location.hash||'').slice(1)).split('/');
+    CUR=(h[0]&&IDX.canales.some(c=>c.slug===h[0]))?h[0]:IDX.canales[0].slug;
+    await pintar(h[1]?h.slice(1).join('/'):null);
+  }catch(err){$('sub').textContent='No se pudieron cargar los guiones: '+err.message}
+})();
+</script>
+</body>
+</html>
