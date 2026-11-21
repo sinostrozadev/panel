@@ -1,0 +1,447 @@
+{
+  "version": 1,
+  "trabajo": {
+    "disponible": false,
+    "actualizado": "2026-11-17T13:05:00-03:00",
+    "items": []
+  },
+  "generadoEn": "2026-11-19T21:00:19.474Z",
+  "zona": "America/Santiago",
+  "semana": {
+    "hasta": "2026-11-22",
+    "siguiente": {
+      "desde": "2026-11-23",
+      "hasta": "2026-11-29"
+    }
+  },
+  "canales": [
+    {
+      "slug": "bolita-lab",
+      "nombre": "Bolita Lab",
+      "color": "#3987e5"
+    },
+    {
+      "slug": "linea-punteada",
+      "nombre": "Línea Punteada",
+      "color": "#d95926"
+    },
+    {
+      "slug": "entender-chile",
+      "nombre": "Entender Chile",
+      "color": "#199e70"
+    },
+    {
+      "slug": "numeros-rojos",
+      "nombre": "En Números Rojos",
+      "color": "#c98500"
+    }
+  ],
+  "tareas": [
+    {
+      "id": "programados",
+      "nombre": "Programados hasta el domingo",
+      "ayuda": "Ranuras de Shorts del calendario, desde ahora hasta el domingo 23:59, que ya tienen video programado en YouTube. Verde solo si están todas. Entender Chile (noticias del día, sin calendario): verde si la edición de hoy está producida (hay guion del informe de hoy y la cadena Edición diaria cerró en verde hoy); la de mañana no puede existir antes porque se escribe de madrugada.",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "3/3",
+          "detalle": "todas programadas"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "6/6",
+          "detalle": "todas programadas"
+        },
+        "entender-chile": {
+          "estado": "sd",
+          "texto": "sin dato"
+        },
+        "numeros-rojos": {
+          "estado": "ok",
+          "texto": "3/3",
+          "detalle": "todas programadas"
+        }
+      }
+    },
+    {
+      "id": "largos",
+      "nombre": "Largos de la semana",
+      "ayuda": "Ranuras de videos largos hasta el domingo con video programado.",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "1/1",
+          "detalle": "todos programados"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "1/1",
+          "detalle": "todos programados"
+        },
+        "entender-chile": {
+          "estado": "sd",
+          "texto": "sin dato"
+        },
+        "numeros-rojos": {
+          "estado": "bad",
+          "texto": "0/1",
+          "detalle": "faltan 1; primero: jue 19-11 19:00"
+        }
+      }
+    },
+    {
+      "id": "guiones",
+      "nombre": "Guiones de la próxima semana",
+      "ayuda": "Ranuras de lunes a domingo de la semana siguiente que ya tienen guion (asignado en el plan, programado o disponible en el stock de guiones).",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "10/10",
+          "detalle": "7 asignados + 3 del stock (13 guiones sin asignar)"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "15/15",
+          "detalle": "15 asignados + 0 del stock (14 guiones sin asignar)"
+        },
+        "entender-chile": {
+          "estado": "sd",
+          "texto": "sin dato"
+        },
+        "numeros-rojos": {
+          "estado": "ok",
+          "texto": "9/9",
+          "detalle": "4 asignados + 5 del stock (12 guiones sin asignar)"
+        }
+      }
+    },
+    {
+      "id": "aprobados",
+      "nombre": "Guiones aprobados",
+      "ayuda": "Pendiente de activar: aún no existe un registro de aprobación de guiones.",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "na",
+          "texto": "pendiente",
+          "detalle": "pendiente de activar"
+        },
+        "linea-punteada": {
+          "estado": "na",
+          "texto": "pendiente",
+          "detalle": "pendiente de activar"
+        },
+        "entender-chile": {
+          "estado": "na",
+          "texto": "pendiente",
+          "detalle": "pendiente de activar"
+        },
+        "numeros-rojos": {
+          "estado": "na",
+          "texto": "pendiente",
+          "detalle": "pendiente de activar"
+        }
+      }
+    },
+    {
+      "id": "metricas",
+      "nombre": "Métricas de hoy",
+      "ayuda": "Existe salida/metricas/<hoy>/metricas.json (las capturas corren a las 08:15).",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "✓",
+          "detalle": "medidas 19-11"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "✓",
+          "detalle": "medidas 19-11"
+        },
+        "entender-chile": {
+          "estado": "bad",
+          "texto": "falta",
+          "detalle": "última: 12-11"
+        },
+        "numeros-rojos": {
+          "estado": "ok",
+          "texto": "✓",
+          "detalle": "medidas 19-11"
+        }
+      }
+    },
+    {
+      "id": "caratulas",
+      "nombre": "Carátulas de largos",
+      "ayuda": "Largos programados que ya tienen miniatura asignada.",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "1/1",
+          "detalle": "todos con carátula"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "2/2",
+          "detalle": "todos con carátula"
+        },
+        "entender-chile": {
+          "estado": "sd",
+          "texto": "sin dato"
+        },
+        "numeros-rojos": {
+          "estado": "ok",
+          "texto": "3/3",
+          "detalle": "todos con carátula"
+        }
+      }
+    },
+    {
+      "id": "colchon",
+      "nombre": "Colchón",
+      "ayuda": "Tiempo hasta la primera ranura sin video programado. Verde desde 4 días, ámbar 2 a 4, rojo menos de 2. Entender Chile: horas desde la última corrida exitosa de la cadena (verde hasta 26 h, ámbar hasta 50 h).",
+      "celdas": {
+        "bolita-lab": {
+          "estado": "ok",
+          "texto": "4 d",
+          "detalle": "primera ranura vacía: lun 23-11 19:00"
+        },
+        "linea-punteada": {
+          "estado": "ok",
+          "texto": "10 d",
+          "detalle": "primera ranura vacía: lun 30-11 12:00"
+        },
+        "entender-chile": {
+          "estado": "sd",
+          "texto": "sin dato"
+        },
+        "numeros-rojos": {
+          "estado": "bad",
+          "texto": "0 h",
+          "detalle": "primera ranura vacía: jue 19-11 19:00"
+        }
+      }
+    }
+  ],
+  "permisos": {
+    "filas": [
+      {
+        "slug": "bolita-lab",
+        "items": {
+          "token": {
+            "estado": "ok",
+            "texto": "vence 25-11 13:16",
+            "detalle": "quedan 5 d 19 h",
+            "venceMs": 1795623396348
+          },
+          "scopes": {
+            "estado": "ok",
+            "texto": "subir · comentarios · analytics",
+            "faltan": []
+          },
+          "telefono": {
+            "estado": "ok",
+            "texto": "verificado 08-11",
+            "detalle": "miniaturas personalizadas habilitadas"
+          },
+          "auditoria": {
+            "estado": "bad",
+            "texto": "en revisión desde 05-11",
+            "detalle": "no existe bolita-lab/secrets/api-auditada"
+          },
+          "repo": {
+            "estado": "ok",
+            "texto": "público",
+            "detalle": "sinostrozadev/bolita-lab"
+          },
+          "nube": {
+            "estado": "ok",
+            "texto": "disponible",
+            "detalle": "producir.yml"
+          },
+          "ultima": {
+            "estado": "ok",
+            "texto": "métricas 19-11",
+            "detalle": "cron.log 15-11 04:38 · último log 19-11 09:20"
+          }
+        }
+      },
+      {
+        "slug": "linea-punteada",
+        "items": {
+          "token": {
+            "estado": "ok",
+            "texto": "vence 25-11 13:17",
+            "detalle": "quedan 5 d 19 h",
+            "venceMs": 1795623450716
+          },
+          "scopes": {
+            "estado": "ok",
+            "texto": "subir · comentarios · analytics",
+            "faltan": []
+          },
+          "telefono": {
+            "estado": "ok",
+            "texto": "verificado 08-11",
+            "detalle": "miniaturas personalizadas habilitadas"
+          },
+          "auditoria": {
+            "estado": "bad",
+            "texto": "en revisión desde 05-11",
+            "detalle": "no existe bolita-lab/secrets/api-auditada"
+          },
+          "repo": {
+            "estado": "ok",
+            "texto": "público",
+            "detalle": "sinostrozadev/linea-punteada"
+          },
+          "nube": {
+            "estado": "ok",
+            "texto": "disponible",
+            "detalle": "producir.yml"
+          },
+          "ultima": {
+            "estado": "ok",
+            "texto": "métricas 19-11",
+            "detalle": "cron.log 15-11 06:35 · último log 19-11 08:16"
+          }
+        }
+      },
+      {
+        "slug": "entender-chile",
+        "items": {
+          "token": {
+            "estado": "sd",
+            "texto": "sin dato",
+            "detalle": "no hay archivo local de token"
+          },
+          "scopes": {
+            "estado": "sd",
+            "texto": "sin dato",
+            "faltan": []
+          },
+          "telefono": {
+            "estado": "sd",
+            "texto": "desconocido",
+            "detalle": "desconocido"
+          },
+          "auditoria": {
+            "estado": "bad",
+            "texto": "en revisión desde 05-11",
+            "detalle": "no existe bolita-lab/secrets/api-auditada"
+          },
+          "repo": {
+            "estado": "ok",
+            "texto": "público",
+            "detalle": "sinostrozadev/entender-chile"
+          },
+          "nube": {
+            "estado": "ok",
+            "texto": "disponible",
+            "detalle": "producir.yml"
+          },
+          "ultima": {
+            "estado": "bad",
+            "texto": "métricas 12-11",
+            "detalle": "sin logs"
+          }
+        }
+      },
+      {
+        "slug": "numeros-rojos",
+        "items": {
+          "token": {
+            "estado": "ok",
+            "texto": "vence 25-11 13:18",
+            "detalle": "quedan 5 d 19 h",
+            "venceMs": 1795623529628
+          },
+          "scopes": {
+            "estado": "ok",
+            "texto": "subir · comentarios · analytics",
+            "faltan": []
+          },
+          "telefono": {
+            "estado": "ok",
+            "texto": "verificado 08-11",
+            "detalle": "número de un familiar; miniaturas habilitadas"
+          },
+          "auditoria": {
+            "estado": "bad",
+            "texto": "en revisión desde 05-11",
+            "detalle": "no existe bolita-lab/secrets/api-auditada"
+          },
+          "repo": {
+            "estado": "ok",
+            "texto": "público",
+            "detalle": "sinostrozadev/numeros-rojos"
+          },
+          "nube": {
+            "estado": "ok",
+            "texto": "disponible",
+            "detalle": "producir.yml"
+          },
+          "ultima": {
+            "estado": "ok",
+            "texto": "métricas 19-11",
+            "detalle": "último log 19-11 15:07"
+          }
+        }
+      }
+    ],
+    "globales": {
+      "ytApiKey": {
+        "estado": "ok",
+        "texto": "cargada",
+        "detalle": "última corrida de la nube: success (19-11)"
+      }
+    }
+  },
+  "notificaciones": [
+    {
+      "severidad": "critica",
+      "canal": "En Números Rojos",
+      "slug": "numeros-rojos",
+      "texto": "colchón de menos de 1 día: primera ranura vacía jue 19-11 19:00",
+      "limite": "2026-11-19T22:00:00.000Z",
+      "limiteTxt": "19-11 19:00",
+      "tipo": "colchon",
+      "id": "colchon-numeros-rojos"
+    },
+    {
+      "severidad": "critica",
+      "canal": "En Números Rojos",
+      "slug": "numeros-rojos",
+      "texto": "semana sin cubrir: faltan 1 de 4 ranuras hasta el domingo 22-11",
+      "limite": "2026-11-23T02:59:59.000Z",
+      "limiteTxt": "22-11 23:59",
+      "tipo": "semana",
+      "id": "semana-numeros-rojos"
+    },
+    {
+      "severidad": "aviso",
+      "canal": "Entender Chile",
+      "slug": "entender-chile",
+      "texto": "sin métricas de hoy (última: 12-11)",
+      "limite": null,
+      "limiteTxt": null,
+      "tipo": "metricas",
+      "id": "metricas-entender-chile"
+    },
+    {
+      "severidad": "info",
+      "canal": "Todos los canales",
+      "slug": null,
+      "tipo": "auditoria",
+      "texto": "auditoría de la API de YouTube pendiente (en revisión desde 05-11; los tokens caducan cada 7 días)",
+      "limite": null,
+      "limiteTxt": null,
+      "id": "auditoria-global"
+    }
+  ],
+  "supuestos": {
+    "general": "Ver comentario de cabecera de scripts/tablero.mjs: ranura = día+hora del calendario del canal; programada = entrada de bandeja subida con publicarEn a ≤30 min o plan marcado programado/publicado; semana = hasta el domingo 23:59 Chile.",
+    "porCanal": {
+      "entender-chile": "Sin contenido/calendario.json ni salida/bandeja: estructura distinta; solo se llenan métricas, repo y workflows."
+    }
+  }
+}

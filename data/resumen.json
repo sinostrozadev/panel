@@ -1,0 +1,209 @@
+{
+ "generadoEn": "2026-11-21T09:53:48.499Z",
+ "zona": "America/Santiago",
+ "totales": {
+  "subs": 203,
+  "vistas": 114393,
+  "videos": 335,
+  "horas": 730.8,
+  "likes": 2029,
+  "comentarios": 99,
+  "canales": 4
+ },
+ "canales": [
+  {
+   "slug": "bolita-lab",
+   "nombre": "Bolita Lab",
+   "handle": "@bolitalab",
+   "url": "https://www.youtube.com/@bolitalab",
+   "color": "#3987e5",
+   "nicho": "Simulaciones físicas satisfying con música",
+   "avatar": "avatares/bolita-lab.jpg",
+   "fechaDatos": "2026-11-19",
+   "medidoEn": "2026-11-21T02:14:19.268Z",
+   "subs": 52,
+   "vistas": 37016,
+   "videos": 49,
+   "horas": 103.9,
+   "vistas28d": 33610,
+   "vistas48h": 0,
+   "varSubs": {
+    "ayer": {
+     "delta": 3,
+     "dias": 1,
+     "desde": "2026-11-19"
+    },
+    "sem": {
+     "delta": 21,
+     "dias": 7,
+     "desde": "2026-11-14"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 1559,
+     "dias": 1,
+     "desde": "2026-11-19"
+    },
+    "sem": {
+     "delta": 16387,
+     "dias": 7,
+     "desde": "2026-11-14"
+    }
+   },
+   "horasFecha": "2026-11-19",
+   "likes": 533,
+   "comentarios": 39,
+   "horasValidas": 1.42,
+   "horasValidasFuente": "analytics",
+   "horasValidasFecha": "2026-11-21"
+  },
+  {
+   "slug": "linea-punteada",
+   "nombre": "Línea Punteada",
+   "handle": "@lineapunteada",
+   "url": "https://www.youtube.com/@lineapunteada",
+   "color": "#d95926",
+   "nicho": "Geografía narrada en español",
+   "avatar": "avatares/linea-punteada.jpg",
+   "fechaDatos": "2026-11-19",
+   "medidoEn": "2026-11-21T09:53:43.774Z",
+   "subs": 84,
+   "vistas": 46329,
+   "videos": 32,
+   "horas": 608.9,
+   "vistas28d": 40131,
+   "vistas48h": 0,
+   "varSubs": {
+    "ayer": {
+     "delta": 4,
+     "dias": 1,
+     "desde": "2026-11-20"
+    },
+    "sem": {
+     "delta": 31,
+     "dias": 7,
+     "desde": "2026-11-14"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 3524,
+     "dias": 1,
+     "desde": "2026-11-20"
+    },
+    "sem": {
+     "delta": 17855,
+     "dias": 7,
+     "desde": "2026-11-14"
+    }
+   },
+   "horasFecha": "2026-11-19",
+   "likes": 926,
+   "comentarios": 20,
+   "horasValidas": 0.95,
+   "horasValidasFuente": "analytics",
+   "horasValidasFecha": "2026-11-21"
+  },
+  {
+   "slug": "entender-chile",
+   "nombre": "Entender Chile",
+   "handle": "@entenderchile",
+   "url": "https://www.youtube.com/@entenderchile",
+   "color": "#199e70",
+   "nicho": "Noticias de Chile explicadas",
+   "avatar": "avatares/entender-chile.jpg",
+   "fechaDatos": "2026-11-12",
+   "medidoEn": "2026-11-21T09:53:43.774Z",
+   "subs": 61,
+   "vistas": 27848,
+   "videos": 235,
+   "horas": null,
+   "vistas28d": 7200,
+   "vistas48h": 1209,
+   "varSubs": {
+    "ayer": {
+     "delta": 0,
+     "dias": 1,
+     "desde": "2026-11-20"
+    },
+    "sem": {
+     "delta": 6,
+     "dias": 8,
+     "desde": "2026-11-13"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 333,
+     "dias": 1,
+     "desde": "2026-11-20"
+    },
+    "sem": {
+     "delta": 2339,
+     "dias": 8,
+     "desde": "2026-11-13"
+    }
+   },
+   "likes": 529,
+   "comentarios": 33,
+   "horasValidas": 171.98,
+   "horasValidasFuente": "estimado",
+   "horasValidasFecha": "2026-11-21"
+  },
+  {
+   "slug": "numeros-rojos",
+   "nombre": "En Números Rojos",
+   "handle": "@enumerosrojos",
+   "url": "https://www.youtube.com/@enumerosrojos",
+   "color": "#c98500",
+   "nicho": "Economía explicada con datos",
+   "avatar": "avatares/numeros-rojos.jpg",
+   "fechaDatos": "2026-11-19",
+   "medidoEn": "2026-11-21T09:53:43.774Z",
+   "subs": 6,
+   "vistas": 3200,
+   "videos": 19,
+   "horas": 18,
+   "vistas28d": 2700,
+   "vistas48h": 525,
+   "varSubs": {
+    "ayer": {
+     "delta": 0,
+     "dias": 2,
+     "desde": "2026-11-19"
+    },
+    "sem": {
+     "delta": 4,
+     "dias": 7,
+     "desde": "2026-11-13"
+    }
+   },
+   "varVistas": {
+    "ayer": {
+     "delta": 432,
+     "dias": 2,
+     "desde": "2026-11-19"
+    },
+    "sem": {
+     "delta": 1629,
+     "dias": 7,
+     "desde": "2026-11-13"
+    }
+   },
+   "horasFecha": "2026-11-17",
+   "likes": 41,
+   "comentarios": 7,
+   "horasValidas": 11.23,
+   "horasValidasFuente": "analytics",
+   "horasValidasFecha": "2026-11-21"
+  }
+ ],
+ "actualizacion": {
+  "medidoEn": "2026-11-21T09:53:43.774Z",
+  "proxima": "2026-11-21T11:00:00.000Z",
+  "intervaloMin": 60,
+  "ultimaFila": "2026-11-21T09:53:43.774Z",
+  "error": null
+ }
+}

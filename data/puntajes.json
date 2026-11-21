@@ -1,0 +1,1967 @@
+{
+ "hash": "cad8aab375e1098bee4836270490185f4cf4020c",
+ "generadoEn": "2026-11-21T09:53:48.499Z",
+ "formula": "promedio simple de los porcentajes de cada criterio con dato (data/criterios.json), cada uno con tope 100 %",
+ "criterios": [
+  {
+   "id": "subs",
+   "nombre": "Suscriptores",
+   "calculo": "valor",
+   "campo": "subs",
+   "meta": 1000,
+   "peso": 1,
+   "unidad": "subs",
+   "grupo": "monetizacion"
+  },
+  {
+   "id": "shorts90d",
+   "nombre": "Vistas de Shorts, 90 días",
+   "calculo": "valor",
+   "campo": "vistas90d",
+   "meta": 10000000,
+   "peso": 1,
+   "unidad": "vistas",
+   "grupo": "monetizacion"
+  },
+  {
+   "id": "horas",
+   "nombre": "Horas válidas para monetizar (largos, 12 meses)",
+   "calculo": "valor",
+   "campo": "horasValidas",
+   "meta": 4000,
+   "peso": 1,
+   "unidad": "h",
+   "grupo": "monetizacion"
+  },
+  {
+   "id": "subs_sem",
+   "nombre": "Crecimiento semanal de suscriptores",
+   "calculo": "crecimiento_semanal",
+   "campo": "subs",
+   "meta": 50,
+   "peso": 1,
+   "unidad": "subs/sem",
+   "grupo": "ritmo"
+  },
+  {
+   "id": "vistas_sem",
+   "nombre": "Crecimiento semanal de vistas",
+   "calculo": "crecimiento_semanal",
+   "campo": "vistas",
+   "meta": 50000,
+   "peso": 1,
+   "unidad": "vistas/sem",
+   "grupo": "ritmo"
+  },
+  {
+   "id": "constancia",
+   "nombre": "Constancia (videos en 7 días)",
+   "calculo": "publicados_7d",
+   "meta": 7,
+   "metaPorCanal": {
+    "bolita-lab": 21,
+    "linea-punteada": 14,
+    "numeros-rojos": 10,
+    "entender-chile": 7
+   },
+   "peso": 1,
+   "unidad": "videos",
+   "grupo": "ritmo"
+  }
+ ],
+ "tabla": [
+  {
+   "slug": "entender-chile",
+   "subs": 61,
+   "puntaje": 3.56,
+   "n": 3,
+   "total": 3,
+   "ritmo": {
+    "puntaje": 38.89,
+    "n": 3,
+    "total": 3
+   },
+   "criterios": [
+    {
+     "id": "subs",
+     "grupo": "monetizacion",
+     "nombre": "Suscriptores",
+     "unidad": "subs",
+     "peso": 1,
+     "meta": 1000,
+     "valor": 61,
+     "pct": 6.1,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "shorts90d",
+     "grupo": "monetizacion",
+     "nombre": "Vistas de Shorts, 90 días",
+     "unidad": "vistas",
+     "peso": 1,
+     "meta": 10000000,
+     "valor": 27848,
+     "pct": 0.28,
+     "estimado": true,
+     "nota": "estimado: vistas totales (canal < 90 días)"
+    },
+    {
+     "id": "horas",
+     "grupo": "monetizacion",
+     "nombre": "Horas válidas para monetizar (largos, 12 meses)",
+     "unidad": "h",
+     "peso": 1,
+     "meta": 4000,
+     "valor": 171.98,
+     "pct": 4.3,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "subs_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de suscriptores",
+     "unidad": "subs/sem",
+     "peso": 1,
+     "meta": 50,
+     "valor": 6,
+     "pct": 12,
+     "estimado": false,
+     "nota": "+6 en 7.6 d"
+    },
+    {
+     "id": "vistas_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de vistas",
+     "unidad": "vistas/sem",
+     "peso": 1,
+     "meta": 50000,
+     "valor": 2339,
+     "pct": 4.68,
+     "estimado": false,
+     "nota": "+2339 en 7.6 d"
+    },
+    {
+     "id": "constancia",
+     "grupo": "ritmo",
+     "nombre": "Constancia (videos en 7 días)",
+     "unidad": "videos",
+     "peso": 1,
+     "meta": 7,
+     "valor": 7,
+     "pct": 100,
+     "estimado": true,
+     "nota": "por contador de videos (+7 en 7.6 d)"
+    }
+   ],
+   "posicion": 1,
+   "nombre": "Entender Chile",
+   "handle": "@entenderchile",
+   "color": "#199e70",
+   "avatar": "avatares/entender-chile.jpg",
+   "cambio24h": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 1,
+    "puntos": 0,
+    "desde": 1795227259268
+   },
+   "cambio7d": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 1,
+    "puntos": 0.22,
+    "desde": 1794632402013
+   }
+  },
+  {
+   "slug": "linea-punteada",
+   "subs": 84,
+   "puntaje": 2.96,
+   "n": 3,
+   "total": 3,
+   "ritmo": {
+    "puntaje": 65.9,
+    "n": 3,
+    "total": 3
+   },
+   "criterios": [
+    {
+     "id": "subs",
+     "grupo": "monetizacion",
+     "nombre": "Suscriptores",
+     "unidad": "subs",
+     "peso": 1,
+     "meta": 1000,
+     "valor": 84,
+     "pct": 8.4,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "shorts90d",
+     "grupo": "monetizacion",
+     "nombre": "Vistas de Shorts, 90 días",
+     "unidad": "vistas",
+     "peso": 1,
+     "meta": 10000000,
+     "valor": 46329,
+     "pct": 0.46,
+     "estimado": true,
+     "nota": "estimado: vistas totales (canal < 90 días)"
+    },
+    {
+     "id": "horas",
+     "grupo": "monetizacion",
+     "nombre": "Horas válidas para monetizar (largos, 12 meses)",
+     "unidad": "h",
+     "peso": 1,
+     "meta": 4000,
+     "valor": 0.95,
+     "pct": 0.02,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "subs_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de suscriptores",
+     "unidad": "subs/sem",
+     "peso": 1,
+     "meta": 50,
+     "valor": 31,
+     "pct": 62,
+     "estimado": false,
+     "nota": "+31 en 7.2 d"
+    },
+    {
+     "id": "vistas_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de vistas",
+     "unidad": "vistas/sem",
+     "peso": 1,
+     "meta": 50000,
+     "valor": 17855,
+     "pct": 35.71,
+     "estimado": false,
+     "nota": "+17855 en 7.2 d"
+    },
+    {
+     "id": "constancia",
+     "grupo": "ritmo",
+     "nombre": "Constancia (videos en 7 días)",
+     "unidad": "videos",
+     "peso": 1,
+     "meta": 14,
+     "valor": 15,
+     "pct": 100,
+     "estimado": true,
+     "nota": "por contador de videos (+15 en 7.2 d)"
+    }
+   ],
+   "posicion": 2,
+   "nombre": "Línea Punteada",
+   "handle": "@lineapunteada",
+   "color": "#d95926",
+   "avatar": "avatares/linea-punteada.jpg",
+   "cambio24h": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 2,
+    "puntos": 0,
+    "desde": 1795227259268
+   },
+   "cambio7d": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 2,
+    "puntos": 1.09,
+    "desde": 1794632402013
+   }
+  },
+  {
+   "slug": "bolita-lab",
+   "subs": 52,
+   "puntaje": 1.87,
+   "n": 3,
+   "total": 3,
+   "ritmo": {
+    "puntaje": 55.5,
+    "n": 3,
+    "total": 3
+   },
+   "criterios": [
+    {
+     "id": "subs",
+     "grupo": "monetizacion",
+     "nombre": "Suscriptores",
+     "unidad": "subs",
+     "peso": 1,
+     "meta": 1000,
+     "valor": 52,
+     "pct": 5.2,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "shorts90d",
+     "grupo": "monetizacion",
+     "nombre": "Vistas de Shorts, 90 días",
+     "unidad": "vistas",
+     "peso": 1,
+     "meta": 10000000,
+     "valor": 37016,
+     "pct": 0.37,
+     "estimado": true,
+     "nota": "estimado: vistas totales (canal < 90 días)"
+    },
+    {
+     "id": "horas",
+     "grupo": "monetizacion",
+     "nombre": "Horas válidas para monetizar (largos, 12 meses)",
+     "unidad": "h",
+     "peso": 1,
+     "meta": 4000,
+     "valor": 1.42,
+     "pct": 0.04,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "subs_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de suscriptores",
+     "unidad": "subs/sem",
+     "peso": 1,
+     "meta": 50,
+     "valor": 21,
+     "pct": 42,
+     "estimado": false,
+     "nota": "+21 en 7.2 d"
+    },
+    {
+     "id": "vistas_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de vistas",
+     "unidad": "vistas/sem",
+     "peso": 1,
+     "meta": 50000,
+     "valor": 14632,
+     "pct": 29.26,
+     "estimado": false,
+     "nota": "+14632 en 7.2 d"
+    },
+    {
+     "id": "constancia",
+     "grupo": "ritmo",
+     "nombre": "Constancia (videos en 7 días)",
+     "unidad": "videos",
+     "peso": 1,
+     "meta": 21,
+     "valor": 20,
+     "pct": 95.24,
+     "estimado": false,
+     "nota": "20 publicados"
+    }
+   ],
+   "posicion": 3,
+   "nombre": "Bolita Lab",
+   "handle": "@bolitalab",
+   "color": "#3987e5",
+   "avatar": "avatares/bolita-lab.jpg",
+   "cambio24h": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 3,
+    "puntos": 0,
+    "desde": 1795227259268
+   },
+   "cambio7d": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 3,
+    "puntos": 0.76,
+    "desde": 1794632402013
+   }
+  },
+  {
+   "slug": "numeros-rojos",
+   "subs": 6,
+   "puntaje": 0.3,
+   "n": 3,
+   "total": 3,
+   "ritmo": {
+    "puntaje": 37.09,
+    "n": 3,
+    "total": 3
+   },
+   "criterios": [
+    {
+     "id": "subs",
+     "grupo": "monetizacion",
+     "nombre": "Suscriptores",
+     "unidad": "subs",
+     "peso": 1,
+     "meta": 1000,
+     "valor": 6,
+     "pct": 0.6,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "shorts90d",
+     "grupo": "monetizacion",
+     "nombre": "Vistas de Shorts, 90 días",
+     "unidad": "vistas",
+     "peso": 1,
+     "meta": 10000000,
+     "valor": 3200,
+     "pct": 0.03,
+     "estimado": true,
+     "nota": "estimado: vistas totales (canal < 90 días)"
+    },
+    {
+     "id": "horas",
+     "grupo": "monetizacion",
+     "nombre": "Horas válidas para monetizar (largos, 12 meses)",
+     "unidad": "h",
+     "peso": 1,
+     "meta": 4000,
+     "valor": 11.23,
+     "pct": 0.28,
+     "estimado": false,
+     "nota": null
+    },
+    {
+     "id": "subs_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de suscriptores",
+     "unidad": "subs/sem",
+     "peso": 1,
+     "meta": 50,
+     "valor": 4,
+     "pct": 8,
+     "estimado": false,
+     "nota": "+4 en 7.5 d"
+    },
+    {
+     "id": "vistas_sem",
+     "grupo": "ritmo",
+     "nombre": "Crecimiento semanal de vistas",
+     "unidad": "vistas/sem",
+     "peso": 1,
+     "meta": 50000,
+     "valor": 1629,
+     "pct": 3.26,
+     "estimado": false,
+     "nota": "+1629 en 7.5 d"
+    },
+    {
+     "id": "constancia",
+     "grupo": "ritmo",
+     "nombre": "Constancia (videos en 7 días)",
+     "unidad": "videos",
+     "peso": 1,
+     "meta": 10,
+     "valor": 11,
+     "pct": 100,
+     "estimado": true,
+     "nota": "por contador de videos (+11 en 7.5 d)"
+    }
+   ],
+   "posicion": 4,
+   "nombre": "En Números Rojos",
+   "handle": "@enumerosrojos",
+   "color": "#c98500",
+   "avatar": "avatares/numeros-rojos.jpg",
+   "cambio24h": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 4,
+    "puntos": 0,
+    "desde": 1795227259268
+   },
+   "cambio7d": {
+    "estado": "igual",
+    "puestos": 0,
+    "posicion": 4,
+    "puntos": 0.19,
+    "desde": 1794632402013
+   }
+  }
+ ],
+ "ganadorSemana": {
+  "slug": "linea-punteada",
+  "nombre": "Línea Punteada",
+  "ritmo": 65.9,
+  "n": 3
+ },
+ "historial": [
+  {
+   "ts": "2026-11-06T01:52:43.930Z",
+   "p": {
+    "linea-punteada": 0.31
+   },
+   "r": {
+    "linea-punteada": 14.29
+   }
+  },
+  {
+   "ts": "2026-11-06T02:13:21.475Z",
+   "p": {
+    "entender-chile": 2.52,
+    "bolita-lab": 0.48,
+    "linea-punteada": 0.31
+   },
+   "r": {
+    "entender-chile": 100,
+    "bolita-lab": 19.05,
+    "linea-punteada": 14.29
+   }
+  },
+  {
+   "ts": "2026-11-06T11:16:18.043Z",
+   "p": {
+    "entender-chile": 2.52,
+    "bolita-lab": 0.48,
+    "linea-punteada": 0.32
+   },
+   "r": {
+    "entender-chile": 100,
+    "bolita-lab": 19.05,
+    "linea-punteada": 14.29
+   }
+  },
+  {
+   "ts": "2026-11-07T11:16:19.775Z",
+   "p": {
+    "entender-chile": 2.52,
+    "bolita-lab": 0.49,
+    "linea-punteada": 0.38
+   },
+   "r": {
+    "entender-chile": 33.33,
+    "bolita-lab": 16.78,
+    "linea-punteada": 23.91
+   }
+  },
+  {
+   "ts": "2026-11-08T11:15:50.199Z",
+   "p": {
+    "entender-chile": 2.52,
+    "linea-punteada": 1.35,
+    "bolita-lab": 0.59
+   },
+   "r": {
+    "entender-chile": 33.33,
+    "linea-punteada": 62.31,
+    "bolita-lab": 22.72
+   }
+  },
+  {
+   "ts": "2026-11-09T11:15:52.091Z",
+   "p": {
+    "linea-punteada": 3.4,
+    "entender-chile": 2.52,
+    "bolita-lab": 0.81
+   },
+   "r": {
+    "linea-punteada": 82.15,
+    "entender-chile": 33.33,
+    "bolita-lab": 32.4
+   }
+  },
+  {
+   "ts": "2026-11-10T11:15:51.003Z",
+   "p": {
+    "linea-punteada": 3.7,
+    "entender-chile": 2.52,
+    "bolita-lab": 1.01
+   },
+   "r": {
+    "linea-punteada": 88.71,
+    "entender-chile": 33.33,
+    "bolita-lab": 39.43
+   }
+  },
+  {
+   "ts": "2026-11-13T00:59:33.065Z",
+   "p": {
+    "linea-punteada": 2.68,
+    "entender-chile": 2.52,
+    "bolita-lab": 1.41
+   },
+   "r": {
+    "linea-punteada": 77.56,
+    "entender-chile": 0,
+    "bolita-lab": 49.13
+   }
+  },
+  {
+   "ts": "2026-11-13T01:09:03.704Z",
+   "p": {
+    "entender-chile": 2.83,
+    "linea-punteada": 2.68,
+    "bolita-lab": 1.39,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 34.21,
+    "linea-punteada": 77.01,
+    "bolita-lab": 47.59,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T02:58:05.417Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.79,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 33.93,
+    "linea-punteada": 76.81,
+    "bolita-lab": 47.45,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T04:00:01.305Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.79,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 33.93,
+    "linea-punteada": 76.81,
+    "bolita-lab": 47.45,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T05:00:01.965Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.79,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.69,
+    "linea-punteada": 76.81,
+    "bolita-lab": 47.45,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T07:00:01.248Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.79,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.69,
+    "linea-punteada": 76.81,
+    "bolita-lab": 47.45,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T08:00:02.037Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.69,
+    "linea-punteada": 77.31,
+    "bolita-lab": 47.45,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T09:00:01.225Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.69,
+    "linea-punteada": 77.31,
+    "bolita-lab": 48.26,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T10:00:01.372Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.75,
+    "linea-punteada": 77.31,
+    "bolita-lab": 48.26,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T11:16:02.452Z",
+   "p": {
+    "entender-chile": 3.3,
+    "linea-punteada": 2.68,
+    "bolita-lab": 1.41,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 38.75,
+    "linea-punteada": 77.4,
+    "bolita-lab": 50.53,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T12:00:01.236Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 76.89,
+    "bolita-lab": 49.71,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T14:00:01.191Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.93,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 76.89,
+    "bolita-lab": 49.71,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T15:00:01.858Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.97,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 76.89,
+    "bolita-lab": 50.38,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T16:00:01.715Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.8,
+    "bolita-lab": 0.97,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 76.89,
+    "bolita-lab": 50.38,
+    "numeros-rojos": 60
+   }
+  },
+  {
+   "ts": "2026-11-13T17:30:01.440Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.83,
+    "bolita-lab": 1.04,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 77.65,
+    "bolita-lab": 52.46,
+    "numeros-rojos": 70
+   }
+  },
+  {
+   "ts": "2026-11-13T19:30:01.857Z",
+   "p": {
+    "entender-chile": 3.33,
+    "linea-punteada": 1.83,
+    "bolita-lab": 1.04,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.42,
+    "linea-punteada": 77.65,
+    "bolita-lab": 52.46,
+    "numeros-rojos": 70
+   }
+  },
+  {
+   "ts": "2026-11-13T20:30:01.354Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.83,
+    "bolita-lab": 1.04,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 77.65,
+    "bolita-lab": 52.46,
+    "numeros-rojos": 70
+   }
+  },
+  {
+   "ts": "2026-11-13T21:30:01.311Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.04,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 52.46,
+    "numeros-rojos": 23.46
+   }
+  },
+  {
+   "ts": "2026-11-13T22:30:01.771Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.04,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 52.46,
+    "numeros-rojos": 26.79
+   }
+  },
+  {
+   "ts": "2026-11-13T23:30:01.949Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.07,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 53.13,
+    "numeros-rojos": 26.79
+   }
+  },
+  {
+   "ts": "2026-11-14T00:30:01.567Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.1,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 53.79,
+    "numeros-rojos": 26.78
+   }
+  },
+  {
+   "ts": "2026-11-14T02:00:01.696Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.1,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 53.79,
+    "numeros-rojos": 26.77
+   }
+  },
+  {
+   "ts": "2026-11-14T03:00:01.524Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.86,
+    "bolita-lab": 1.1,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 78.32,
+    "bolita-lab": 53.79,
+    "numeros-rojos": 26.77
+   }
+  },
+  {
+   "ts": "2026-11-14T04:00:01.849Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.87,
+    "bolita-lab": 1.1,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 79.34,
+    "bolita-lab": 53.79,
+    "numeros-rojos": 26.77
+   }
+  },
+  {
+   "ts": "2026-11-14T05:00:02.013Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 1.87,
+    "bolita-lab": 1.11,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.48,
+    "linea-punteada": 79.34,
+    "bolita-lab": 54.96,
+    "numeros-rojos": 26.76
+   }
+  },
+  {
+   "ts": "2026-11-14T14:30:06.014Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 2,
+    "bolita-lab": 1.11,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.54,
+    "linea-punteada": 79.56,
+    "bolita-lab": 55.26,
+    "numeros-rojos": 27.08
+   }
+  },
+  {
+   "ts": "2026-11-14T15:30:01.261Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 2.03,
+    "bolita-lab": 1.14,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.54,
+    "linea-punteada": 79.56,
+    "bolita-lab": 55.93,
+    "numeros-rojos": 27.07
+   }
+  },
+  {
+   "ts": "2026-11-14T16:30:01.206Z",
+   "p": {
+    "entender-chile": 3.34,
+    "linea-punteada": 2.07,
+    "bolita-lab": 1.14,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 39.54,
+    "linea-punteada": 80.58,
+    "bolita-lab": 55.93,
+    "numeros-rojos": 27.06
+   }
+  },
+  {
+   "ts": "2026-11-14T17:30:01.192Z",
+   "p": {
+    "entender-chile": 3.37,
+    "linea-punteada": 2.07,
+    "bolita-lab": 1.21,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 40.21,
+    "linea-punteada": 80.58,
+    "bolita-lab": 57.26,
+    "numeros-rojos": 27.05
+   }
+  },
+  {
+   "ts": "2026-11-14T18:30:02.068Z",
+   "p": {
+    "entender-chile": 3.37,
+    "linea-punteada": 2.07,
+    "bolita-lab": 1.25,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 40.21,
+    "linea-punteada": 80.58,
+    "bolita-lab": 60.71,
+    "numeros-rojos": 27.04
+   }
+  },
+  {
+   "ts": "2026-11-14T19:30:01.200Z",
+   "p": {
+    "entender-chile": 3.4,
+    "linea-punteada": 2.11,
+    "bolita-lab": 1.31,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 40.9,
+    "linea-punteada": 80.58,
+    "bolita-lab": 62.04,
+    "numeros-rojos": 27.03
+   }
+  },
+  {
+   "ts": "2026-11-14T20:30:01.634Z",
+   "p": {
+    "entender-chile": 3.4,
+    "linea-punteada": 2.11,
+    "bolita-lab": 1.35,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 40.9,
+    "linea-punteada": 80.58,
+    "bolita-lab": 62.71,
+    "numeros-rojos": 27.02
+   }
+  },
+  {
+   "ts": "2026-11-15T03:00:01.889Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.24,
+    "bolita-lab": 1.38,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.57,
+    "linea-punteada": 80.58,
+    "bolita-lab": 63.37,
+    "numeros-rojos": 27.05
+   }
+  },
+  {
+   "ts": "2026-11-15T04:00:01.137Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.24,
+    "bolita-lab": 1.38,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.57,
+    "linea-punteada": 80.58,
+    "bolita-lab": 63.37,
+    "numeros-rojos": 27.04
+   }
+  },
+  {
+   "ts": "2026-11-15T05:00:01.562Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.38,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.57,
+    "linea-punteada": 82.02,
+    "bolita-lab": 63.37,
+    "numeros-rojos": 27.04
+   }
+  },
+  {
+   "ts": "2026-11-15T06:00:01.681Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.39,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 82.02,
+    "bolita-lab": 65.58,
+    "numeros-rojos": 27.38
+   }
+  },
+  {
+   "ts": "2026-11-15T07:00:01.797Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.42,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 82.02,
+    "bolita-lab": 66.24,
+    "numeros-rojos": 27.37
+   }
+  },
+  {
+   "ts": "2026-11-15T08:00:02.007Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.42,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 82.02,
+    "bolita-lab": 66.24,
+    "numeros-rojos": 27.36
+   }
+  },
+  {
+   "ts": "2026-11-15T10:00:01.979Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.46,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 82.02,
+    "bolita-lab": 66.91,
+    "numeros-rojos": 27.33
+   }
+  },
+  {
+   "ts": "2026-11-15T11:15:58.270Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 3.37,
+    "bolita-lab": 2.19,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 72.73,
+    "bolita-lab": 67.26,
+    "numeros-rojos": 27.32
+   }
+  },
+  {
+   "ts": "2026-11-15T12:00:01.959Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.25,
+    "bolita-lab": 1.46,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 71.19,
+    "bolita-lab": 66.52,
+    "numeros-rojos": 27.31
+   }
+  },
+  {
+   "ts": "2026-11-15T13:00:01.824Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.49,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.19,
+    "numeros-rojos": 27.3
+   }
+  },
+  {
+   "ts": "2026-11-15T14:00:01.800Z",
+   "p": {
+    "entender-chile": 3.44,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.49,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 41.75,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.19,
+    "numeros-rojos": 27.29
+   }
+  },
+  {
+   "ts": "2026-11-15T15:00:01.559Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.49,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.42,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.19,
+    "numeros-rojos": 27.28
+   }
+  },
+  {
+   "ts": "2026-11-15T16:00:01.834Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.49,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.42,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.19,
+    "numeros-rojos": 27.27
+   }
+  },
+  {
+   "ts": "2026-11-15T17:00:01.618Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.49,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.42,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.19,
+    "numeros-rojos": 27.3
+   }
+  },
+  {
+   "ts": "2026-11-15T18:00:01.601Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.5,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.42,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.94,
+    "numeros-rojos": 27.29
+   }
+  },
+  {
+   "ts": "2026-11-15T19:00:01.387Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.28,
+    "bolita-lab": 1.5,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.46,
+    "linea-punteada": 71.86,
+    "bolita-lab": 67.94,
+    "numeros-rojos": 27.28
+   }
+  },
+  {
+   "ts": "2026-11-15T20:00:01.296Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.29,
+    "bolita-lab": 1.5,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.46,
+    "linea-punteada": 73.45,
+    "bolita-lab": 67.94,
+    "numeros-rojos": 27.27
+   }
+  },
+  {
+   "ts": "2026-11-15T21:00:01.271Z",
+   "p": {
+    "entender-chile": 3.47,
+    "linea-punteada": 2.29,
+    "bolita-lab": 1.5,
+    "numeros-rojos": 0.11
+   },
+   "r": {
+    "entender-chile": 42.46,
+    "linea-punteada": 73.45,
+    "bolita-lab": 67.94,
+    "numeros-rojos": 27.26
+   }
+  },
+  {
+   "ts": "2026-11-17T16:40:38.645Z",
+   "p": {
+    "linea-punteada": 3.75,
+    "entender-chile": 3.52,
+    "bolita-lab": 2.57,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "linea-punteada": 74.08,
+    "entender-chile": 43.93,
+    "bolita-lab": 67.25,
+    "numeros-rojos": 31.96
+   }
+  },
+  {
+   "ts": "2026-11-17T17:00:01.331Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.51,
+    "bolita-lab": 1.71,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 73.84,
+    "bolita-lab": 66.68,
+    "numeros-rojos": 31.81
+   }
+  },
+  {
+   "ts": "2026-11-17T18:00:01.090Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.72,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 66.92,
+    "numeros-rojos": 31.79
+   }
+  },
+  {
+   "ts": "2026-11-17T19:00:01.992Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.9
+   }
+  },
+  {
+   "ts": "2026-11-17T20:00:01.966Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.89
+   }
+  },
+  {
+   "ts": "2026-11-17T21:00:01.530Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.87
+   }
+  },
+  {
+   "ts": "2026-11-17T22:00:01.317Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.85
+   }
+  },
+  {
+   "ts": "2026-11-17T23:00:01.749Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.54,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 74.51,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.84
+   }
+  },
+  {
+   "ts": "2026-11-18T00:00:01.855Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.17,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.82
+   }
+  },
+  {
+   "ts": "2026-11-18T01:00:01.800Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.78,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.17,
+    "bolita-lab": 68.25,
+    "numeros-rojos": 31.81
+   }
+  },
+  {
+   "ts": "2026-11-18T02:00:02.159Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.78,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.17,
+    "bolita-lab": 68.25,
+    "numeros-rojos": 31.79
+   }
+  },
+  {
+   "ts": "2026-11-18T03:00:01.464Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.17,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.78
+   }
+  },
+  {
+   "ts": "2026-11-18T04:00:01.872Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.17,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.76
+   }
+  },
+  {
+   "ts": "2026-11-18T05:00:01.792Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.59,
+    "linea-punteada": 75.4,
+    "bolita-lab": 67.58,
+    "numeros-rojos": 31.79
+   }
+  },
+  {
+   "ts": "2026-11-18T15:00:02.112Z",
+   "p": {
+    "entender-chile": 3.55,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 75.4,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 31.66
+   }
+  },
+  {
+   "ts": "2026-11-18T16:10:50.107Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.16
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 75.4,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 34.98
+   }
+  },
+  {
+   "ts": "2026-11-18T17:00:02.042Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.57,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.17
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 75.4,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 34.97
+   }
+  },
+  {
+   "ts": "2026-11-18T18:00:01.384Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.64,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.2
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 76.73,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 35.78
+   }
+  },
+  {
+   "ts": "2026-11-18T19:00:01.379Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.2
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 35.76
+   }
+  },
+  {
+   "ts": "2026-11-18T20:00:01.868Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.75,
+    "numeros-rojos": 0.22
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.05,
+    "numeros-rojos": 35.74
+   }
+  },
+  {
+   "ts": "2026-11-18T21:56:46.611Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.19
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 34.91
+   }
+  },
+  {
+   "ts": "2026-11-18T22:00:01.069Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.22
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 35.71
+   }
+  },
+  {
+   "ts": "2026-11-18T23:00:01.855Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.22
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 35.69
+   }
+  },
+  {
+   "ts": "2026-11-19T00:00:01.381Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.67,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.22
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 77.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 35.67
+   }
+  },
+  {
+   "ts": "2026-11-19T02:00:01.825Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.71,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.22
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 78.06,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 35.64
+   }
+  },
+  {
+   "ts": "2026-11-19T03:28:00.877Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.77,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 79.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 36.56
+   }
+  },
+  {
+   "ts": "2026-11-19T04:00:01.701Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.77,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "entender-chile": 44.65,
+    "linea-punteada": 79.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 36.55
+   }
+  },
+  {
+   "ts": "2026-11-19T05:00:01.460Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.77,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 79.4,
+    "bolita-lab": 68.71,
+    "numeros-rojos": 36.53
+   }
+  },
+  {
+   "ts": "2026-11-19T10:00:02.074Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.78,
+    "bolita-lab": 1.79,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 80.96,
+    "bolita-lab": 69.49,
+    "numeros-rojos": 36.42
+   }
+  },
+  {
+   "ts": "2026-11-19T11:16:06.233Z",
+   "p": {
+    "linea-punteada": 4.18,
+    "entender-chile": 3.56,
+    "bolita-lab": 2.63,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "linea-punteada": 82.46,
+    "entender-chile": 44.82,
+    "bolita-lab": 69.42,
+    "numeros-rojos": 36.4
+   }
+  },
+  {
+   "ts": "2026-11-19T12:00:02.003Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.78,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.25
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 80.96,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.38
+   }
+  },
+  {
+   "ts": "2026-11-19T16:00:01.884Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.78,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.29
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 80.96,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 37.01
+   }
+  },
+  {
+   "ts": "2026-11-19T17:00:01.871Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.78,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.29
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 80.96,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.99
+   }
+  },
+  {
+   "ts": "2026-11-19T18:00:01.543Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.82,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.29
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 81.63,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.97
+   }
+  },
+  {
+   "ts": "2026-11-19T19:00:01.973Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.82,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.29
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 81.63,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.94
+   }
+  },
+  {
+   "ts": "2026-11-19T20:00:02.019Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.82,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 81.63,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.92
+   }
+  },
+  {
+   "ts": "2026-11-19T21:33:56.804Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.82,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 44.82,
+    "linea-punteada": 81.63,
+    "bolita-lab": 68.83,
+    "numeros-rojos": 36.89
+   }
+  },
+  {
+   "ts": "2026-11-20T03:15:48.905Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.82,
+    "bolita-lab": 1.76,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 39.46,
+    "linea-punteada": 61.45,
+    "bolita-lab": 60.11,
+    "numeros-rojos": 36.83
+   }
+  },
+  {
+   "ts": "2026-11-20T11:49:39.980Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.86,
+    "bolita-lab": 1.8,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 39.54,
+    "linea-punteada": 63.79,
+    "bolita-lab": 60.04,
+    "numeros-rojos": 37.09
+   }
+  },
+  {
+   "ts": "2026-11-20T20:19:35.849Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.86,
+    "bolita-lab": 1.84,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 38.87,
+    "linea-punteada": 60.74,
+    "bolita-lab": 58.78,
+    "numeros-rojos": 33.73
+   }
+  },
+  {
+   "ts": "2026-11-21T02:14:19.268Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.96,
+    "bolita-lab": 1.87,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 38.89,
+    "linea-punteada": 66.89,
+    "bolita-lab": 56.67,
+    "numeros-rojos": 37.07
+   }
+  },
+  {
+   "ts": "2026-11-21T09:53:43.774Z",
+   "p": {
+    "entender-chile": 3.56,
+    "linea-punteada": 2.96,
+    "bolita-lab": 1.87,
+    "numeros-rojos": 0.3
+   },
+   "r": {
+    "entender-chile": 38.89,
+    "linea-punteada": 65.9,
+    "bolita-lab": 55.5,
+    "numeros-rojos": 37.09
+   }
+  }
+ ]
+}
