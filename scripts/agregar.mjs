@@ -19,6 +19,7 @@ import { refrescarVivo, procesar, publicarSiCambio } from './ciclo.mjs';
 import { generarTablero, digestTablero } from './tablero.mjs';
 import { generarGuiones, digestGuiones } from './guiones.mjs';
 import { generarRanuras, digestRanuras } from './ranuras.mjs';
+import { generarEstrategia, digestEstrategia } from './estrategia.mjs';
 import crypto from 'node:crypto';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -487,6 +488,11 @@ export function agregar(opciones = {}) {
     const rr = generarRanuras({ ahora, salida: a.salida });
     ciclo.hash = crypto.createHash('sha1').update(ciclo.hash + digestRanuras(rr)).digest('hex');
   } catch (e) { console.error('ranuras falló:', e.message); }
+  // vista "Estrategia": copia validada de _propuestas/estrategia-audiovisual (data/estrategia/*.json)
+  try {
+    const er = generarEstrategia({ ahora, salida: a.salida });
+    ciclo.hash = crypto.createHash('sha1').update(ciclo.hash + digestEstrategia(er)).digest('hex');
+  } catch (e) { console.error('estrategia falló:', e.message); }
   return { destino, panel, ciclo };
 }
 
