@@ -60,7 +60,6 @@ const Nav = (() => {
   // ⟳ de la barra: refresca la vista visible
   const bt = document.getElementById('bt'), cargarDash = bt.onclick;
   bt.onclick = () => (actual === 'dashboard' || !Vistas[actual]?.refrescar ? cargarDash && cargarDash() : Vistas[actual].refrescar());
-  // compatibilidad: guiones.html#<canal>/<id> redirige a #/guiones/<canal>
   abrirMenu(false);
   ir();
   return { ruta, fijar, actual: () => actual };

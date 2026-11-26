@@ -1,8 +1,17 @@
 # Panel de canales
 
-Página estática (HTML/CSS/JS sin framework ni build) con la carrera de todos los canales de YouTube de Santiago
-hacia la monetización: podio, tabla de posiciones, tarjeta por canal (metas, curva diaria, videos, próximos, plan,
-estrategia, captura de Studio), qué se está trabajando ahora y el calendario del día.
+Página estática (HTML/CSS/JS sin framework ni build) con un **lateral izquierdo** y tres vistas:
+
+- **Dashboard** (`#/`): la carrera de los canales hacia la monetización (tarjetas, tareas, permisos, campana).
+- **Guiones** (`#/guiones[/<canal>]?s=<lunes>&f=falta|problema&r=<ranura>`): cada ranura de publicación de la semana
+  (anterior, en curso, próxima, siguiente) y la línea de vida de su guion: idea → escrito → verificado → revisor →
+  renderizado → programado → publicado (+ carátula en los largos). Al abrir una ficha: texto del guion, nota del
+  revisor por criterio, verificación y enlaces a YouTube y GitHub.
+- **Estrategia** (`#/estrategia/<canal>?t=comparativa|decisiones|arma|caratulas|titulos|arranque|sugerencias`):
+  cómo se arma lo audiovisual de cada canal, prompts de carátula, comparativa con videos populares del nicho y
+  decisiones/experimentos.
+
+Público: **https://sinostrozadev.github.io/panel/**.
 
 - Local: **http://localhost:8790** (`node scripts/servir.mjs`).
 - Funciona offline: sin CDN, sin librerías, sin fuentes externas.
@@ -10,7 +19,15 @@ estrategia, captura de Studio), qué se está trabajando ahora y el calendario d
 ## Estructura
 
 ```
-index.html  estilo.css  app.js     la página (lee data/panel.json)
+index.html                         la página: lateral + Dashboard (CSS y JS del Dashboard van dentro)
+nav.js  lateral.css                lateral y enrutador por hash (SECCIONES = la lista de entradas)
+ranuras.js  ranuras.css            vista Guiones (lee data/guiones/ranuras/)
+estrategia.js  estrategia.css      vista Estrategia (lee data/estrategia/)
+guiones.js  guiones.css            lector de guiones del diálogo "Guiones" de cada tarjeta del Dashboard
+guiones.html                       redirige a #/guiones (enlaces viejos)
+scripts/ranuras.mjs                → data/guiones/ranuras/index.json + <canal>.json
+scripts/estrategia.mjs             → data/estrategia/index.json + <canal>.json
+app.js  estilo.css                 versión anterior del panel (ya no se publica)
 scripts/agregar.mjs                agregador → data/panel.json + data/capturas/
 scripts/servir.mjs                 servidor estático :8790 (re-agrega si el JSON tiene > 5 min)
 scripts/publicar.sh                empuja el sitio a gh-pages de origin (si existe)
@@ -28,7 +45,7 @@ PANEL_PUERTO=8790 PANEL_HOST=0.0.0.0 node scripts/servir.mjs     # para verlo de
 node scripts/capturar.mjs                        # con el servidor arriba
 ```
 
-Para pararlo: `pkill -f scripts/servir.mjs`. Para que vuelva solo tras reiniciar: la línea `@reboot` de `cron.txt`.
+Para pararlo: `kill <pid>` (el pid lo da `ss -ltnp | grep 8790`). Para que vuelva solo tras reiniciar: la línea `@reboot` de `cron.txt`.
 
 ## Fuentes (lo que lee el agregador)
 
@@ -88,6 +105,52 @@ canales[] (ya ordenados por posición):
 - **Ritmo**: diferencia de los últimos 7 días de la serie; con un solo día, promedio desde `fechaCreacion`.
 - **Llegada estimada**: el día en que, a ese ritmo, se cumplen 1.000 subs **y** (10 M vistas **o** 4.000 h). Sin ritmo →
   "sin ritmo aún"; más de 50 años → "más de 50 años".
+
+## Agregar una sección al lateral
+
+1. En `nav.js`, agrega un objeto a `SECCIONES` (`id`, `nombre`, `ayuda`, `icono` = trazos SVG de 24×24).
+2. En `index.html`, agrega `<section id="v-<id>" hidden></section>` dentro de `<main>` y los `<link>`/`<script>` de la
+   vista (antes de `nav.js`, que va último).
+3. En el JS de la vista: `window.Vistas = window.Vistas || {}; Vistas.<id> = { montar(el, ruta) {…}, refrescar() {…}, salir() {…} }`.
+   `ruta` = `{ id, partes: [...segmentos], q: {query} }`; para cambiar filtros sin ensuciar el historial: `Nav.fijar(id, partes, q)`.
+4. Agrega los archivos nuevos a la lista `cp` de `scripts/publicar.sh` y de `.github/workflows/actualizar.yml`.
+
+## Vista Guiones: de dónde sale cada dato (`scripts/ranuras.mjs`)
+
+Lee, solo lectura, el repo de cada canal del registro (`~/.claude/canales/canales.json`):
+
+| Etapa | Fuente |
+|---|---|
+| ranuras | `docs/PLAN-SEMANAL.md` (bloque JSON) + `salida/bandeja/*.json` con `publicarEn` + `contenido/calendario.json` (las que nadie cubre, desde hoy, salen "vacías"). Entender Chile: `contenido/semana/<jue>/*.json` y `contenido/borradores-semana/<jue>/*.json`; ranuras Short 12:00 diario + largo mié 19:00 |
+| idea | la ranura existe en el plan (`estado: descartado` = descartada, gris, no cuenta como faltante) |
+| escrito | `guion` del plan, o el id de la bandeja en `contenido/{guiones,backlog,borradores,reserva,largos}` |
+| verificado | `contenido/verificaciones/<id>.md` o `VERIFICACION-<id>.md`; si no, lo que dejó el revisor (`verificar-cifras`, hechos verificados); EC: `verificacion.md` de la semana |
+| revisor | `salida/revisiones/guiones/<id>[.rondaN].json` (ronda más alta; nota = `promedio`, criterios = `puntajes`, `bloqueantes`, `motivos`, `cambios`). EC no tiene registro estructurado: lo que está en `semana/` pasó según su flujo (sin nota) y lo de `borradores-semana/` quedó rechazado |
+| renderizado | `.mp4` en la bandeja, estado `subido/listo/privado`, `artefacto` (nube) o ya tiene `videoId` |
+| programado | `videoId` + `publicarEn` (bandeja), plan `programado`, o EC `hechos/<pieza>.txt` |
+| publicado | la hora pasó y estaba programado (confirmado por la API si el id está en `data/videos/<canal>.json`); si la hora pasó sin video: ✗ |
+
+"Sin registro" (?) = no hay archivo que lo diga; no significa que falló. Stock = guiones en `backlog/` y `guiones/` que
+ninguna ranura ni bandeja usa (mismo criterio que el tablero). El panel es público: solo salen rutas relativas al repo,
+ids, textos (ya públicos en GitHub) y fechas; rutas `/home/…` y correos se recortan.
+
+**Cómo se actualiza:** `agregar.mjs` (cron */30 del PC) lo regenera y `publicar.sh` lo sube a gh-pages; `servir.mjs`
+lo regenera al vuelo si tiene > 2 min (para seguir en vivo el ritual del jueves en http://localhost:8790/#/guiones).
+La nube (Actions) **no** tiene los repos de los canales: republica el último `data/guiones/` publicado desde el PC.
+Con el PC apagado, la versión pública muestra el último estado y su hora de generación.
+
+## Vista Estrategia (`scripts/estrategia.mjs`)
+
+El contenido lo escribe la sesión de estrategia de Claude en `/home/santiago/projects/yt/_propuestas/estrategia-audiovisual/<slug>.json`
+(`ESTRATEGIA_DIR` lo cambia). El script valida el esquema (claves que faltan → vacío + aviso), saca rutas locales, correos y
+cualquier cosa con forma de token, y copia a `data/estrategia/`. Sin archivo, la vista muestra "contenido en preparación".
+Miniaturas: por URL de `i.ytimg.com` (lazy, `no-referrer`), nunca se descargan; las de videos programados que aún no salen no se piden.
+
+**Decidir desde el panel:** el sitio es estático y no guarda nada. Los botones **Aprobar / Descartar** (sugerencias) y
+**Cambiar** (decisiones) abren `github.com/<repo del canal>/issues/new` con título `[panel] Aprobar: …` y el cuerpo ya
+escrito; Santiago solo confirma con "Submit new issue". Protocolo: la sesión de Claude de cada canal revisa al abrir los
+issues abiertos de su repo que empiezan con `[panel]` (`gh issue list -R <repo> --search "[panel] in:title"`), los aplica
+y los cierra con un comentario.
 
 ## Avisos y autorizaciones (banner)
 
