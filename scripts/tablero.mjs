@@ -10,6 +10,10 @@
 //    docs/PLAN-SEMANAL.md la marca `programado`/`publicado` en esa fecha y hora.
 //  - Una ranura tiene "guion" si está programada, o si el plan le asigna un guion que existe; lo que falta se completa con el stock de
 //    guiones sin asignar (backlog/, bandeja `listo` y guiones/ sin entrada de bandeja).
+//  - `shortsActivos: false` en el calendario = el canal no publica Shorts (cero ranuras cortas). Una ranura con estado `descartado` en el
+//    bloque JSON del plan se quita de las ranuras esperadas (decisión explícita de no publicar).
+//  - Entender Chile (flujo semanal, sin calendario/bandeja): piezas = contenido/semana/*/*.json con fecha de archivo en la semana objetivo;
+//    "programada" = marca en hechos/<pieza>.txt con estado `programado` y fecha de publicación futura. Métricas: bitacora/metricas/AAAA-MM-DD.json.
 //  - Semana objetivo: desde ahora hasta el domingo próximo 23:59 (America/Santiago). Semana siguiente: lunes→domingo después de ésa.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -52,7 +56,7 @@ function ranurasDe(cal, desdeMs, hastaMs) {
     const y = dt.getUTCFullYear(), m = dt.getUTCMonth() + 1, d = dt.getUTCDate(), dow = dt.getUTCDay();
     const fecha = `${y}-${p2(m)}-${p2(d)}`;
     const doble = cal.dobleHasta && fecha <= cal.dobleHasta;
-    const cortas = doble ? (cal.ranurasDoble ?? cal.ranuras) : cal.ranuras;
+    const cortas = cal.shortsActivos === false ? [] : (doble ? (cal.ranurasDoble ?? cal.ranuras) : cal.ranuras);
     const largas = cal.ranurasLargo ?? [{ dias: [0], hora: '10:00' }];
     for (const [lista, tipo] of [[cortas ?? [], 'short'], [largas, 'largo']]) {
       for (const r of lista) {
@@ -93,7 +97,16 @@ function stockGuiones(repo, ban, pl) {
 
 function analizarCanal(c, cal, ban, pl, ahora, finSemana, finSiguiente) {
   const horizonte = ahora + 35 * DIA;
-  const todas = ranurasDe(cal, ahora, horizonte);
+  let todas = ranurasDe(cal, ahora, horizonte);
+  // una ranura que el plan marca `descartado` es una decisión consciente de no publicar: no cuenta como faltante
+  for (const r of pl?.ranuras ?? []) {
+    if (r.estado !== 'descartado') continue;
+    const [hh, mm] = (r.hora || '00:00').split(':').map(Number);
+    const [y, m, d] = (r.fecha || '').split('-').map(Number);
+    if (!y) continue;
+    const ms = chileAMs(y, m, d, hh, mm), tipo = r.formato === 'largo' ? 'largo' : 'short';
+    todas = todas.filter((z) => !(z.ms === ms && z.tipo === tipo));
+  }
   // cobertura por bandeja
   const prog = (ban ?? []).filter((e) => (e.estado === 'subido' || e.estado === 'privado') && e.publicarEn).map((e) => ({ ms: Date.parse(e.publicarEn), tipo: e.tipo || null, e })).filter((x) => Number.isFinite(x.ms)).sort((a, b) => a.ms - b.ms);
   const usadoE = new Set();
@@ -153,6 +166,26 @@ function nubeDiaria(repo) {
   return { slugGh, runs, secretos, guiones, metricas };
 }
 
+// ---------- Entender Chile: flujo semanal (contenido/semana/<semana>/*.json + hechos/*.txt) ----------
+function semanalEC(repo, ahora, domMs) {
+  const raiz = path.join(repo, 'contenido', 'semana');
+  let semanas; try { semanas = fs.readdirSync(raiz); } catch { return null; }
+  let total = 0, prog = 0, primeraFalta = null;
+  for (const sm of semanas) {
+    let piezas; try { piezas = fs.readdirSync(path.join(raiz, sm)).filter((f) => /^\d{4}-\d{2}-\d{2}-(short|largo)-.+\.json$/.test(f)); } catch { continue; }
+    for (const f of piezas) {
+      const m = f.match(/^(\d{4})-(\d{2})-(\d{2})-(short|largo)-/);
+      const ms = chileAMs(+m[1], +m[2], +m[3], m[4] === 'largo' ? 19 : 12, 0);
+      if (ms <= ahora || ms > domMs) continue;
+      total++;
+      let marca = ''; try { marca = fs.readFileSync(path.join(raiz, sm, 'hechos', f.replace(/\.json$/, '.txt')), 'utf8'); } catch {}
+      const pm = marca.match(/\bprogramado\s+(\S+)/);
+      if (pm && Date.parse(pm[1]) > ahora) prog++; else if (!primeraFalta || ms < primeraFalta) primeraFalta = ms;
+    }
+  }
+  return { total, prog, primeraFalta };
+}
+
 // ---------- celdas ----------
 const celda = (estado, texto, detalle) => ({ estado, texto, ...(detalle ? { detalle } : {}) });
 const semaforoRatio = (n, t) => (t === 0 ? 'na' : n === t ? 'ok' : n / t >= 0.5 ? 'warn' : 'bad');
@@ -172,11 +205,11 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
   const sigFecha = { desde: ymd(sigIni + HORA), hasta: ymd(sigFin - HORA) };
 
   const filasTareas = [
-    { id: 'programados', nombre: 'Programados hasta el domingo', ayuda: 'Ranuras de Shorts del calendario, desde ahora hasta el domingo 23:59, que ya tienen video programado en YouTube. Verde solo si están todas. Entender Chile (noticias del día, sin calendario): verde si la edición de hoy está producida (hay guion del informe de hoy y la cadena Edición diaria cerró en verde hoy); la de mañana no puede existir antes porque se escribe de madrugada.', celdas: {} },
+    { id: 'programados', nombre: 'Programados hasta el domingo', ayuda: 'Ranuras de Shorts del calendario, desde ahora hasta el domingo 23:59, que ya tienen video programado en YouTube. Verde solo si están todas. Los canales con ranuras de largo y sin Shorts (`shortsActivos: false`) o con ranuras descartadas en el plan no cuentan esas ranuras. Entender Chile (flujo semanal, sin calendario): piezas de contenido/semana/*/ con fecha hasta el domingo (Short 12:00, largo mié 19:00) que tienen marca \"programado\" con fecha futura en hechos/*.txt.', celdas: {} },
     { id: 'largos', nombre: 'Largos de la semana', ayuda: 'Ranuras de videos largos hasta el domingo con video programado.', celdas: {} },
     { id: 'guiones', nombre: 'Guiones de la próxima semana', ayuda: 'Ranuras de lunes a domingo de la semana siguiente que ya tienen guion (asignado en el plan, programado o disponible en el stock de guiones).', celdas: {} },
     { id: 'aprobados', nombre: 'Guiones aprobados', ayuda: 'Pendiente de activar: aún no existe un registro de aprobación de guiones.', celdas: {} },
-    { id: 'metricas', nombre: 'Métricas de hoy', ayuda: 'Existe salida/metricas/<hoy>/metricas.json (las capturas corren a las 08:15).', celdas: {} },
+    { id: 'metricas', nombre: 'Métricas de hoy', ayuda: 'Existe salida/metricas/<hoy>/metricas.json (las capturas corren a las 08:15) o, en Entender Chile, bitacora/metricas/<hoy>.json.', celdas: {} },
     { id: 'caratulas', nombre: 'Carátulas de largos', ayuda: 'Largos programados que ya tienen miniatura asignada.', celdas: {} },
     { id: 'colchon', nombre: 'Colchón', ayuda: 'Tiempo hasta la primera ranura sin video programado. Verde desde 4 días, ámbar 2 a 4, rojo menos de 2. Entender Chile: horas desde la última corrida exitosa de la cadena (verde hasta 26 h, ámbar hasta 50 h).', celdas: {} },
   ];
@@ -229,6 +262,11 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
         T.colchon.celdas[c.slug] = celda(dias >= 4 ? 'ok' : dias >= 2 ? 'warn' : 'bad', d < 1 ? `${Math.max(0, Math.floor(dias * 24))} h` : `${d} d`, `primera ranura vacía: ${diaHora(A.primeraVacia.ms)}`);
         A.colchonDias = dias;
       } else T.colchon.celdas[c.slug] = celda('ok', '+35 d', 'todas las ranuras de 35 días cubiertas');
+    } else if (c.slug === 'entender-chile' && repo && existe(path.join(repo, 'contenido', 'semana'))) {
+      const E = semanalEC(repo, ahora, domMs);
+      for (const id of ['largos', 'guiones', 'caratulas', 'colchon']) T[id].celdas[c.slug] = celda('sd', 'sin dato');
+      T.programados.celdas[c.slug] = !E ? celda('sd', 'sin dato') : E.total === 0 ? celda('na', '–', 'sin piezas de la semana en contenido/semana/ hasta el domingo') : celda(semaforoRatio(E.prog, E.total), `${E.prog}/${E.total}`, E.prog === E.total ? 'todas con marca en hechos/' : `faltan ${E.total - E.prog}; primera: ${diaHora(E.primeraFalta)}`);
+      sup[c.slug] = 'Flujo semanal: piezas = contenido/semana/*/<fecha>-short|largo-*.json hasta el domingo (Short 12:00, largo 19:00); programada = marca "programado <fecha futura>" en hechos/<pieza>.txt. Largos, guiones, carátulas y colchón siguen sin dato.';
     } else {
       for (const id of ['programados', 'largos', 'guiones', 'caratulas', 'colchon']) T[id].celdas[c.slug] = celda('sd', 'sin dato');
     }
@@ -253,8 +291,9 @@ export function generarTablero({ ahora = Date.now(), salida } = {}) {
     }
     // métricas
     const mf = path.join(repo, 'salida', 'metricas', hoy, 'metricas.json');
-    const mHoy = existe(mf) || !!ND?.metricas.has(hoy);
-    const mDirs = (() => { try { return fs.readdirSync(path.join(repo, 'salida', 'metricas')).filter((x) => /^\d{4}-\d{2}-\d{2}$/.test(x)).sort(); } catch { return []; } })();
+    const bitJson = (() => { try { return fs.readdirSync(path.join(repo, 'bitacora', 'metricas')).map((x) => (x.match(/^(\d{4}-\d{2}-\d{2})\.json$/) || [])[1]).filter(Boolean); } catch { return []; } })();
+    const mHoy = existe(mf) || !!ND?.metricas.has(hoy) || bitJson.includes(hoy);
+    const mDirs = (() => { try { return [...fs.readdirSync(path.join(repo, 'salida', 'metricas')).filter((x) => /^\d{4}-\d{2}-\d{2}$/.test(x)), ...bitJson].sort(); } catch { return [...bitJson].sort(); } })();
     const mUlt = (ND ? [...ND.metricas].sort() : mDirs).at(-1) || null;
     const antes9 = p.h < 9;
     T.metricas.celdas[c.slug] = mHoy ? celda('ok', '✓', `medidas ${hoy.slice(5).split('-').reverse().join('-')}`) : celda(antes9 ? 'warn' : 'bad', antes9 ? 'aún no' : 'falta', mUlt ? `última: ${mUlt.slice(5).split('-').reverse().join('-')}` : 'nunca medidas');
