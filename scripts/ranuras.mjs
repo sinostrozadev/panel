@@ -321,7 +321,7 @@ function canal(c, ahora, ventana, semanas, vistos) {
       titulo: corta(titulo, 140), tema: pl?.tema && pl.tema !== titulo ? corta(pl.tema, 160) : null, estadoPlan: pl?.estado || (ec ? ec.origen : null),
       estado, vacia, descartada, motivo: descartada ? corta(pl.porQue || '', 200) : null, bloqueo: pl?.bloqueo ? corta(pl.bloqueo, 200) : null,
       videoId, url: videoId ? (s.formato === 'largo' ? `https://www.youtube.com/watch?v=${videoId}` : `https://www.youtube.com/shorts/${videoId}`) : null,
-      etapas: et, caratula, nota: rv?.nota ?? null, avance, fallo: fallo ? fallo.id : null, palabras: nPal || null, durSeg,
+      etapas: et, caratula, nota: rv?.nota ?? null, avance, fallo: fallo ? fallo.id : null, palabras: nPal || null, durSeg, durReal: !!b?.duracionSeg,
     });
     if (!vacia) {
       const r = rv?.r;
