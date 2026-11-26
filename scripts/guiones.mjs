@@ -37,6 +37,10 @@ function narrado(g) {
     if (S(p.siguiente)) b.push({ h: 'Siguiente video', t: [S(p.siguiente)] });
     if (Array.isArray(p.indice)) ficha.push(['Índice', p.indice.join(' · ')]);
     if (S(p.estructura)) ficha.push(['Estructura', S(p.estructura)]);
+  } else if (pl === 'largo') {
+    if (S(p.apertura?.texto)) b.push({ h: 'Apertura', t: [S(p.apertura.texto)] });
+    (p.capitulos || []).forEach((c, i) => b.push({ h: `${i + 1}. ${S(c.titulo)}`, t: P([...(c.bloques || []).map((e) => e.texto), c.siguiente?.texto ?? (typeof c.siguiente === 'string' ? c.siguiente : '')]) }));
+    if (S(p.cierre?.texto)) b.push({ h: 'Cierre', t: [S(p.cierre.texto)] });
   } else {
     if (S(p.gancho?.texto)) b.push({ h: 'Gancho' + (S(p.gancho.rotulo) ? ` · ${p.gancho.rotulo}` : ''), t: [S(p.gancho.texto)] });
     const esc = P((p.escenas || []).map((e) => e.texto));
@@ -87,14 +91,14 @@ function ficha(g) {
   return { bloques: b, ficha: f.filter(([, v]) => v), fuentes: fuentesDe(p.fuentes) };
 }
 
-function extraer(g, canal) {
+export function extraer(g, canal) {
   const base = canal === 'bolita-lab' ? ficha(g) : narrado(g);
   const ficha0 = base.ficha;
   if (S(g.descripcion)) ficha0.push(['Descripción', S(g.descripcion)]);
   if (Array.isArray(g.hashtags) && g.hashtags.length) ficha0.push(['Hashtags', g.hashtags.join(' ')]);
   return { ...base, ficha: ficha0 };
 }
-const palabras = (bl) => bl.reduce((n, b) => n + b.t.join(' ').split(/\s+/).filter(Boolean).length, 0);
+export const palabras = (bl) => bl.reduce((n, b) => n + b.t.join(' ').split(/\s+/).filter(Boolean).length, 0);
 
 // ---------- por canal (repos con JSON) ----------
 function canalJson(c, ahora, ini, fin) {

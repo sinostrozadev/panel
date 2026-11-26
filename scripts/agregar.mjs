@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { refrescarVivo, procesar, publicarSiCambio } from './ciclo.mjs';
 import { generarTablero, digestTablero } from './tablero.mjs';
 import { generarGuiones, digestGuiones } from './guiones.mjs';
+import { generarRanuras, digestRanuras } from './ranuras.mjs';
 import crypto from 'node:crypto';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -481,6 +482,11 @@ export function agregar(opciones = {}) {
     const gr = generarGuiones({ ahora, salida: a.salida });
     ciclo.hash = crypto.createHash('sha1').update(ciclo.hash + digestGuiones(gr)).digest('hex');
   } catch (e) { console.error('guiones falló:', e.message); }
+  // vista "Guiones": ranuras × etapas (data/guiones/ranuras/*.json; si falla no rompe el ciclo)
+  try {
+    const rr = generarRanuras({ ahora, salida: a.salida });
+    ciclo.hash = crypto.createHash('sha1').update(ciclo.hash + digestRanuras(rr)).digest('hex');
+  } catch (e) { console.error('ranuras falló:', e.message); }
   return { destino, panel, ciclo };
 }
 

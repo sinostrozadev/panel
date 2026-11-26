@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { agregar } from './agregar.mjs';
+import { generarRanuras } from './ranuras.mjs';
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const PUERTO = Number(process.env.PANEL_PUERTO || 8790);
@@ -17,7 +18,7 @@ const TIPOS = {
   '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8',
 };
 // Solo se sirve lo que es del sitio (nada de scripts/, .git, etc.).
-const PERMITIDO = /^\/(index\.html|guiones\.html|guiones\.js|guiones\.css|app\.js|estilo\.css|data\/[\w.\-/]+|docs\/capturas\/[\w.\-]+)$/;
+const PERMITIDO = /^\/([\w\-]+\.(html|js|css)|avatares\/[\w.\-]+|data\/[\w.\-/]+|docs\/capturas\/[\w.\-]+)$/;
 
 let agregando = null;
 async function refrescarSiViejo() {
@@ -29,12 +30,22 @@ async function refrescarSiViejo() {
   await agregando;
 }
 
+// Vista "Guiones": solo lee archivos locales (≈0,2 s), así que se regenera al vuelo si tiene > 2 min (seguir el ritual en vivo).
+function refrescarRanuras() {
+  const f = path.join(RAIZ, 'data', 'guiones', 'ranuras', 'index.json');
+  let edad = Infinity;
+  try { edad = Date.now() - fs.statSync(f).mtimeMs; } catch { /* no existe */ }
+  if (edad <= 2 * 60 * 1000) return;
+  try { generarRanuras({ salida: path.join(RAIZ, 'data') }); } catch (e) { console.error('[ranuras]', e.message); }
+}
+
 const servidor = http.createServer(async (req, res) => {
   try {
     let ruta = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     if (ruta === '/') ruta = '/index.html';
     if (ruta.includes('..') || !PERMITIDO.test(ruta)) { res.writeHead(404).end('no encontrado'); return; }
     if (ruta === '/data/panel.json') await refrescarSiViejo();
+    if (ruta === '/data/guiones/ranuras/index.json') refrescarRanuras();
     const archivo = path.join(RAIZ, ruta);
     const st = fs.statSync(archivo, { throwIfNoEntry: false });
     if (!st || !st.isFile()) { res.writeHead(404).end('no encontrado'); return; }
