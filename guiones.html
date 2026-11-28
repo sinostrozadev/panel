@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guiones · Canales</title>
+<script>
+// La vista de guiones vive ahora en el panel (index.html#/guiones). Esta página solo redirige (enlaces viejos: guiones.html#<canal>/<id>).
+const h = decodeURIComponent((location.hash || '').slice(1)).split('/')[0];
+location.replace('./#/guiones' + (h ? '/' + encodeURIComponent(h) : ''));
+</script>
+</head>
+<body><p><a href="./#/guiones">Ir a Guiones</a></p></body>
+</html>
